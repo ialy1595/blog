@@ -1,0 +1,30 @@
+{{ partial "header" . }}
+{{ partial "logo" . }}
+
+<a href="{{ .Permalink }}">
+  <div class="post-title">
+    <img src="{{ "/images/post-title-icon.png" | relURL }}" />
+    <div class="post-meta">
+      <time>#subcategories</time>
+      <h1>SUBCATEGORIES</h1>
+    </div>
+  </div>
+</a>
+
+<div class="categories">
+  <ul>
+    {{ $baseurl := .Site.BaseURL }}
+    {{ $data := .Data }}
+    {{ range $key,$value := .Data.Terms.Alphabetical }}
+    <li>
+      <a href="{{ $baseurl }}{{ $data.Plural }}/{{ $value.Name | urlize }}">
+        <i class="fa fa-angle-right icon" aria-hidden="true"></i>
+        {{ humanize $value.Name }}
+        <div class="count">{{ $value.Count }} posts</div>
+      </a>
+    </li>
+    {{ end }}
+  </ul>  
+</div>
+
+{{ partial "footer" . }}

@@ -1,0 +1,8 @@
+{{ partial "posthead" . }}
+
+<div class="summary-content">
+  {{ .Summary }}
+  {{ if .Truncated }}
+  <a href="{{ .RelPermalink }}" class="summary-more">READ MORE</a>
+  {{ end }}
+</div>

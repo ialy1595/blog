@@ -1,0 +1,9 @@
+<div class="title">
+  {{ range .Params.categories }}
+  {{ $lurl := . | printf "/categories/%s" }}
+  {{ $imgurl := . | printf "/images/logo-%s.png" }}
+  <a href="{{ $lurl | relURL }}">
+    <img src="{{ $imgurl | relURL }}" width="260px" height="48px" />
+  </a>
+  {{ end }}
+</div>

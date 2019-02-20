@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  {{ if .Site.GoogleAnalytics }}
+  <script async src="https://www.googletagmanager.com/gtag/js?id={{ .Site.GoogleAnalytics }}"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  
+    gtag('config', '{{ .Site.GoogleAnalytics }}');
+  </script>
+  {{ end }}
+
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>{{ .Title }} {{ if ne .Title .Site.Title }} &middot; {{ .Site.Title }}{{ end }}</title>
+  <link rel="icon" href="{{ "/favicon.ico" | relURL }}" type="image/x-icon">
+  <link rel="canonical" href="{{ .Permalink }}">
+  {{ if .RSSLink }}
+  <link href="{{ .RSSLink }}" rel="alternate" type="application/rss+xml" title="{{ .Title }}" />
+  {{ end }}
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/dracula.min.css">
+  <link rel="stylesheet" href="{{ "/css/styles.css" | relURL }}">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+</head>
+
+<body>
+  <div class="navbar">
+    <ul>
+      <li><a href="{{ "/" | relURL }}" class="logo-title">HELLO,WORLD!</a></li>
+      <li><a href="{{ "/categories" | relURL }}">CATEGORIES</a></li>
+      <li><a href="{{ "/tags" | relURL }}">TAGS</a></li>
+    </ul>
+  </div>
+  <div class="container">
+    <div class="title">
+      <a href="{{ "/" | relURL }}">
+        <img src="{{ "/images/logo.png" | relURL }}" width="260px" height="48px" />
+      </a>
+    </div>

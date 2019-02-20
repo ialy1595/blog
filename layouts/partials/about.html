@@ -1,0 +1,13 @@
+<a href="{{ .Permalink }}">
+  <div class="post-title">
+    <img src="{{ "/images/post-title-icon-about.png" | relURL }}" />
+    <div class="post-meta">
+      <time>#about_me</time>
+      <h1>{{ .Title }}</h1>
+    </div>
+  </div>
+</a>
+
+<section class="post-content">
+  {{ .Content }}
+</section>

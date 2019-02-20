@@ -1,0 +1,21 @@
+baseurl = "your-site-address"
+title = "ialy's blog"
+languageCode = "ko-KR"
+
+theme = "hello-programmer"
+
+paginate = 4
+
+disqusShortname = "XXXX"
+googleAnalytics = "UA-XXXXXXXX-X"
+
+summaryLength = 30
+
+[author]
+    name = "ialy"
+    email = "ialy12006@gmail.com"
+
+[taxonomies]
+  category = "categories"
+  subcategory = "subcategories"
+  tag = "tags"

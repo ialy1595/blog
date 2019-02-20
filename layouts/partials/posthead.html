@@ -1,0 +1,12 @@
+<a href="{{ .Permalink }}">
+  <div class="post-title">
+    {{ range .Params.categories }}
+	{{ $imgurl := . | printf "/images/post-title-icon-%s.png" }}
+	<img src="{{ $imgurl | relURL }}" />
+	{{ end }}
+    <div class="post-meta">
+      <time>{{ .Date.Format "02 Jan 2006, 15:04" }}</time>
+      <h1>{{ .Title }}</h1>
+    </div>
+  </div>
+</a>

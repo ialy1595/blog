@@ -1,0 +1,59 @@
+{{ partial "posthead" . }}
+
+<div class="post-toc">
+  <span class="title">
+    Table of contents
+  </span>
+  {{ .TableOfContents }}
+</div>
+
+<section class="post-content">
+  {{ .Content }}
+</section>
+
+<div class="post-meta-code">
+  <div class="desc">
+    public string description() {
+    <div class="desc">val author = "
+    {{ with .Params.author }}
+        {{ . }}
+    {{ else }}
+        <a href="mailto:{{ .Site.Author.email }}">{{ .Site.Author.name }}</a>
+    {{ end }}";
+    </div>
+    {{ if isset .Params "categories" }}
+    <div class="desc">
+      val categories = [
+      {{ $baseUrl := .Site.BaseURL }}
+      {{ range .Params.categories }}
+      <a href="{{ $baseUrl }}/categories/{{ . | urlize }}">"{{ . }}"</a>
+      {{ end }}
+      ];
+    </div>
+    {{ end }}
+	{{ if isset .Params "subcategories" }}
+    <div class="desc">
+      val subcategories = [
+      {{ $baseUrl := .Site.BaseURL }}
+      {{ range .Params.subcategories }}
+      <a href="{{ $baseUrl }}/subcategories/{{ . | urlize }}">"{{ . }}"</a>
+      {{ end }}
+      ];
+    </div>
+    {{ end }}
+    }
+  </div>
+  <div class="desc">
+    public string tags() {
+      <div class="desc">
+        val tags = [
+        {{ with .Params.tags }}
+          {{ range . }}
+          <a href="{{ $.Site.BaseURL}}tags/{{ . | urlize }}">"{{ . }}"</a>
+          {{ end }}
+        {{ end }}
+        ];
+      </div>
+    }
+  </div>
+</div>

@@ -1,0 +1,12 @@
+{{ partial "header" . }}
+{{ partial "logo" . }}
+
+{{ $paginator := .Paginate ( where .Pages "Title" "!=" "About Me" ) }}
+{{ range $paginator.Pages }}
+  {{ .Render "summary"}}
+  <hr class="summary-sep" />
+{{ end }}
+
+{{ partial "pagination" . }}
+
+{{ partial "footer" . }}

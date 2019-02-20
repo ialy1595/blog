@@ -1,0 +1,13 @@
+{{ partial "header" . }}
+{{ partial "logo" . }}
+
+{{ range .Paginator.Pages }}
+  {{ .Render "summary"}}
+  <div>
+	<hr class="summary-sep" />
+  </div>
+{{ end }}
+
+{{ partial "pagination" . }}
+
+{{ partial "footer" . }}
