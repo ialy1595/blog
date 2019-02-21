@@ -521,7 +521,7 @@ Fs<sub>4</sub> | Fs<sub>3</sub> | Fs<sub>2</sub> | Fs<sub>1</sub> | Fs<sub>0</su
 
 ![](/images/combinational_logic/delay1.png#center50)
 
-NOT 게이트의 딜레이 때문에 A가 1이 되자마자 D가 바로 0이 되지 못했기 때문에 그동안 F에서 1이 출력되게 된다. 이처럼 딜회로를 설계할 때 딜레이를 잘 고려하지 않으면 의도하지 않은 작동으로 인해 제대로 task가 수행되지 않을 수도 있다.
+NOT 게이트의 딜레이 때문에 A가 1이 되자마자 D가 바로 0이 되지 못했기 때문에 그동안 F에서 1이 출력되게 된다. 이처럼 회로를 설계할 때 딜레이를 잘 고려하지 않으면 의도하지 않은 작동으로 인해 제대로 task가 수행되지 않을 수도 있다.
 
 ## Carry-Lookahead Adder (CLA)
 

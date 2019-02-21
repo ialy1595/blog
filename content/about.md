@@ -51,11 +51,10 @@ Weather notification application which can run on background and automatically n
  - **C++** for Algorithm contest
  - **C#** with Unity
  - **Python**
-     - django, tensorflow(immediate)
+     - django, tensorflow
+ - Processing
  - Java
  - SQL
- - Verilog
- - AS3
  - Ocaml
 
 # Awards & Certificates
