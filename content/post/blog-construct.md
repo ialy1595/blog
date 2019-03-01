@@ -172,7 +172,7 @@ $ git remote add origin <첫번째 repository url>
 이제 빌드의 결과로 실제 github page로 띄워질 두번째 repository를 설정해보자. 빌드를 하면 그 결과가 `\public\`에 생기는데, 이 경로는 첫번째 repository 안에 포함되는 경로이다. 이를 따로 repository로 가지기 위해서는 첫번째 repository의 submodule로 지정해야 한다. 따라서 프로젝트 폴더에서
 
 ```
-$ git submodule add -b masater <두번째 repository url> public
+$ git submodule add -b master <두번째 repository url> public
 ```
 
 를 하면 된다.
@@ -228,13 +228,56 @@ $ git push origin master
  - **layouts** : 여기에서 블로그에 실제로 적용되는 html들을 코딩한다. 앞으로 제일 많이 건드릴 곳이다.
  - **static** : 여기에 있는 파일들은 빌드 후에도 그대로 옮겨진다. 따라서 주로 css나 이미지 등을 저장해둔다.
 
+## 내부 코딩 기법
+
+![](/images/blog_construct/html0.png#center50)
+
+개발자들 사이에서 존재하는 밈 중에 "HTML is not a programming language"라는 것이 있다. 그러나 html 속에서도 이중중괄호(`{{ }}`)를 통해 Go Templates를 코딩을 할 수 있다. 테마의 코드들을 보면 대충 어떤 식인지 볼 수 있을 것이다. [Hugo Document](https://gohugo.io/documentation/)를 보면 이를 이용해서 어떻게 코딩할 수 있는지 자세하게 나와있다. 그중에 많이 쓰이는 유용한 몇개만 살펴보자.
+
+### Context
+
+개인적으로 생각하기에 가장 잘 이해해야 하는 부분이다. 우선 context를 사용하기 위해서는 항상 `.`으로 시작한다. 여기서 `.`은 나의 현재 context를 의미한다. 이제 맴버변수에 접근하는 것 처럼 이 뒤에 내가 사용할 변수명을 쓰면 된다. 예를 들어 현재 페이지의 제목을 알고 싶다면 `{{ .Title }}`을 하면 된다.
+
+이 context는 반복문에 들어가면 바뀐다. 예를 들어 다음 코드를 보자.
+
+
+```
+<ul>
+{{ range .Params.tags }}
+    <li>
+        <a href="/tags/{{ . | urlize }}">{{ . }}</a>
+    </li>
+{{ end }}
+</ul>
+```
+
+이 코드는 태그들을 나열하는 코드이다. 처음의 `.`은 기본 페이지의 context였기 때문에 `.Params.tags`를 통해 태그에 접근할 수 있다. 그러나 `{{ range }}` 안에 들어가면 `{{ end }}`를 만날 때까지 `.`은 저 태그들로 바뀐다. 따라서 `.`으로 접근하면 페이지가 아니라 각 태그들이 나오기 때문에 위와 같이 `<a>` 태그를 써서 리스트를 만들 수 있다.
+
+그렇다면 이렇게 반복문 안에 들어와있는데 상위태그에 접근해야하는 상황이 오면 어떻게 해야할까? 예를 들어 위의 코드에서 각 리스트 옆에 원래 페이지의 제목을 넣고 싶다고 하자. 이는 두가지 방법으로 구현할 수 있다.
+
+ 1. **상위 context를 변수로 정의해준다.** 변수는 변수명 앞에 `$`를 붙여서 쓸 수 있고, 변수 지정은 `:=`을 쓰면 된다. 따라서 다음과 같이 구현할 수 있다.
+
+```
+{{ $title := .Title }}
+<ul>
+{{ range .Params.tags }}
+    <li>
+        <a href="/tags/{{ . | urlize }}">{{ . }}</a>
+    </li>
+{{ end }}
+</ul>
+```
+
+
 ## 각 페이지는 어떻게 생성되는가
 
 이제 폴더에 대한 정체성을 알았으면 페이지에 대한 정체성도 알아보자. 만약 내가 메인페이지를 고치고 싶다면 메인페이지를 주관하는 html이 어디에 있는지 알아야 한다. 이를 위해 각 페이지가 어디로부터 어떻게 생성되는지 알아보자.
 
 ### `\content\` 내부 파일들
 
-`\content\` 내부에 있는 각 md 파일들은 각각 하나의 글이므로 각각 하나씩 페이지가 생성된다. 이때 페이지의 주소는 `\content\` 아래의 경로이다. 예를 들어 내 파일이 `\content\post\blog-construct.md`이고 내 블로그 기본주소가 `https://ialy1595.github.io`라면 저 글의 주소는 `https://ialy1595.github.io/post/blog-construct`가 된다.
+`\content\` 내부에 있는 각 md 파일들은 각각 하나의 글이므로 각각 하나씩 페이지가 생성된다. 이때 페이지의 주소는 `\content\` 아래의 경로이다. 예를 들어 내 파일이 `\content\post\blog-construct.md`이고 내 블로그 기본주소가 [https://ialy1595.github.io](https://ialy1595.github.io)라면 저 글의 주소는 [https://ialy1595.github.io/post/blog-construct](https://ialy1595.github.io/post/blog-construct)가 된다.
+
+이 md 파일들을 html로 만들어서 페이지가 되도록 해주는 것이 `\layouts\_default\single.html`이다. 
 
 ### `\content\` 내부 폴더들
 
@@ -243,7 +286,5 @@ $ git push origin master
 ## Partial
 
 ## Shortcode
-
-## 내부 코딩 기법
 
 ## 내가 한 ~~삽질~~작업들
