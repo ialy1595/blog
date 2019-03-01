@@ -76,7 +76,7 @@ Hugo로 작업하기 위해선 당연히 hugo도 필요하고, github page 기�
 
 git은 [git-scm](https://git-scm.com/)에서 오른쪽 아래의 초록색 모니터의 다운로드 버튼을 클릭해서 다운받아 설치하면 된다. 중간에 PATH 환경변수 설정을 하면서 command line을 설정하는 부분이 있는데, 어차피 hugo도 cmd에서 작업해야 하기 때문에 git도 같이 cmd를 쓰는걸 추천한다.
 
-![](/images/blog_construct/git0.png#center50)
+![](/images/blog_construct/git0.png#center100)
 
 설치를 완료했으면 cmd에서 `$ git --version`으로 제대로 설치가 되었는지 확인해보면 된다. 
 
@@ -223,11 +223,18 @@ $ git push origin master
 프로잭트를 처음 만들었을 때 여러 폴더들이 같이 생성되었을 것이다. 이 폴더들이 어떤 역할을 하는지 살펴보자.
 
  - **archetypes** : 이 폴더 안에는 `default.md`가 들어있다. 이 `default.md`를 보면 front matter만 써있는데, 이 front matter가 `$ hugo new <파일 이름>`를 해서 만들었을 때 생기는 문서에 기본으로 생성되는 front matter가 된다.
- - **content** : 
+ - **content** : 블로그에 올릴 글들이 저장되는 곳이다. 바로 다음에서 설명하겠지만, 이 폴더이 있는 모든 파일/폴더는 블로그에서 페이지로 생성된다.
+ - **data** : 이 폴더에는 말 그대로 이런저런 데이터를 저장해둘 수 있다. 따라서 json이나 csv파일 등을 저장해서 가져다 쓸 수 있다. 나같은 경우에는 하드코딩 방지용으로 리스트 목록이나 복잡한 주소같은 것들을 저장해서 가져다 썼다.
+ - **layouts** : 여기에서 블로그에 실제로 적용되는 html들을 코딩한다. 앞으로 제일 많이 건드릴 곳이다.
+ - **static** : 여기에 있는 파일들은 빌드 후에도 그대로 옮겨진다. 따라서 주로 css나 이미지 등을 저장해둔다.
 
 ## 각 페이지는 어떻게 생성되는가
 
+이제 폴더에 대한 정체성을 알았으면 페이지에 대한 정체성도 알아보자. 만약 내가 메인페이지를 고치고 싶다면 메인페이지를 주관하는 html이 어디에 있는지 알아야 한다. 이를 위해 각 페이지가 어디로부터 어떻게 생성되는지 알아보자.
+
 ### `\content\` 내부 파일들
+
+`\content\` 내부에 있는 각 md 파일들은 각각 하나의 글이므로 각각 하나씩 페이지가 생성된다. 이때 페이지의 주소는 `\content\` 아래의 경로이다. 예를 들어 내 파일이 `\content\post\blog-construct.md`이고 내 블로그 기본주소가 `https://ialy1595.github.io`라면 저 글의 주소는 `https://ialy1595.github.io/post/blog-construct`가 된다.
 
 ### `\content\` 내부 폴더들
 
