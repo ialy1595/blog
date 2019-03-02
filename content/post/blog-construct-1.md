@@ -3,7 +3,7 @@ title: "블로그 구축기 1 - Hugo + github.io"
 date: 2019-02-22T20:07:41+09:00
 categories: ["code"]
 subcategories: ["web"]
-tags: []
+tags: ["blog", "hugo", "github.io", "github page", "static site", "static site generator"]
 draft: true
 nextp: ""
 prevp: ""
