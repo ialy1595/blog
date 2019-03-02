@@ -5,7 +5,7 @@ categories: ["code"]
 subcategories: ["web"]
 tags: ["blog", "hugo", "github.io", "github page", "static site", "static site generator"]
 draft: true
-nextp: ""
+nextp: "블로그 구축기 2 - Theme Custormizing"
 prevp: ""
 ---
 

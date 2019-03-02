@@ -6,7 +6,7 @@ subcategories: ["web"]
 tags: ["hugo", "go templates", "theme", "custormizing"]
 draft: true
 nextp: ""
-prevp: ""
+prevp: "블로그 구축기 1 - Hugo + github.io"
 ---
 
 빌드도 해서 배포를 완료했으면 이제 자신이 만든 블로그를 감상해보자. 마음에 드는가? 물론 마음에 쏙 들수도 있지만 아무래도 자기가 직접 만든 것이 아니라 남이 만든 테마를 가져다 쓰는 것이기 때문에 맘에 안드는 점이 있을 수도 있다. 따라서 테마를 우리 입맛대로 고치는 custormizing 과정이 필요하다.
@@ -36,9 +36,11 @@ prevp: ""
 
 # 내부 코딩 기법
 
+대략적인 구조를 파악했으면 이제 코딩을 할 차례이다.
+
 ![](/images/blog_construct/html0.png#center50)
 
-개발자들 사이에서 존재하는 밈 중에 "HTML is not a programming language"라는 것이 있다. 그러나 html 속에서도 이중중괄호(`{{ }}`)를 통해 Go Templates을 코딩할 수 있다. 기존의 코드들을 보면 대충 어떤 식인지 볼 수 있을 것이다. [Hugo Document](https://gohugo.io/documentation/)를 보면 이를 이용해서 어떻게 코딩할 수 있는지 자세하게 나와있다. 그중에 많이 쓰이고 유용한 몇개만 살펴보자.
+개발자들 사이에서 존재하는 밈 중에 "HTML is not a programming language"라는 것이 있다. 그러나 html 속에서도 이중 중괄호(`{{ }}`)를 통해 Go Templates을 코딩할 수 있다. 기존의 코드들을 보면 대충 어떤 식인지 볼 수 있을 것이다. [Hugo Document](https://gohugo.io/documentation/)를 보면 이를 이용해서 어떻게 코딩할 수 있는지 자세하게 나와있다. 그중에 많이 쓰이고 유용한 몇개만 살펴보자.
 
 ## Context
 
@@ -171,7 +173,7 @@ Go templates에서 `|`을 쓰면 `|`의 앞에 있는 변수를 `|`뒤에 있는
 {{ .Title | printf "This is %s" }}
 ```
 
-`humanize`는 코드화된(?) 문자열을 사람이 읽기 좋은 문자열로 만들어주는 기능이다. 주로 `urllize`된 것을 복호화(?)하는데 사용한다.
+`humanize`는 코드화된(?) 문자열을 사람이 읽기 좋은 문자열로 만들어주는 기능이다. 주로 `urllize`된 문자열을 복호화(?)하는데 사용한다.
 
 ```
 {{ "this-is-title" | humanize }} => "This is title"
@@ -189,6 +191,96 @@ Go templates에서 `|`을 쓰면 `|`의 앞에 있는 변수를 `|`뒤에 있는
 {{ "This is title" | urlize }} => "This Is Title"
 ```
 
+# Partial
+
+Go templates에서는 Partial이라는 기능을 제공하는데, 이는 자쥬 공통적으로 쓰이는 코드를 부분화, 즉 모듈화하여 재사용성을 높이는 기능이다. Partial을 이용하면 크게 두가지 장점이 있다.
+
+ - **코드의 재사용성이 증가한다.** 예를 들어 블로그의 header, navigator, footer같은 것들은 모든 페이지에 들어가는 요소이다. 하지만 그렇다고 모든 html마다 같은 코드를 복사해서 붙여넣으면 비효율적일 뿐만 아니라 나중에 고쳐야 할 부분이 생기면 모든 코드를 찾아가야 하기 때문에 유지보수하기도 힘들다. 하지만 partial 기능을 이용하면 partial 코드를 만들어 둔 후 불러와서 적용하기만 하면 같은 코드를 여러곳에 쓸 필요도 없고 나중에 수정할때도 partial 코드만 수정하면 자동으로 다 반영된다.
+ - **모듈화가 가능하다.** 코드를 기능별로 모듈화해서 관리하는 기법은 이미 많이 쓰이는 방법이다. 위의 경우처럼 여러곳에서 사용하는 경우가 아니더라도, 나중에 유지보수할 때 긴 코드에서 해당하는 부분을 찾는 수고를 덜어줄 뿐만 아니라 공동작업을 하는 경우 충돌이 날 확률도 줄여주기 때문에 이처럼 코드를 모듈화해서 분리시켜두는것을 권장한다.
+
+Partial 코드들은 `\layouts\partials\`안에 들어있다. 예를 들어 내가 header를 partial로 만들어서 관리하고 싶다고 하자. 그러면 `\layouts\partials\header.html`에 코드를 작성한 뒤, 코드를 넣을 곳에
+
+```
+{{ partial "header" . }}
+```
+
+을 넣으면 된다. 여기서 파일 이름 다음에 나오는 `.`은 해당 partial에서 사용할 context를 의미한다.
+
+여기서 재밌는 점은 이 partial 코드들은 각각 완전히 독립된 개체로서 동작하는 것이 아니라 그냥 코드를 박아넣는다. 예를 들어 내 `\layouts\partials\header.html`를 보면
+
+```
+<!DOCTYPE html>
+<html>
+  <head>
+    ...
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="navbar">
+        ...
+      </div>
+      <div class="container">
+```
+
+이렇게 열어놓은 태그를 다 닫지도 않고 끝난다. 그리고 `\layouts\partials\footer.html`를 보면
+
+```
+      </div>
+      <div class="blank"></div>
+    </div>
+    <footer class="footer">
+      <div class="share">
+        ...
+      </div>
+    </footer>
+  </body>
+</html>
+```
+
+이렇게 `header.html`에서 연 `html`, `body`, `div` 등을 `footer.html`에서 닫는다. 물론 일반적으로 보면 위험한 코딩일수도 있지만, 모든 코드를 항상 header로 시작해서 footer로 끝난다는 제약 하에서 이렇게 재밌는 코딩을 할 수도 있다.
+
+# Shortcode
+
+Shortcode는 우리가 글을 쓰는 md([마크다운](https://ko.wikipedia.org/wiki/%EB%A7%88%ED%81%AC%EB%8B%A4%EC%9A%B4)) 파일 내에 html 코드를 넣기 위해 사용한다. 물론 마크다운은 기본적으로 html을 랜더링해준다. 그러나 이렇게 shortcode를 만드는 이유는 위와 같이 재사용성을 높이기 위해서이다. 게다가 shortcode는 Go templates를 쓸 수 있기 때문에 context를 사용할 수 있다.
+
+Shortcode들은 `\layouts\shortcodes\`에 들어있다. 예시를 위해 간단하게 `<h1>` 태그로 텍스트를 출력하는 `h1txt`를 만들어보자. 우선 `\layouts\shortcodes\h1txt.html`을 작성한다.
+
+```
+<h1>{{ .Get 0 }}</h1>
+```
+
+그 다음에 마크다운 안에서 다음과 같이 쓰면 된다. shortcode는 `{{</* */>}}`로 감싸서 사용한다.
+
+```
+{{</* h1txt "asdf" */>}}
+```
+
+여기서 `.Get`은 이 shortcode에 들어오는 인자를 뜻한다. 따라서 `.Get 0`는 첫번째 인자를 의미하므로 `asdf`가 되어 `<h1>asdf</h1>`와 같은 역할을 하게 된다.
+
+Shortcode에 인자를 넘겨주는 방법은 크게 두가지가 있다. 우선 첫번째는 위에서 처럼 위치를 통해 순서대로 넣어주고, `.Get index`를 통해 받는 것이다. 두번째 방법은 태그의 속성처럼 이름을 지정하는 것이다. 예를 들어 위의 코드의 경우
+
+```
+<h1>{{ .Get "text" }}</h1>
+```
+
+```
+{{</* h1txt text="asdf" */>}}
+```
+
+처럼 쓸 수 있다. 만약에 shortcode에서 저 속성 이름 부분이 이미 `""` 안에 있어야 하는 경우도 있다. 예를 들어 색깔을 받는 경우
+
+```
+<p style="color:{{ .Get "text" }}"> </p>
+```
+
+처럼 써야할 경우도 있다. 이러면 위와 같이 `""`를 탈출하게 되어 이상하게 동작할 수 있다. 이럴 경우엔 `""` 대신에 아래처럼 해주면 된다.
+
+```
+<p style="color:{{ .Get `text` }}"> </p>
+```
+
+Hugo에서는 figure, gist, highlight, instagram, youtube 등 기본적으로 내장된 shortcode들을 제공한다. 자세한 사용법은 [여기](https://gohugo.io/content-management/shortcodes/)에서 보면 된다.
+
 # 각 페이지는 어떻게 생성되는가
 
 이제 코딩하는 방법에 대해 어느정도 알았으면 각 페이지에 대해 알아보면서 사용해보자. 만약 내가 메인페이지를 고치고 싶다면 메인페이지를 주관하는 html이 어디에 있는지 알아야 한다. 이를 위해 각 페이지가 어디로부터 어떻게 생성되는지 알아보자.
@@ -202,9 +294,5 @@ Go templates에서 `|`을 쓰면 `|`의 앞에 있는 변수를 `|`뒤에 있는
 ## `\content\` 내부 폴더들
 
 ## Taxonomies
-
-# Partial
-
-# Shortcode
 
 # 내가 한 ~~삽질~~작업들
