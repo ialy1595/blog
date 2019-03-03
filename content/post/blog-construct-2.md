@@ -287,7 +287,7 @@ Hugo에서는 figure, gist, highlight, instagram, youtube 등 기본적으로 �
 
 ## `\content\` 내부 파일들
 
-`\content\` 내부에 있는 각 md 파일들은 각각 하나의 글이므로 각각 하나씩 페이지가 생성된다. 이때 페이지의 주소는 `\content\` 아래의 경로이다. 예를 들어 내 파일이 `\content\post\blog-construct-2.md`이고 내 블로그 기본주소가 [https://ialy1595.github.io](https://ialy1595.github.io)라면 저 글의 주소는 [https://ialy1595.github.io/post/blog-construct-2](https://ialy1595.github.io/post/blog-construct-2)가 된다.
+`\content\` 내부에 있는 각 md 파일들은 각각 하나의 글이므로 각각 하나씩 페이지가 생성된다. 이때 페이지의 주소는 `\content\` 아래의 경로이다. 예를 들어 내 파일이 `\content\post\blog-construct-2.md`이고 내 블로그 `baseURL`이 [https://ialy1595.github.io](https://ialy1595.github.io)라면 저 글의 주소는 [https://ialy1595.github.io/post/blog-construct-2](https://ialy1595.github.io/post/blog-construct-2)가 된다.
 
 이 md 파일들을 html로 만들어서 페이지가 되도록 해주는 것이 `\layouts\_default\single.html`이다. 이 context에서 쓸 수 있는 변수들은 다음과 같다.
 
@@ -298,6 +298,94 @@ Hugo에서는 figure, gist, highlight, instagram, youtube 등 기본적으로 �
 
 ## `\content\` 내부 폴더들
 
+예를 들어 `\content\` 내부 구조가 다음과 같다고 가정해보자.
+
+```
+content
+  ├ post
+  │  ├ post1.md
+  │  ├ post2.md
+  │  └ post3.md
+  ├ project
+  │  ├ project1.md
+  │  └ project2.md
+```
+
+그렇다면 `<baseURL>/post`의 주소로 페이지가 생기고, 이 페이지에는 `post1`, `post2`, `post3`들의 리스트가 나온다. 마찬가지로 `<baseURL>/project` 주소에는 `project1`, `project2`의 리스트가 생긴다. 이 리스트들은 `\layouts\_default\list.html`에 의해 생성된다.
+
+`\layouts\_default\list.html`의 context를 보면 `.Pages`라는 변수가 있는데, 이 변수는 해당 상황에서 들고있어야 할 페이지들을 담고있다. 예를 들어 `<baseURL>/post`에 `list.html`이 적용되는 경우 `.Pages`는 `post1`, `post2`, `post3`의 페이지 변수를 가지고 있다.
+
+페이지 변수에서 쓸만한 변수들은 다음과 같다.
+
+ - **.Title** : 글의 제목
+ - **.Permalink** : 해당 글의 주소
+ - **.Summary** : 해당 글의 요약(앞부분 일부). Summary 길이는 `config.toml`에서 `summaryLength = 30`과 같이 조절할 수 있다.
+ - **.Data.Format** : 글을 작성한 날짜를 지정한 포멧으로 보여준다. 포멧 종류는 [여기](https://gohugo.io/functions/format/#hugo-date-and-time-templating-reference)에 나와있다.
+
+ 예를 들어 글의 제목과 작성한 날과 간단 요약을 보여주고, 클릭하면 해당 글로 넘어가는 목록을 만들고 싶다면 다음과 같이 하면 된다.
+
+```
+<ul>
+{{ range .Pages }}
+  <li>
+    <div>
+      <a href="{{ .Permalink }}">{{ .Title }} | {{ .Date.Format "Mon Jan 2 2006" }}</a>
+      <div>
+        {{ .Summary }}
+      </div>
+    <div>
+  </li>
+{{ end }}
+</ul>
+```
+
+하지만 이 목록은 `\content\` 안의 최상위 폴더에만 해당된다. 예를 들어 `\content\` 내부 구조가
+
+```
+content
+  ├ post
+  │  ├ foo
+  │  │  ├ foo1.md
+  │  │  └ foo2.md
+  │  ├ post1.md
+  │  ├ post2.md
+  │  └ post3.md
+```
+
+처럼 생겼다고 해보자. 이 때 `<baseURL>/post/foo`에 접속하면 `foo1`, `foo2`의 리스트가 안보이고 404 페이지가 뜰 것이다. 만약에 최상위 폴더가 아닌 폴더에도 리스트를 만들고 싶다면 해당 폴더에 `_index.md`를 만들면 된다. 예를 들어 `foo`의 리스트를 만들고 싶다면 `\content\post\foo\_index.md`를 만들면 된다.
+
+이렇게 만든 `_index.html`도 md이기 때문에 frontmatter와 내용을 가진다. `\layouts\_default\list.html`에서 `.Title`을 쓰면 `_index.html`의 제목이 나오고, `.Content`를 쓰면 `_index.html`의 내용이 나온다. 따라서 `_index.html`을 이용해서 리스트 페이지를 상황에 맞게 꾸밀 수 있다. 이는 물론 최상위 폴더에도 `_index.html`을 만들어서 적용할 수 있다.
+
 ## Taxonomies
 
+Go templates에서는 기본적으로 category와 tag라는 두개의 taxonomy, 즉 분류를 제공한다. `<baseURL>/categories`에 들어가면 내가 가지고 있는 카테고리들의 목록이 나온다. 마찬가지로 `<baseURL>/tags`에 들어가면 태그들의 목록이 나온다. 이 목록들은 내가 따로 알려주지 않아도 글을 만들 때 frontmatter에 적어둔 카테고리와 태그들로 자동으로 생성된다.
+
+카테고리 목록의 화면은 `\layouts\categories\terms.html`에 의해 생성된다. 물론 태그 목록들은 `\layouts\tags\terms.html`에서 생성된다. 위의 `list.html`에서는 페이지들의 리스트가 `.Pages`에 담겨있었지만 `terms.html`에서는 `.Data.Pages`에 담겨있다. 따라서 해당 목록들은 다음과 같이 구현할 수 있다.
+
+```
+<ul>
+{{ range .Data.Pages}}
+  <li>  
+    <a href="{{ .Permalink }}">{{ .Title }}</a>
+  </li>
+{{ end }}
+</ul>
+```
+
+여기서 `.Permalink`는 해당 카테고리 항목의 리스트에 연결된다. 예를 들어 `<baseURL>/categories/web`에는 카테고리가 `web`인 글들의 리스트가 나온다. 이 리스트 페이지는 `\layouts\_default\list.html`을 따른다.
+
 # 내가 한 ~~삽질~~작업들
+
+사실 코딩이란 것은 이런 이론적인 설명보다도 직접 해보면서 시행착오를 겪고 오류를 해결해나가는 과정에서 익혀진다. 그런 의미애서 내가 한 작업들을 정리해봤다.
+
+## Color, Logo, Favicon
+
+네이버 하면 초록색, 페이스북 하면 파란색, 카카오 하면 노란색이 떠오른다. 또한 대부분의 기업들이 고유의 색은 없더라도 고유의 로고는 가지고 있다. 물론 내 블로그가 기업은 아니지만, 나만의 블로그를 만드는 김에 고유의 색과 로고를 만들어보고 싶었다.
+
+우선 색의 경우에는 기본 색을 내가 좋아하는 보라색 계열로 가닥을 잡았다. 우리가 흔히 색을 표현할 때 RGB 방식을 많이 택한다. 그러나 실제로 연관된 색을 찾기에는 [HSL 혹은 HSV](https://en.wikipedia.org/wiki/HSL_and_HSV) 방식이 더 유용하다. 만약에 좀 더 밝거나 어두운 색을 원한다면 밝기(L 혹은 V)값을 조절하면 되고, 좀 더 뚜렷하거나 탁한 색을 원한다면 채도(S)값을 조절하면 된다. 이러한 면에서 [W3Schools의 colors picker](https://www.w3schools.com/colors/colors_picker.asp)에서 HSL의 각각의 요소를 바꾼 색을 쉽게 볼 수 있어서 색을 선정하는데에 많은 도움을 받았다. 이를 통해 기본색은 <font color="#8C8CD9">■</font>#8C8CD9, 진한 색은 <font color="#6666FF">■</font>#6666FF로 정했다.
+
+그 다음은 배경색을 정해야 할 차례였다. 기본 바탕의 경우에는 그냥 무난하고 깔끔하게 흰색을 사용하기로 했다. 그러나 검은색은 대체해야할 필요가 있었다. 위에서 정한 보라색이 워낙 다채로운 색이라 완전히 무채색인 검은색을 쓰면 약간 안어울리는 느낌을 줄 수 있기 때문이다. 따라서 어두운 계열이면서 위의 보라색과 블로그의 느낌에 맞는 색을 찾은 것이 <font color="#36414A">■</font>#36414A였다. 만약 더 어두운 색이 필요하면 <font color="#151A1E">■</font>#151A1E를 쓰기로 했다. 따래서 내가 사용한 color palette는 다음과 같다.
+
+![](/images/blog_construct/palette0.png#center75)
+
+나의 경우에는 이런 과정으로 color palette를 만들었지만, 이렇게 직접 만들기는 귀찮은데 이쁜 color palette를 쓰고 싶다면 [adobe color](https://color.adobe.com/ko/explore/?filter=most-popular&time=month)나 [colourlovers](https://www.colourlovers.com/palettes/search)를 참고하면 많은 color palette들이 나와있다.
