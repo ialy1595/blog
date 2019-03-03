@@ -15,7 +15,7 @@ prevp: "블로그 구축기 1 - Hugo + github.io"
 
 테마를 수정할 때 가장 중요한 점은 **절대로 `\themes\` 안의 코드를 수정하지 않는 것이다.** 나중에 문제가 생겼을 때 원본이 있어야 복구할 수 있을 뿐만 아니라 테마를 만들 사람에 대한 예의의 의미도 있다. 대신 hugo에서는 theme overriding을 지원한다.
 
-`\themes\<테마 이름>\`안의 구조를 살펴보자. `archetypes`, `layouts`, `static` 등 원래 프로젝트 폴더와 비슷한 구조로 이루어져 있는 것을 볼 수 있을 것이다. 즉, 테마도 하나의 작은 hugo 프로젝트이다. 그렇다면 원래 프로젝트의 `layouts`와 theme 안의 `layouts` 중에서 과연 어떤 것을 반영할까? 예를 들어  `layouts\partials\header.html`을 적용해야 한다고 하면 다음과 같은 알고리즘이 돌아간다.
+`\themes\<테마 이름>\`안의 구조를 살펴보자. `archetypes`, `layouts`, `static` 등 원래 프로젝트 폴더와 비슷한 구조로 이루어져 있는 것을 볼 수 있을 것이다. 즉, 테마도 하나의 작은 hugo 프로젝트이다. 그렇다면 원래 프로젝트의 `layouts`와 `\theme\` 안의 `layouts` 중에서 과연 어떤 것을 반영할까? 예를 들어  `layouts\partials\header.html`을 적용해야 한다고 하면 다음과 같은 알고리즘이 돌아간다.
 
  1. `\layouts\partials\header.html`이 존재하면 `\layouts\partials\header.html`을 적용한다.
  1. 만약에 존재하지 않으면 `\themes\<테마 이름>\layouts\partials\header.html`을 적용한다.

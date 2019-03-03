@@ -37,11 +37,11 @@ Dynamic site는 그때그때 동적으로 html을 생성해서 보여주는 사�
 
 그 외에도 dynamic site를 사용하면 static site에서는 할 수 없는 무궁무진한 많은 것들을 할 수 있다. 그러나 static site generator라는 말에서 볼 수 있듯이 내가 사용하려는 Hugo는 static site를 만들어주는 것이다. 이렇게 좋은 dynamic site를 두고 왜 블로그를 만들 때 많은 사람들이 static site를 사용할까?
 
- - **속도가 훨씬 빠르다.** 비록 dynamic site에서도 virtual DOM이나 cache 등을 사용해서 속도를 빠르게 하려는 노력을 하지만, 동적으로 그때그때 계산을 해서 html을 만들거나 수정해야 하기 때문에 이미 정해져 있는 것을 뿌리기만 하면 되는 static site의 속도를 절대로 따라올 수 없다. 이는 마치 완제품을 집어서 사는것과 주문제작물품을 구입하는 정도의 차이라고 생각하면 된다.
+ - **속도가 훨씬 빠르다.** 비록 dynamic site에서도 virtual DOM이나 cache 등을 사용해서 속도를 빠르게 하려는 노력을 하지만, 동적으로 그때그때 계산을 해서 html을 만들거나 수정해야 하기 때문에 이미 정해져 있는 것을 뿌리기만 하면 되는 static site의 속도를 절대로 따라올 수 없다. 이는 마치 완제품을 집어서 사는 것과 주문제작물품을 구입하는 정도의 차이라고 생각하면 된다.
 
- - Dynamic site에 비해 **만들기 쉽다.** Dynamic site를 구현하려면 유저, 상호작용 시나리오, 데이터베이스, 백엔드에서의 데이터 처리 등 신경써야 할 것이 많고, 그만큼 구현해야 하는 부분도 많다. 그러나 static site는 내가 어떤 데이터를 어떻게 보여줄지만 신경쓰면 된다. 그만큼 블로그를 구축하는데 필요한 지식이나 시간 등의 비용이 적게 든다. 
+ - Dynamic site에 비해 **만들기 쉽다.** Dynamic site를 구현하려면 유저, 상호작용 시나리오, 데이터베이스, 백엔드 데이터 처리 등 신경써야 할 것이 많고, 그만큼 구현해야 하는 부분도 많다. 그러나 static site는 내가 어떤 데이터를 어떻게 보여줄지만 신경쓰면 된다. 그만큼 블로그를 구축하는데 필요한 지식이나 시간 등의 비용이 적게 든다. 
 
- - 내가 만들고자 하는 블로그는 **방문객 입장에서 보면 READ ONLY이다.** 내 블로그에 사람들이 와서 하는 활동은 글을 읽는 것이 전부이다. 따라서 그들에 의해서 내가 보여주려는 화면이 바뀔 일이 없으니 굳이 힘들게 dynamic site로 만들 필요가 없다. 물론 글을 쓰기 위해서는 서버 쪽에서 작업을 해야하긴 하지만 이 또한 static site generator를 사용하면 쉽게 할 수 있다. 
+ - 내가 만들고자 하는 블로그는 **방문객 입장에서 보면 READ ONLY이다.** 내 블로그에 사람들이 와서 하는 활동은 글을 읽는 것이 전부이다. 따라서 그들에 의해서 내가 보여주려는 화면이 바뀔 일이 없으니 굳이 힘들게 dynamic site로 만들 필요가 없다. 물론 내가 글을 등록하기 위해서는 서버 쪽에서 작업을 해야하긴 하지만 이 또한 static site generator를 사용하면 쉽게 할 수 있다. 
 
 ## Static site generator
 
@@ -83,7 +83,7 @@ git은 [git-scm](https://git-scm.com/)에서 오른쪽 아래의 초록색 모�
 이제 hugo를 설치해보자.
 
  1. [hugo release](https://github.com/gohugoio/hugo/releases)에서 최신버전을 다운받는다.
- 2. `C:\Hugo\bin\`에 압축을 해제한다. 압축을 해제해서 보면 설치파일이 아니라 그냥 portable형 exe 파일이 나온다. 따라서 cmd에서 언제든지 사용하기 위해서는 환경번수에 추가해줘야한다.
+ 2. `C:\Hugo\bin\`에 압축을 해제한다. 압축을 해제해서 보면 설치파일이 아니라 그냥 portable형 exe 파일이 나온다. 따라서 cmd에서 언제든지 사용하기 위해서는 환경변수에 추가해줘야한다.
  3. `window + Q`로 검색창을 연 뒤 `환경 변수`를 검색해서 `시스템 환경 변수 편집`에 들어간다.
  4. 아래의 `환경 변수`를 클릭한다.
  5. 맨 위의 박스에서 `Path`를 더블클릭한다.
@@ -111,7 +111,7 @@ $ hugo new site <프로젝트 이름>
 테마를 선택하면 나오는 창에서 demo 버튼을 누르면 실제로 테마가 적용됐을 때 어떻게 보이는지도 체험해 볼 수 있다. 어떤 테마를 사용할지 골랐으면 download 버튼을 눌러보자. 그러면 그 테마의 github 페이지로 연결된다. 그 github 페이지의 주소를 복사해두자. 다시 프로젝트 폴더로 돌아와서 `\themes\` 폴더에 들어간 후 
 
 ```
-$ git clone <github 페이지 주소>
+$ git clone <테마 github 페이지 주소>
 ```
 
 를 하자. 그러면 자동으로 테마가 다운받아진다.
@@ -158,7 +158,7 @@ $ hugo server -D
 
 미리보기로도 확인해서 완벽하게 작업을 했다고 생각하면 이제 빌드를 할 차례이다. 그 전에 git remote 설정을 먼저 해서 git에 저장을 해두자.
 
-위에서도 말했듯이 hugo는 jekyll과 달리 github에서 자동으로 빌드를 해주는 것이 아니라 내가 빌드해서 만든 파일을 github page 기능으로 띄우는 것이다. 따라서 전체 컨텐츠를 저장할 곳과 빌드 결과로 github page를 띄울 곳, 이렇게 두개의 git repository가 필요하다. 첫번째 repository는 `<프로젝트 이름>`, 두번째 repository는 `<user-id>.github.io`로 만들면 된다. 참고로 두번째처럼 repository의 이름이 `.github.io`로 끝날 경우 자동으로 github page로 설정이 된다.
+위에서도 말했듯이 hugo는 jekyll과 달리 github에서 자동으로 빌드를 해주는 것이 아니라 내가 빌드해서 만든 파일을 github page 기능으로 띄우는 것이다. 따라서 전체 컨텐츠를 저장할 곳과 빌드 결과로 github page를 띄울 곳, 이렇게 두개의 git repository가 필요하다. 첫번째 repository는 `<프로젝트 이름>`, 두번째 repository는 `<user-id>.github.io`로 만들면 된다.
 
 우선 첫번째 repository의 경우 그냥 프로젝트 폴더를 remote로 하면 된다. 여기서 주의할 점은 이 단계에서 아직 `\public\`폴더가 존재하면 안된다. 혹시 미리 빌드를 해서 `\public\`폴더가 있다면 지워주도록 하자. 이제 프로젝트 폴더에서
 
@@ -175,7 +175,7 @@ $ git remote add origin <첫번째 repository url>
 $ git submodule add -b master <두번째 repository url> public
 ```
 
-를 하면 된다.
+을 하면 된다.
 
 이제 빌드를 해보자. 참고로 빌드하기 전에 작업이 끝나서 빌드를 해줄 문서는 front matter에서 `draft = true` 부분을 지워줘야 빌드 항목에 포함된다. 이제 프로젝트 폴더에서 
 
@@ -183,7 +183,7 @@ $ git submodule add -b master <두번째 repository url> public
 $ hugo -t <테마 이름>
 ```
 
-를 하면 빌드가 되면서 `\public\` 폴더에 빌드 결과가 나온다. 이제 이 결과를 github에 올리기만 하면 `<user-id>.github.io`로 블로그가 가 생성된다.
+을 하면 빌드가 되면서 `\public\` 폴더에 빌드 결과가 나온다. 이제 이 결과를 github에 올리기만 하면 `<user-id>.github.io`로 블로그가 가 생성된다.
 
 github에 push하려면 위에서 만들었던 두개의 repository에 모두 push를 해야한다. 우선 `\public\` 폴더를 먼저 push한 다음, 프로젝트를 push하면 된다. 따라서
 
