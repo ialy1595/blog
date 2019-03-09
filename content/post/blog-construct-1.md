@@ -4,6 +4,11 @@ date: 2019-02-22T20:07:41+09:00
 categories: ["code"]
 subcategories: ["web"]
 tags: ["blog", "hugo", "github.io", "github page", "static site", "static site generator"]
+references: [
+    "https://ryan-han.com/post/2018/etc/creating_static_blog/",
+    "https://blog.lulab.net/install-hugo-and-configure-for-your-blog/",
+    "https://tadakichi.tistory.com/188"
+]
 draft: true
 nextp: "블로그 구축기 2 - Theme Custormizing"
 prevp: ""

@@ -4,6 +4,12 @@ date: 2019-03-01T12:37:41+09:00
 categories: ["code"]
 subcategories: ["web"]
 tags: ["hugo", "go templates", "theme", "custormizing"]
+references: [
+  "https://github.com/lubang/hugo-hello-programmer-theme",
+  "https://gohugo.io/documentation",
+  "https://www.youtube.com/playlist?list=PLLAZ4kZ9dFpOnyRlyS-liKL5ReHDcj4G3",
+  "https://yihui.name/en/2018/07/latex-math-markdown/"
+]
 draft: true
 nextp: ""
 prevp: "블로그 구축기 1 - Hugo + github.io"
@@ -267,13 +273,13 @@ Shortcode에 인자를 넘겨주는 방법은 두가지가 있다. 첫번째는 
 {{</* h1txt text="asdf" */>}}
 ```
 
-처럼 쓸 수 있다. 만약에 shortcode에서 저 속성 이름 부분이 이미 `""` 안에 있어야 하는 경우도 있다. 예를 들어 색깔을 받는 경우
+처럼 쓸 수 있다. 만약에 shortcode에서 저 속성 이름 부분이 이미 `" "` 안에 있어야 하는 경우도 있다. 예를 들어 색깔을 받는 경우
 
 ```
 <p style="color:{{ .Get "text" }}"> </p>
 ```
 
-처럼 써야할 경우도 있다. 이러면 위와 같이 `""`를 탈출하게 되어 이상하게 동작할 수 있다. 이럴 경우엔 `""` 대신에 아래처럼 해주면 된다.
+처럼 써야할 경우도 있다. 이러면 위와 같이 `" "`를 탈출하게 되어 이상하게 동작할 수 있다. 이럴 경우엔 `" "` 대신에 아래처럼 `` ` ` ``로 감싸주면 된다.
 
 ```
 <p style="color:{{ .Get `text` }}"> </p>
@@ -374,18 +380,200 @@ Go templates에서는 기본적으로 category와 tag라는 두개의 taxonomy, 
 
 여기서 `.Permalink`는 해당 카테고리 항목의 리스트에 연결된다. 예를 들어 `<baseURL>/categories/web`에는 카테고리가 `web`인 글들의 리스트가 나온다. 이 리스트 페이지는 `\layouts\_default\list.html`을 따른다.
 
+## 기타 페이지들
+
+위의 분류에 속하지 않는 특수 페이지가 두개가 더 있다. 이 두 페이지는 모두 `\layouts`에 들어있다.
+
+ - **main page** : 기본 URL에서 보여지는 페이지로, `\layouts\index.html`에 의해 생성된다.
+ - **404 page** : 잘못된 URL로 접속할 경우 보여지는 페이지로, `\layouts\404.html`에 의해 생성된다.
+
 # 내가 한 ~~삽질~~작업들
 
 사실 코딩이란 것은 이런 이론적인 설명보다도 직접 해보면서 시행착오를 겪고 오류를 해결해나가는 과정에서 익혀진다. 그런 의미애서 내가 한 작업들을 정리해봤다.
 
-## Color, Logo, Favicon
+## Logo, Favicon, Color Palette
 
 네이버 하면 초록색, 페이스북 하면 파란색, 카카오 하면 노란색이 떠오른다. 또한 대부분의 기업들이 고유의 색은 없더라도 고유의 로고는 가지고 있다. 물론 내 블로그가 기업은 아니지만, 나만의 블로그를 만드는 김에 고유의 색과 로고를 만들어보고 싶었다.
 
-우선 색의 경우에는 기본 색을 내가 좋아하는 보라색 계열로 가닥을 잡았다. 우리가 흔히 색을 표현할 때 RGB 방식을 많이 택한다. 그러나 실제로 연관된 색을 찾기에는 [HSL 혹은 HSV](https://en.wikipedia.org/wiki/HSL_and_HSV) 방식이 더 유용하다. 만약에 좀 더 밝거나 어두운 색을 원한다면 밝기(L 혹은 V)값을 조절하면 되고, 좀 더 뚜렷하거나 탁한 색을 원한다면 채도(S)값을 조절하면 된다. 이러한 면에서 [W3Schools의 colors picker](https://www.w3schools.com/colors/colors_picker.asp)에서 HSL의 각각의 요소를 바꾼 색을 쉽게 볼 수 있어서 색을 선정하는데에 많은 도움을 받았다. 이를 통해 기본색은 <font color="#8C8CD9">■</font>#8C8CD9, 진한 색은 <font color="#6666FF">■</font>#6666FF로 정했다.
+로고를 만드는 작업을 하기 전에 내가 이 블로그에 어떤 글들을 쓸지 먼저 생각해 보았다. 우선 전공 관련 글은 당연히 들어갈 것이다. 전공분야 외에 내가 또 좋아하면서 깊게 공부해본 분야는 칵테일이다. 완전 전문가 수준은 아닐지라도 조주기능사를 따면서 3년정도 세미나를 할 정도는 공부를 했고, 꽤 성공적인 창작칵테일도 많이 만들어봤다. 따라서 내 창작칵테일 이야기나 바 후기같은 글을 쓰는 것도 재밌겠다는 생각을 했다.
+
+따라서 **코딩**과 **칵테일**을 모두 나타낼 수 있는 로고를 만들기로 결심했다. 이렇게 두가지 정보를 담고 있지만 로고 자체는 간단해야한다. 내가 미니멀리즘을 지향하기도 하지만 이 로고를 그대로 favicon으로 만들고 싶었기 때문이다.
+
+![](/images/blog_construct/favicon0.PNG#center30)
+
+favicon이란 탭부분에서 왼쪽에 표시된 작은 아이콘을 뜻한다. favicon을 지정하기 위해서는 헤더 부분에
+
+```
+<link rel="icon" href="{{ "/favicon.ico" | relURL }}" type="image/x-icon">
+```
+
+을 추가하고 `\static\favicon.ico`로 내가 지정할 favicon파일을 저장하면 된다. 이 때 favicon 크기는 16 X 16 이다. 실제로 보여지는 크기가 매우 작기 때문에 어차피 많은 정보를 담지 못한다. 이러한 favicon에도 내가 만든 로고를 그대로 쓰기 위해서는 기본 로고도 간단해질 수 밖에 없었다. 이러한 조건 하에 아래와 같은 로고를 만들 수 있었다.
+
+![](/images/blog_construct/logo0.png#center50)
+
+이제 블로그 테마 색을 정할 차례이다. 기본 색은 내가 좋아하는 보라색 계열로 가닥을 잡았다. 일반적으로 색을 표현할 때 RGB 방식이 많이 쓰인다. 그러나 색을 찾고 조금씩 바꿔보는 작업을 하기에는 [HSL 혹은 HSV](https://en.wikipedia.org/wiki/HSL_and_HSV) 방식이 더 유용하다. 만약에 좀 더 밝거나 어두운 색을 원한다면 밝기(L 혹은 V)값을 조절하면 되고, 좀 더 뚜렷하거나 탁한 색을 원한다면 채도(S)값을 조절하면 된다. 이 과정에서 [W3Schools의 colors picker](https://www.w3schools.com/colors/colors_picker.asp)가 HSL의 각각의 요소를 바꾼 색을 쉽게 볼 수 있어서 색을 선정하는데에 많은 도움을 받았다. 이를 통해 기본색은 <font color="#8C8CD9">■</font>#8C8CD9, 진한 색은 <font color="#6666FF">■</font>#6666FF로 정했다.
 
 그 다음은 배경색을 정해야 할 차례였다. 기본 바탕의 경우에는 그냥 무난하고 깔끔하게 흰색을 사용하기로 했다. 그러나 검은색은 대체해야할 필요가 있었다. 위에서 정한 보라색이 워낙 다채로운 색이라 완전히 무채색인 검은색을 쓰면 약간 안어울리는 느낌을 줄 수 있기 때문이다. 따라서 어두운 계열이면서 위의 보라색과 블로그의 느낌에 맞는 색을 찾은 것이 <font color="#36414A">■</font>#36414A였다. 만약 더 어두운 색이 필요하면 <font color="#151A1E">■</font>#151A1E를 쓰기로 했다. 따래서 내가 사용한 color palette는 다음과 같다.
 
 ![](/images/blog_construct/palette0.png#center75)
 
-나의 경우에는 이런 과정으로 color palette를 만들었지만, 이렇게 직접 만들기는 귀찮은데 이쁜 color palette를 쓰고 싶다면 [adobe color](https://color.adobe.com/ko/explore/?filter=most-popular&time=month)나 [colourlovers](https://www.colourlovers.com/palettes/search)를 참고하면 많은 color palette들이 나와있다.
+나의 경우에는 이렇게 직접 color palette를 만들었지만, 직접 만들기는 귀찮은데 이쁜 color palette를 쓰고 싶다면 [adobe color](https://color.adobe.com/ko/explore/?filter=most-popular&time=month)나 [colourlovers](https://www.colourlovers.com/palettes/search)를 참고하면 많은 color palette들이 나와있다.
+
+## Hover line effect
+
+나만의 시그니쳐한 블로그를 만드는 것이 목적이기 때문에 위에서처럼 로고나 color palette는 직접 만들었지만, 내가 디자인을 좋아하기는 해도 전문 디자이너는 아니기 때문에 다른 사람들의 의견이나 조언을 듣는 것은 매우 중요하다. 이런 조언을 얻기 좋은 사이트를 하나 추천하자면 [Medim](https://medium.com/)이다. Medium은 블로그 서비스중 하나인데, 디자인이 가독성이 좋고 글의 퀄리티가 전제척으로 좋은 편이라 이런저런 조언을 얻기 좋다.
+
+그 중 [7 Practical Tips for Cheating at Design](https://medium.com/refactoring-ui/7-practical-tips-for-cheating-at-design-40c736799886)라는 글이 있었는데 여기서 <6. Use accent borders to add color to a bland design>에서 hover line effect에 대한 영감을 얻어서 위에 navigator나 카테고리에서 해당 항목에 hover effect로 아래나 왼쪽에 선이 생기도록 했다. 이는 css에서 다음과 같이 구현할 수 있다.
+
+```
+.navbar li {
+  padding: 12px 8px 12px 8px;
+}
+
+.navbar li:hover {
+  border-bottom: 4px solid #6666FF;
+  padding-bottom: 8px;
+}
+```
+
+만약 단순히 `border-bottom: 4px solid #6666FF;`만 추가하면 아래에 선이 추가로 생기면서 공간도 추가로 할당되는 효과가 되어 부자연스럽다. 따라서 4px의 `border-bottom`을 추가하면서 동시에 12px였던 `padding-bottom`을 4px 줄인 8px로 바꿔주면 좀 더 자연스러운 효과를 낼 수 있다.
+
+## Subcategory hierarchy
+
+Hugo에서는 기본적으로 category라는 taxonomy를 제공한다. 나는 여기서 더 나아가서 subcategory를 통해 계층적인 분류를 하고싶었다.
+
+우선 카테고리를 추가하는 것은 어렵지 않다. 우선 `\config.toml`에 
+
+```
+[taxonomies]
+  category = "categories"
+  tag = "tags"
+  subcategory = "subcategories"
+```
+
+를 추가한다. 여기서 주의할 점은 `category`와 `tag`는 기본적으로 제공되는 항목이고 `subcategory`만 추가할 뿐이지만 세개 모두 서줘야 한다는 것이다. 만약에 `category`나 `tag`를 써주지 않으면 taxonomy에서 제거된다. 이렇게 하면 `subcategory`라는 새로운 taxonomy가 생긴다. 이제 글을 쓸 때 front matter에서
+
+```
+subcategories = ["web"]
+```
+
+처럼 써주면 된다. 이를 쉽게 하려면 `\archetypes\default.md`의 front matter에 `subcategories = []`를 추가하면 앞으로 글을 생성할 때 자동으로 `subcategories` 항목이 생긴다.
+
+이렇게 `subcategory`를 만들기는 했지만 아직 `category`와의 연관성이 없다. 즉, 다음 문제를 해결해야 했다.
+
+ - 각 `category`에 어떤 `subcategory`가 속하는지 코드상으로 어떻게 구현할 것인가
+
+ 이 문제를 해결하기 위해 [Data template](https://gohugo.io/templates/data-templates/#readout)를 사용했다.
+
+ 우선 subcategory 정보를 `data\subclist.toml`에 저장하기로 했다. 예를 들어 이 문서에
+
+ ```
+ code = ["system-architecture", "web"]
+ ```
+
+ 라고 쓰여있으면 `code`라는 `category` 안에는 `system-architecture`와 `web`이라는 `subcategory`가 있다는 뜻이다.
+
+ 이제 이 데이터들은 `.Site.Data.subclist` context를 통해 불러올 수 있다. 예를 들어 위의 `code` 리스트를 가져오고 싶다면 `index .Site.Data.subclist "code"`를 하면 된다. 이를 통해 계층적으로 구현한 category list page는 다음과 같이 구현했다.
+
+ ```
+ <div class="categories">
+  <ul>
+    {{ $baseurl := .Site.BaseURL }}
+    {{ $data := .Data }}
+	{{ $site := .Site }}
+    {{ range $key,$value := .Data.Terms.Alphabetical }}
+    <li>
+      <a href="{{ $baseurl }}{{ $data.Plural }}/{{ $value.Name | urlize }}">
+        <i class="fa fa-angle-right icon" aria-hidden="true"></i>
+        {{ humanize $value.Name }}
+        <div class="count">{{ $value.Count }} posts</div>
+      </a>
+    </li>
+	<div class="subcategories">
+	  {{ $list := ( index $site.Data.subclist $value.Name ) }}
+	  <ul>
+	  {{ range $key, $value := $site.Taxonomies.subcategories.Alphabetical }}
+	  {{ if in $list $value.Name }}
+		<li>
+		  <a href="{{ $baseurl }}subcategories/{{ $value.Name | urlize }}">
+			<i class="fa fa-angle-right icon" aria-hidden="true"></i>
+			{{ humanize $value.Name }}
+			<div class="count">{{ $value.Count }} posts</div>
+		  </a>
+		</li>
+	  {{ end }}
+	  {{ end }}
+	  </ul>
+	</div>
+    {{ end }}
+  </ul>  
+</div>
+ ```
+
+## Mathjax
+
+글을 쓰다보면 중간중간에 수식을 넣어야 할 필요가 생긴다. 웹에서 수식을 표현하기 위해 [mathjax](https://www.mathjax.org/)를 많이 사용한다. 그러나 여기서 문제점은 내가 글을 쓰는 파일은 html이나 js같은 웹용이 아니라 md라는 것이다. 사실 이 문제는 hugo 뿐만 아니라 jekyll을 비롯한 많은 곳에서도 md로 글을 쓰기 때문에 이를 해결하기 위해 이미 많은 사람들이 고민했고, 좋은 솔루션이 나와있다.
+
+결론적인 해결법부터 보자. 우선 헤더에 다음을 추가한다.
+
+```
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+  });
+  MathJax.Hub.Queue(function() {
+    // Fix <code> tags after MathJax finishes running. This is a
+    // hack to overcome a shortcoming of Markdown. Discussion at
+    // https://github.com/mojombo/jekyll/issues/199
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script> 
+```
+
+나는 이를 `\layouts\partials\mathjax-header.html`에 partial로 따로 만들어서 관리했다.
+
+그리고 css에 다음을 추가한다.
+
+```
+code.has-jax {
+  font: inherit;
+  font-size: 100%;
+  background: inherit;
+  border: inherit;
+  color: #000000;
+}
+```
+
+이제 md에 글을 쓸 때
+```
+`$ x = {-b \pm \sqrt{b^2-4ac} \over 2a} $`
+```
+
+처럼 코드 안에 `` `\$ \$` ``로 감싸서 쓰면
+
+`$
+x = {-b \pm \sqrt{b^2-4ac} \over 2a}
+$`
+
+처럼 수식이 랜더링된다.
+
+사실 이 방법은 검색하면 널리고 널릴 정도로 많은 글에서 소개한다. 그럼에도 불구하고 내가 또 이 글에 쓰는 이유는 이것이 작동하는 원리에 대해 쓴 글이 거의 없었기 때문이다. 물론 작동만 하면 되는 사람도 있겠지만 나는 작동하는 원리를 아는 것도 중요하게 생각하기 때문에 열심히 찾아봤고, 이를 공유하려 한다.
+
+md로 작성한 코드를 실제 그러럼 보이기 위해서는 기본적으로 랜더링 과정이 필요하다. 여기서 문제는 우리가 쓴 수식이 이 마크다운의 랜더링에 들어가버리면 더이상 손을 쓸 방법이 없어진다. 여기서 해답은 `` ` ``로 감싸서 표현하는 코드부분이다. 이 부분은 랜더링 되기 전에 `<code>` 태그로 감싸져서 먼저 처리되기 때문에 이를 이용하면 mathjax를 따로 처리할 수 있다.
+
+먼저 위의 코드에서 `tex2jax` 부분이 `<code>`로 감싸진 부분에서 `$` 등으로 감싸진 부분이 있으면 수식으로 랜더링을 하라는 부분이다. 이를 통해 수식을 랜더링할 순 있지만 아직 한가지 문제가 남아있다. 우리가 마크다운 랜더링에서 빠져나오기 위해 `<code>` 태그를 사용했기 때문에 배경이 회색이 되는 등 자연스럽게 스타일도 `<code>`부분을 따라가게 된다. 따라서 자연스럽게 글을 쓰기 위해 이 부분을 처리해줘야 한다.
+
+이를 위해 `has-jax`라는 태그를 사용한다. 스크립트의 아래 부분이 이러한 수식 부분에 `has-jax`를 붙이는 역할을 한다. 그러면 이제 태그가 `<code>`가 아니라 `<code.has-jax>`가 된다. 이제 css에서 `<code.has-jax>` 일 경우의 스타일을 원래 본문의 경우와 동일하게 설정해주면 자연스럽게 본문에 수식이 들어가는 효과를낼 수 있다.
+
