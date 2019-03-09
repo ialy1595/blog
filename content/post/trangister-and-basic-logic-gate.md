@@ -102,8 +102,8 @@ Tristate Buffer는 마치 스위치처럼 E가 1이면 D를 그대로 Out에 출
 E | D | OUT
 :-:|:-:|:-:
 0 | x | Hi-Z
-1 | 0 | 1
-1 | 1 | 0
+1 | 0 | 0
+1 | 1 | 1
 
 이를 구현하기 위해 우선 E부터 고려해보자. 만약에 E가 0이라면 V+랑 접지와 모두 끊어져야 한다. 따라서 V+에 연결되는 p-type에 1이 들어가야 하므로 NOT E가 들어가야 하고, 접지와 연결되는 n-type에는 0이 들어가야 하므로 그대로 E를 넣으면 된다. 이렇게 구성할 경우 E가 1이면 p-type, n-type모두 끊어지지 않고 연결시키므로 이 회로를 D가 작용하는 부분과 직렬로 연결해서 구성하면 된다.
 
@@ -158,7 +158,7 @@ X | Y | Z | OUT
 
 ![](/images/trangister_and_basic_logic_gate/nand2not0.png#center30)
 
-NOT을 구현하는데 성공했으면 AND는 매우 쉽다. NAND에 NOT을 하면 NAND이기 때문이다. 따라서 아래와 같이 NAND와 NOT을 결합하면 AND를 구현할 수 있다.
+NOT을 구현하는데 성공했으면 AND는 매우 쉽다. NAND에 NOT을 하면 AND이기 때문이다. 따라서 아래와 같이 NAND와 NOT을 결합하면 AND를 구현할 수 있다.
 
 ![](/images/trangister_and_basic_logic_gate/nand2and0.png#center30)
 
