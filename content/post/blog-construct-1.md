@@ -7,9 +7,10 @@ tags: ["blog", "hugo", "github.io", "github page", "static site", "static site g
 references: [
     "https://ryan-han.com/post/2018/etc/creating_static_blog/",
     "https://blog.lulab.net/install-hugo-and-configure-for-your-blog/",
-    "https://tadakichi.tistory.com/188"
+    "https://tadakichi.tistory.com/188",
+    "https://www.staticgen.com/",
+    "https://gohugo.io/documentation/"
 ]
-draft: true
 nextp: "블로그 구축기 2 - Theme Custormizing"
 prevp: ""
 ---
@@ -50,7 +51,7 @@ Dynamic site는 그때그때 동적으로 html을 생성해서 보여주는 사�
 
 ## Static site generator
 
-자 이제 static site로 블로그를 만들기로 다짐을 했다. 그런데 static site가 dynamic site보다는 만들기 쉽다곤 하지만 그래도 처음부터 만들기 시작하려 하면 막막하다. 나의 미적 감각으로 과연 블로그를 보기 좋게 꾸밀 수 있을지 걱정이 들기도 한다. 이러한 사람들을 위해 나온 것이 static site generator이다.
+자 이제 static site로 블로그를 만들기로 다짐을 했다. static site가 dynamic site보다는 만들기 쉽다곤 하지만 그래도 처음부터 만들기 시작하려 하면 막막하다. 나의 미적 감각으로 과연 블로그를 보기 좋게 꾸밀 수 있을지 걱정이 들기도 한다. 이러한 사람들을 위해 나온 것이 static site generator이다.
 
 Static site generator는 말 그대로 static site를 만들어주는 프로그램으로, 정해진 포멧대로만 파일을 만든 뒤 빌드를 하면 **알아서 html을 생성해준다.** 예를 들어 `\content\` 폴더 안에 마크다운 형식으로 글을 쓰면 그 글을 내용으로 하는 블로그 포스트도 생성되고, 글 목록을 보여주는 페이지에도 자동으로 이 글이 추가된 html이 생성돤다. dynamic site는 달리 보안 등의 문제를 고려할 필요도 없어서 이렇게 생성된 html을 그냥 서버에서 띄우기만 하면 된다. 서버에 띄우는 방법은 이 글에서 사용할 방법인 github page를 이용할 수도 있고, 간단한 개인 서버나 aws의 작은 서버를 활용해도 된다.
 
@@ -65,7 +66,7 @@ Static site generator의 또 다른 장점은 **다른 사람이 만들어둔 �
 Jekyll은 Ruby로 만들어진 static site generator로, 무려 github CEO가 만들었다. 그래서 그런진 모르겠지만 다른 static site generator는 내가 빌드를 한 다음 빌드해서 나온 결과를 올려야 하는 반면, jekyll은 프로젝트 폴더만 올려도 github에서 자동으로 빌드해서 페이지를 띄워준다. 이렇게 github에서 공식적으로 후원하는 만큼 가장 많은 사람들이 사용하고, 가장 많은 테마를 보유하고 있다. 또한 한글화된 문서도 가장 많이 가지고 있다. 그럼에도 불구하고 나는 왜 Hugo를 선택했을까?
 
  - **빠르다.** 반응속도가 다른 static site generator에 비해 굉장히 빠르다. 또한 jekyll은 github에서 자동으로 빌드를 해주는 대신 글이 많아질수록 빌드 속도가 굉장히 느려진다. 그러나 Hugo는 비록 별도의 빌드 과정이 있긴 하지만 빠르게 블로그를 배포할 수 있다.
- - **점점 성장하는 추세이다.** Github의 별 갯수는 개발자들 사이에서 인기의 지표중 하나라고 볼 수 있다. [staticgen](https://www.staticgen.com/)에서 jekyll과 hugo의 별 갯수를 보면, 2년전만 해도 hugo가 만개 근처, jekyll이 이만대 중후반으로 2~3배정도 차이가 났었는데 지금은 거의 대등한 수준까지 올라왔다. 게다가 아래의 초록색+로 된 증가 추세를 보면 확실히 hugo가 jekyll보다 점점 인기도가 올라감을 알 수 있다. 입시때도 점점 성적이 오르는 성장형 인재를 좋아했듯이, 이렇게 성장형 추세를 보이는 것은 그만큼 잠재력을 가지고 있는 대기만성형 인재라고 생각한다. 실제로 구글에 `hugo jekyll`두 단어를 동시에 검색하면 jekyll에서 hugo로 이전한다는 글이 많이 보인다. 사람들이 바꾸는 데에는 다 이유가 있는 것이다.
+ - **점점 성장하는 추세이다.** Github의 별 갯수는 개발자들 사이에서 인기의 지표중 하나라고 볼 수 있다. [staticgen](https://www.staticgen.com/)에서 jekyll과 hugo의 별 갯수를 보면, 2년전만 해도 hugo가 만개 근처, jekyll이 2만대 중후반으로 2~3배정도 차이가 났었는데 지금은 거의 대등한 수준까지 올라왔다. 게다가 아래의 초록색+로 된 증가 추세를 보면 확실히 hugo가 jekyll보다 점점 인기도가 올라감을 알 수 있다. 입시때도 점점 성적이 오르는 성장형 인재를 좋아했듯이, 이렇게 성장형 추세를 보이는 것은 그만큼 잠재력을 가지고 있는 대기만성형 인재라고 생각한다. 실제로 구글에 `hugo jekyll`두 단어를 동시에 검색하면 jekyll에서 hugo로 이전한다는 글이 많이 보인다. 사람들이 바꾸는 데에는 다 이유가 있는 것이다.
  - **Go라는 최신 언어로 쓰여있다.** 물론 최신 언어라고 무조건 좋은 것은 아니다. 그러나 일단 최신 언어라면 호환성같은 문제도 적을 것이고, 최신 트렌드 기술도 반영하기 쉬울 것이다.
  - **한글 문서가 적다.** 엥? 이건 단점이 아닌가? 라고 생각할 수도 있다. 물론 대부분의 사람들에게는 이 점이 단점으로 작용할 것이다. 그러나 나에게는 이 점이 장점으로 작용했다. 비록 시간과 비용을 절약하기 위해 static site generator를 사용하긴 하지만, 블로그를 만들면서 어느정도 공부는 해보고 싶었다. 그러한 면에서 외국문서와 Hugo 공식문서를 뒤지면서 삽질을 하다보면 배워가는게 어느정도는 있을 것이라는 생각을 했다. 또한 내가 삽질한 과정을 잘 정리해두면 나중에 내 글이 hugo를 사용하려는 사람들에게 도움을 줘서 더 많은 사람들이 hugo를 쓰게 되지 않을까 하는 생각도 해봤다.
  - **내 마음에 드는 테마가 존재한다.** 테마는 블로그에서 굉장히 중요한 요소 중 하나이다. 만약에 Hugo에 마음에 드는 테마가 하나도 없었다면 위와 같은 이유가 있었음에도 불구하고 다른 static site generator를 선택했을지도 모른다. 다행히 higo에도 마음에 드는 테마가 있었다.
@@ -143,7 +144,7 @@ theme = "hello-programmer"
 $ hugo new <파일 이름>
 ```
 
-을 치면 `\contents\<파일 이름>`이 생성된다. 예를 들어 `$ hugo new post/test.md`를 치면 `\contents\post\test.md`가 생긴다. 이제 이 파일을 열어서 마크다운 형식으로 글을 쓰면 빌드할 때 그 내용을 가지는 html이 자동으로 생성된다. 이 때 `\contents` 아래의 경로가 페이지의 경로가 된다. 예를 들어 `\contents\post\test.md`라는 문서를 만들었으면 이 글에 대한 주소는 `<baseURL>/post/test`이다. 파일을 열어보면 맨 위에 `---`로 감싸진 부분이 있는데, 이 부분을 front matter라고 하고 그 글에 대한 메타데이터를 나타낸다.
+을 치면 `\contents\<파일 이름>`이 생성된다. 예를 들어 `$ hugo new post/test.md`를 치면 `\contents\post\test.md`가 생긴다. 이제 이 파일을 열어서 마크다운 형식으로 글을 쓰면 빌드할 때 그 내용을 가지는 html이 자동으로 생성된다. 이 때 `\contents` 아래의 경로가 페이지의 경로가 된다. 예를 들어 `\contents\post\test.md`라는 문서를 만들었으면 이 글에 대한 주소는 `<baseURL>/post/test`이다. 파일을 열어보면 맨 위에 `---`로 감싸진 부분이 있는데, 이 부분을 [front matter](https://gohugo.io/content-management/front-matter/#readout)라고 하고 그 글에 대한 메타데이터를 나타낸다.
 
 ## 5. 미리보기
 
@@ -174,7 +175,7 @@ $ git remote add origin <첫번째 repository url>
 
 를 해주면 된다. 참고로 `repository url`는 github 페이지에서 오른쪽의 `Clone or download`라는 초록색 버튼을 눌렀을 때 나오는 주소이다.
 
-이제 빌드의 결과로 실제 github page로 띄워질 두번째 repository를 설정해보자. 빌드를 하면 그 결과가 `\public\`에 생기는데, 이 경로는 첫번째 repository 안에 포함되는 경로이다. 이를 따로 repository로 가지기 위해서는 첫번째 repository의 submodule로 지정해야 한다. 따라서 프로젝트 폴더에서
+이제 빌드의 결과로 실제 github page로 띄워질 두번째 repository를 설정해보자. 빌드를 하면 그 결과가 `\public\`에 생기는데, 이 경로는 첫번째 repository 안에 포함되는 경로이다. 이를 따로 repository로 가지기 위해서는 첫번째 repository의 [submodule](https://git-scm.com/book/ko/v1/Git-%EB%8F%84%EA%B5%AC-%EC%84%9C%EB%B8%8C%EB%AA%A8%EB%93%88)로 지정해야 한다. 따라서 프로젝트 폴더에서
 
 ```
 $ git submodule add -b master <두번째 repository url> public

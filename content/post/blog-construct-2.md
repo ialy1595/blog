@@ -8,9 +8,12 @@ references: [
   "https://github.com/lubang/hugo-hello-programmer-theme",
   "https://gohugo.io/documentation",
   "https://www.youtube.com/playlist?list=PLLAZ4kZ9dFpOnyRlyS-liKL5ReHDcj4G3",
-  "https://yihui.name/en/2018/07/latex-math-markdown/"
+  "https://medium.com/refactoring-ui/7-practical-tips-for-cheating-at-design-40c736799886",
+  "https://yihui.name/en/2018/07/latex-math-markdown/",
+  "https://github.com/blairvanderhoof/gist-embed",
+  "https://zzzzbov.com/blag/classy-images-in-markdown",
+  "https://m.blog.naver.com/PostView.nhn?blogId=eggtory&logNo=220744380205&proxyReferer=https%3A%2F%2Fwww.google.com%2F"
 ]
-draft: true
 nextp: ""
 prevp: "블로그 구축기 1 - Hugo + github.io"
 ---
@@ -326,7 +329,7 @@ content
  - **.Title** : 글의 제목
  - **.Permalink** : 해당 글의 주소
  - **.Summary** : 해당 글의 요약(앞부분 일부). Summary 길이는 `config.toml`에서 `summaryLength = 30`과 같이 조절할 수 있다.
- - **.Data.Format** : 글을 작성한 날짜를 지정한 포멧으로 보여준다. 포멧 종류는 [여기](https://gohugo.io/functions/format/#hugo-date-and-time-templating-reference)에 나와있다.
+ - **.Data.Format** : 글을 작성한 날짜를 지정한 형식으로 보여준다. 형식 종류는 [여기](https://gohugo.io/functions/format/#hugo-date-and-time-templating-reference)에서 볼 수 있다.
 
  예를 들어 글의 제목과 작성한 날과 간단 요약을 보여주고, 클릭하면 해당 글로 넘어가는 목록을 만들고 싶다면 다음과 같이 하면 된다.
 
@@ -358,15 +361,15 @@ content
   │  └ post3.md
 ```
 
-처럼 생겼다고 해보자. 이 때 `<baseURL>/post/foo`에 접속하면 `foo1`, `foo2`의 리스트가 안보이고 404 페이지가 뜰 것이다. 만약에 최상위 폴더가 아닌 폴더에도 리스트를 만들고 싶다면 해당 폴더에 `_index.md`를 만들면 된다. 예를 들어 `foo`의 리스트를 만들고 싶다면 `\content\post\foo\_index.md`를 만들면 된다.
+처럼 생겼다고 해보자. 이 때 `<baseURL>/post/foo`에 접속하면 `foo1`, `foo2`의 리스트가 보이는 것이 아니라 404 페이지가 뜰 것이다. 만약에 최상위 폴더가 아닌 폴더에도 리스트를 만들고 싶다면 해당 폴더에 `_index.md`를 만들면 된다. 예를 들어 `foo`의 리스트를 만들고 싶다면 `\content\post\foo\_index.md`를 만들면 된다.
 
-이렇게 만든 `_index.html`도 md이기 때문에 frontmatter와 내용을 가진다. `\layouts\_default\list.html`에서 `.Title`을 쓰면 `_index.html`의 제목이 나오고, `.Content`를 쓰면 `_index.html`의 내용이 나온다. 따라서 `_index.html`을 이용해서 리스트 페이지를 상황에 맞게 꾸밀 수 있다. 이는 물론 최상위 폴더에도 `_index.html`을 만들어서 적용할 수 있다.
+이렇게 만든 `_index.html`도 md이기 때문에 front matter와 내용을 가진다. `\layouts\_default\list.html`에서 `.Title`을 쓰면 `_index.html`의 제목이 나오고, `.Content`를 쓰면 `_index.html`의 내용이 나온다. 따라서 `_index.html`을 이용해서 리스트 페이지를 상황에 맞게 꾸밀 수 있다. 이는 물론 최상위 폴더에도 `_index.html`을 만들어서 적용할 수 있다.
 
 ## Taxonomies
 
-Go templates에서는 기본적으로 category와 tag라는 두개의 taxonomy, 즉 분류를 제공한다. `<baseURL>/categories`에 들어가면 내가 가지고 있는 카테고리들의 목록이 나온다. 마찬가지로 `<baseURL>/tags`에 들어가면 태그들의 목록이 나온다. 이 목록들은 내가 따로 알려주지 않아도 글을 만들 때 frontmatter에 적어둔 카테고리와 태그들로 자동으로 생성된다.
+Go templates에서는 기본적으로 category와 tag라는 두개의 taxonomy를 제공한다. `<baseURL>/categories`에 들어가면 내가 가지고 있는 카테고리들의 목록이 나온다. 마찬가지로 `<baseURL>/tags`에 들어가면 태그들의 목록이 나온다. 이 목록들은 따로 지정하지 않아도 글을 만들 때 frontmatter에 적어둔 카테고리와 태그들로 자동으로 생성된다.
 
-카테고리 목록의 화면은 `\layouts\categories\terms.html`에 의해 생성된다. 물론 태그 목록들은 `\layouts\tags\terms.html`에서 생성된다. 위의 `list.html`에서는 페이지들의 리스트가 `.Pages`에 담겨있었지만 `terms.html`에서는 `.Data.Pages`에 담겨있다. 따라서 해당 목록들은 다음과 같이 구현할 수 있다.
+카테고리 목록은 `\layouts\categories\terms.html`에 의해 생성된다. 태그의 경우 `\layouts\tags\terms.html`에서 생성된다. 위의 `list.html`에서는 페이지들의 리스트가 `.Pages`에 담겨있었지만 `terms.html`에서는 `.Data.Pages`에 담겨있다. 따라서 해당 목록들은 다음과 같이 구현할 수 있다.
 
 ```
 <ul>
@@ -421,7 +424,7 @@ favicon이란 탭부분에서 왼쪽에 표시된 작은 아이콘을 뜻한다.
 
 ## Hover line effect
 
-나만의 시그니쳐한 블로그를 만드는 것이 목적이기 때문에 위에서처럼 로고나 color palette는 직접 만들었지만, 내가 디자인을 좋아하기는 해도 전문 디자이너는 아니기 때문에 다른 사람들의 의견이나 조언을 듣는 것은 매우 중요하다. 이런 조언을 얻기 좋은 사이트를 하나 추천하자면 [Medim](https://medium.com/)이다. Medium은 블로그 서비스중 하나인데, 디자인이 가독성이 좋고 글의 퀄리티가 전제척으로 좋은 편이라 이런저런 조언을 얻기 좋다.
+나만의 블로그를 만드는 것이 목적이기 때문에 로고나 color palette는 직접 만들었지만, 내가 디자인을 좋아하기는 해도 전문 디자이너는 아니기 때문에 다른 사람들의 의견이나 조언을 듣는 것은 매우 중요하다. 이런 조언을 얻기 좋은 사이트를 하나 추천하자면 [Medim](https://medium.com/)이다. Medium은 블로그 서비스중 하나인데, 가독성이 좋은 디자인에 글의 퀄리티가 전제척으로 좋은 편이라 이런저런 조언을 얻기 좋다.
 
 그 중 [7 Practical Tips for Cheating at Design](https://medium.com/refactoring-ui/7-practical-tips-for-cheating-at-design-40c736799886)라는 글이 있었는데 여기서 <6. Use accent borders to add color to a bland design>에서 hover line effect에 대한 영감을 얻어서 위에 navigator나 카테고리에서 해당 항목에 hover effect로 아래나 왼쪽에 선이 생기도록 했다. 이는 css에서 다음과 같이 구현할 수 있다.
 
@@ -436,13 +439,13 @@ favicon이란 탭부분에서 왼쪽에 표시된 작은 아이콘을 뜻한다.
 }
 ```
 
-만약 단순히 `border-bottom: 4px solid #6666FF;`만 추가하면 아래에 선이 추가로 생기면서 공간도 추가로 할당되는 효과가 되어 부자연스럽다. 따라서 4px의 `border-bottom`을 추가하면서 동시에 12px였던 `padding-bottom`을 4px 줄인 8px로 바꿔주면 좀 더 자연스러운 효과를 낼 수 있다.
+만약 단순히 `border-bottom: 4px solid #6666FF;`만 추가하면 아래에 선이 추가로 생기면서 공간도 추가로 할당되어버린다. 따라서 배경부분의 면적이 늘어나거나 글자가 밀리면서 부자연스럽게 된다. 따라서 4px의 `border-bottom`을 추가하면서 동시에 12px였던 `padding-bottom`을 4px 줄인 8px로 바꿔주면 좀 더 자연스러운 효과를 낼 수 있다.
 
 ## Subcategory hierarchy
 
 Hugo에서는 기본적으로 category라는 taxonomy를 제공한다. 나는 여기서 더 나아가서 subcategory를 통해 계층적인 분류를 하고싶었다.
 
-우선 카테고리를 추가하는 것은 어렵지 않다. 우선 `\config.toml`에 
+새로운 taxonomy를 추가하는 것은 어렵지 않다. 우선 `\config.toml`에 
 
 ```
 [taxonomies]
@@ -451,21 +454,21 @@ Hugo에서는 기본적으로 category라는 taxonomy를 제공한다. 나는 �
   subcategory = "subcategories"
 ```
 
-를 추가한다. 여기서 주의할 점은 `category`와 `tag`는 기본적으로 제공되는 항목이고 `subcategory`만 추가할 뿐이지만 세개 모두 서줘야 한다는 것이다. 만약에 `category`나 `tag`를 써주지 않으면 taxonomy에서 제거된다. 이렇게 하면 `subcategory`라는 새로운 taxonomy가 생긴다. 이제 글을 쓸 때 front matter에서
+를 추가한다. 여기서 주의할 점은 `category`와 `tag`는 기본적으로 제공되는 항목이고 `subcategory`만 추가할 뿐이지만 세개 모두 써줘야 한다는 것이다. 만약에 `category`나 `tag`를 써주지 않으면 taxonomy에서 제거된다. 이제 `subcategory`라는 새로운 taxonomy가 생겼다. 글을 쓸 때 front matter에서
 
 ```
 subcategories = ["web"]
 ```
 
-처럼 써주면 된다. 이를 쉽게 하려면 `\archetypes\default.md`의 front matter에 `subcategories = []`를 추가하면 앞으로 글을 생성할 때 자동으로 `subcategories` 항목이 생긴다.
+처럼 써주면 subcategory를 지정할 수 있다. 이를 쉽게 하려면 `\archetypes\default.md`의 front matter에 `subcategories = []`를 추가하면 앞으로 글을 생성할 때 자동으로 `subcategories` 항목이 생긴다.
 
-이렇게 `subcategory`를 만들기는 했지만 아직 `category`와의 연관성이 없다. 즉, 다음 문제를 해결해야 했다.
+이렇게 `subcategory`를 만들기는 했지만 아직 `category`와 아무런 연관성이 없다. 즉, 다음 문제를 해결해야 했다.
 
  - 각 `category`에 어떤 `subcategory`가 속하는지 코드상으로 어떻게 구현할 것인가
 
  이 문제를 해결하기 위해 [Data template](https://gohugo.io/templates/data-templates/#readout)를 사용했다.
 
- 우선 subcategory 정보를 `data\subclist.toml`에 저장하기로 했다. 예를 들어 이 문서에
+ 우선 subcategory 정보를 `\data\subclist.toml`에 저장하기로 했다. 예를 들어 이 문서에
 
  ```
  code = ["system-architecture", "web"]
@@ -561,7 +564,7 @@ code.has-jax {
 `$ x = {-b \pm \sqrt{b^2-4ac} \over 2a} $`
 ```
 
-처럼 코드 안에 `` `\$ \$` ``로 감싸서 쓰면
+처럼 `` `\$ \$` ``로 감싸서 쓰면
 
 `$
 x = {-b \pm \sqrt{b^2-4ac} \over 2a}
@@ -569,11 +572,223 @@ $`
 
 처럼 수식이 랜더링된다.
 
-사실 이 방법은 검색하면 널리고 널릴 정도로 많은 글에서 소개한다. 그럼에도 불구하고 내가 또 이 글에 쓰는 이유는 이것이 작동하는 원리에 대해 쓴 글이 거의 없었기 때문이다. 물론 작동만 하면 되는 사람도 있겠지만 나는 작동하는 원리를 아는 것도 중요하게 생각하기 때문에 열심히 찾아봤고, 이를 공유하려 한다.
+사실 이 방법은 검색하면 널리고 널릴 정도로 많은 글에서 소개한다. 그럼에도 불구하고 내가 이 글에 또 쓰는 이유는 이것이 작동하는 원리에 대해 쓴 글이 거의 없었기 때문이다. 물론 작동만 하면 되는 사람도 있겠지만 나는 작동하는 원리를 아는 것도 중요하게 생각하기 때문에 찾아봤고, 이를 공유하려 한다.
 
-md로 작성한 코드를 실제 그러럼 보이기 위해서는 기본적으로 랜더링 과정이 필요하다. 여기서 문제는 우리가 쓴 수식이 이 마크다운의 랜더링에 들어가버리면 더이상 손을 쓸 방법이 없어진다. 여기서 해답은 `` ` ``로 감싸서 표현하는 코드부분이다. 이 부분은 랜더링 되기 전에 `<code>` 태그로 감싸져서 먼저 처리되기 때문에 이를 이용하면 mathjax를 따로 처리할 수 있다.
+md로 작성한 코드를 실제 글처럼 보이기 위해서는 (ex. `**`으로 감싼 글씨를 굵게 해주는) 랜더링 과정이 필요하다. 여기서 문제는 우리가 쓴 수식이 이 마크다운의 랜더링에 들어가버리면 더이상 손을 쓸 방법이 없어진다. 여기서 해답은 `` ` ` ``로 감싸서 표현하는 코드부분이다. 이 부분은 랜더링 되기 전에 `<code>` 태그로 감싸져서 먼저 처리되기 때문에 이를 이용하면 mathjax를 따로 처리할 수 있다.
 
-먼저 위의 코드에서 `tex2jax` 부분이 `<code>`로 감싸진 부분에서 `$` 등으로 감싸진 부분이 있으면 수식으로 랜더링을 하라는 부분이다. 이를 통해 수식을 랜더링할 순 있지만 아직 한가지 문제가 남아있다. 우리가 마크다운 랜더링에서 빠져나오기 위해 `<code>` 태그를 사용했기 때문에 배경이 회색이 되는 등 자연스럽게 스타일도 `<code>`부분을 따라가게 된다. 따라서 자연스럽게 글을 쓰기 위해 이 부분을 처리해줘야 한다.
+먼저 위의 코드에서 `tex2jax` 부분이 `<code>`로 감싸진 부분에서 `$` 등으로 감싸진 부분이 있으면 수식으로 랜더링을 하라는 부분이다. 이를 통해 수식을 랜더링할 순 있지만 아직 한가지 문제가 남아있다. 우리가 마크다운 랜더링에서 빠져나오기 위해 `<code>` 태그를 사용했기 때문에 배경이 회색이 되는 등 스타일도 `<code>`부분을 따라가게 된다. 따라서 수식이 자연스럽게 본문에 속하기 위해서는 이 부분을 처리해줘야 한다.
 
-이를 위해 `has-jax`라는 태그를 사용한다. 스크립트의 아래 부분이 이러한 수식 부분에 `has-jax`를 붙이는 역할을 한다. 그러면 이제 태그가 `<code>`가 아니라 `<code.has-jax>`가 된다. 이제 css에서 `<code.has-jax>` 일 경우의 스타일을 원래 본문의 경우와 동일하게 설정해주면 자연스럽게 본문에 수식이 들어가는 효과를낼 수 있다.
+이를 위해 `has-jax`라는 태그를 사용한다. 스크립트의 아래 부분이 이러한 수식 부분에 `has-jax`를 붙이는 역할을 한다. 그러면 이제 태그가 `<code>`가 아니라 `<code.has-jax>`가 된다. 이제 css에서 `<code.has-jax>` 일 경우의 스타일을 원래 본문의 경우와 동일하게 설정해주면 본문에 자연스럽게 수식이 들어가는 효과를낼 수 있다.
 
+## Gist-embed
+
+[Gist](https://gist.github.com/)란 흔히 표현하기로는 코드 쪼가리로, 내가 작성한 코드 조각을 블로그 등의 웹에 붙여넣기 위한 서비스이다. 기본적인 gist 사용법은 다음과 같다.
+
+ 1. 새 gist를 만든다.
+ 1. 코드 위쪽에 embed 옆의 링크를 복사한다.
+ 1. 복사한 값을 html에 붙여넣으면 코드가 나타난다.
+
+gist를 이용하면 크게 두가지 장점이 있다.
+
+ - **유지보수에 좋다.** 만약에 내가 작성했던 코드를 여러 곳에서, 혹은 한 문서 내에서도 여러 부분에서 사용했다고 하자. 만약에 나중에 코드의 문제점을 발견하거나 refactoring을 통해 코드가 바뀌게 되면 사용했던 모든 곳을 찾아가서 바꿔야 한다. 그러나 gist를 이용하면 gist사이트에서 코드를 수정하면 자동으로 모든 부분의 코드가 수정된다.
+ - **코드 디자인에 신경을 많이 쓰지 않아도 된다.** gist에서 기본적으로 제공되는 디자인이 꽤나 준수하고, 원한다면 이를 커스텀할수도 있기 때문에 글에 코드를 삽입할 때 줄 수나 하이라이팅 등의 코드 디자인을 처음부터 구축할 필요가 없다.
+
+이렇게 좋은 서비스이기 때문에 hugo에서도 [내장 shortcode로 gist를 제공한다.](https://gohugo.io/content-management/shortcodes/#gist) 그러나 나는 좀 다른 gist를 써보려 한다. 내가 생각하는 gist의 단점은 모든 코드를 한꺼번에 보여준다는 것이다. 따라서 만약에 코드가 길다면 엄청난 면적을 차지할 수 밖에 없어진다. 나는 다음과 같은 옵션으로 코드를 보여주고 싶었다.
+
+ - 전체 코드는 한 gist 안에 저장된다.
+ - 그 코드의 일부분만 떼어서 보여준다. 어느 위치인지 알기 쉽도록 줄 수는 원래 코드에서의 줄 수를 나타낸다.
+ - 사용자가 원한다면 전체 코드도 볼 수 있어야한다.
+
+이를 위해 [Blair Vanderhoof의 gist-embed](https://github.com/blairvanderhoof/gist-embed)를 사용하기로 했다. 우선 헤더에 다음을 추가한다.
+ 
+```
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gist-embed/2.7.1/gist-embed.min.js"></script>
+```
+
+이제 html에서
+
+```
+<code data-gist-id="<gist-id>"></code>
+```
+
+를 하면 기본적인 gist를 넣을 수 있다. 여기서 `gist-id`란 gist 주소에서 `https://gist.github.com/<user-id>/` 뒤에 오는 해시값이다. 이제 특정 라인만 보여주려면
+
+```
+<code data-gist-id="<gist-id>" data-gist-line="2-4"></code>
+```
+
+처럼 하면 된다. 하지만 이는 html에서 사용하는 방법이고, md에서 효율적으로 쓰기 위해 shortcode로 관리했다. `\layouts\shortcodes\gist.html`에
+
+```
+<code class="gist" data-gist-id="{{ .Get 0 }}" data-gist-line="{{ .Get 1 }}"></code>
+```
+
+라고 작성한다. 이제 md에서
+
+```
+{{</* gist af2117f9b3338bb46b49c9e4df093bc0 2-4 */>}}
+```
+
+라고 쓰면 하면
+
+{{< gist test 2-4 >}}
+
+처럼 내가 원하는 부분만 보여줄 수 있다. 또한 아래의 왼쪽 아래의 글 제목(`test`)나 오른쪽 아래의 `view raw`를 누르면 전체 코드가 보여진다.
+
+여기까지만 해도 충분히 쓸만하다. 하지만 글에 `af2117f9b3338bb46b49c9e4df093bc0`와 같은 해시값을 넣어야 한다는 점이 거슬렸다. 따라서 이를 Data template을 이용해서 `\data\gistlist.toml`에 관리하기로 했다.
+
+먼저 `\data\gistlist.toml`에 `gist-id`와 이를 지칭할 이름을 저장한다. 예를 들어 위의 `test`의 경우
+
+```
+test = "af2117f9b3338bb46b49c9e4df093bc0"
+```
+
+라고 저장해둔다. 이제 `\layouts\shortcodes\gist.html`에 이를 불러다 사용하는 코드로 수정한다.
+
+```
+{{ $gistid := (index $.Site.Data.gistlist (.Get 0 )) }}
+<code class="gist" data-gist-id="{{ $gistid }}" data-gist-line="{{.Get 1 }}"></code>
+```
+
+그러면 이제 
+
+```
+{{</* gist test 2-4 */>}}
+```
+
+라고 써도 같은 결과가 나온다.
+
+## Image align, resize
+
+글을 쓰다보면 이미지를 넣어야 하는 경우가 많이 생긴다. 하지만 이미지를 그냥 넣으면 크기도, 위치도 제각각이다. 따라서 블로그에 이미지를 넣을 때 다음과 같이 처리를 할 필요가 있었다.
+
+ * **가운데 정렬.** 기본적으로 가운데에 있는 것이 제일 보기 좋다.
+ * **크기 조정.** 이 때 크기는 절대크기가 아니라 블로그 너비에 맞는 상대크기로 조절하고 싶었다.
+
+이는 [Substring matching attribute selectors](https://www.w3.org/TR/selectors/#attribute-substrings)를 이용해서 구현할 수 있었다. 간단히 설명하자면 css에서
+
+```
+img[src$='#center'] {
+  ...
+}
+```
+
+라고 하면 이미지의 src가 `#center`로 끝나는 경우 위의 스타일을 따른다는 것이다. 따라서
+
+```
+<img src="foo.png#center">
+```
+
+처럼 하면 `foo.png`가 위의 스타일로 편집되어 나간다.
+
+이미지를 가운데 정렬하는 방법은 다음과 같이 보여주는 방식을 `block`으로 바꾼 다음 좌우 공백을 `auto`로 설정해주면 알아서 중앙으로 정렬해준다.
+
+```
+img[src$='#center'] {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+```
+
+이제 크기 조정을 해보자. 크기 조정은 `width` 값을 설정하면 된다. 예를 들어
+
+```
+img[src$='#center'] {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+```
+
+처럼 하면 블로그 너비의 50%로 가운데 정렬된 이미지를 볼 수 있다. 이미지 크기의 경우 상황에 따라 작게 보여줘야 할 때도 있고 크게 보여줘야 할 때도 있다. 따라서 나는 다음과 같이 관리하기로 했다. 
+
+```
+img[src$='#center30'] {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 30%;
+}
+
+img[src$='#center50'] {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+img[src$='#center75'] {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 75%;
+}
+
+img[src$='#center100'] {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+```
+
+만약 너비의 50%가 되도록 이미지를 보여주고 싶다면 `src` 뒤에 `#center50`을 붙이면 된다. 가능한 너비는 위에서 쓴 30%, 50%, 75%, 100%이다. `#center` 뒤의 숫자 부분을 변수로 받아서 처리할 수 있으면 더 좋겠지만 아직 그 방법을 찾아내지 못했다.
+
+## Footer 하단에 고정하기
+
+블로그의 맨 바닥에 붙어서 항상 보여지는 것을 footer라고 한다. 따라서 이 footer는 항상 블로그의 하단에 고정해야한다. 그냥 뒤에 붙여도 대부분의 경우에는 큰 문제가 없다. 하지만 만약에 블로그의 content가 전체 높이보다 작을 경우에는 content-footer-공백 이 되기 때문에 굉장히 이상하게 보인다. 따라서 이 경우에 content-공백-footer이 되도록 하는 처리를 해줘야 한다. 아래에서 소개할 방법은 footer의 길이가 고정되어있을 경우에만 사용할 수 있다.
+
+우선 블로그의 전체 컨텐츠를 묶는 `<div class="wrap">`을 하나 만든다. 그 다음 아래와 같이 이 `wrap`의 최소 높이를 100%로 설정해준다.
+
+```
+.wrap {
+  min-height: 100%;
+}
+```
+
+이제 이 `wrap` 뒤에 footer를 붙여보자. 그러면 바로 바닥 뒤에 나올 것이다. 따라서 이 footer를 위로 올려야 한다. 이는 margin에 음수값을 넣어서 footer의 높이만큼 올리면 된다. 예를 들어 footer의 높이가 110px일 경우 다음과 같이 하면 된다.
+
+```
+.footer {
+  height: 110px;
+  margin-top: -110px;
+}
+```
+
+이제 마지막으로 하나만 해결하면 된다. 위와 같이 구현할 경우 만약 content가 전체 높이보다는 작지만 그 차이가 footer보다 적은 경우 content와 footer가 겹치게 된다. 따라서 이 footer가 들어갈 공간을 확보해주는 `<div class="blank">`가 필요하다. 이 `blank`를 `wrap`의 마지막에 두면 footer는 항상 이 `blank`에 위치하게 되므로 content와 겹칠 위험이 없다. 따라서 이를 해결한 html 구조와 css는 다음과 같다.
+
+```
+<html>
+  <head>
+    ...
+  </head>
+
+  <body>
+    <div class="wrap">
+      ...
+      <div class="blank"></div>
+    </div>
+    <div class="footer">
+      ...
+    </div>
+  </body>
+</html>
+```
+
+```
+.wrap {
+  min-height: 100%;
+}
+
+.blank {
+  height: 110px;
+}
+
+.footer {
+  height: 110px;
+  margin-top: -110px;
+}
+```
