@@ -4,6 +4,7 @@ date: {{ .Date }}
 categories: []
 subcategories: []
 tags: []
+references: []
 draft: true
 nextp: ""
 prevp: ""

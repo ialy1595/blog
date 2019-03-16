@@ -56,4 +56,19 @@
       </div>
     }
   </div>
+  {{ if isset .Params "references" }}
+  <div class="desc">
+    public string references() {
+      <div class="desc">
+        val references = [<br>
+        {{ with .Params.references }}
+          {{ range . }}
+          <a href="{{ . }}">&nbsp;&nbsp;"{{ . }}"</a><br>
+          {{ end }}
+        {{ end }}
+        ];
+      </div>
+    }
+  </div>
+  {{ end }}
 </div>
