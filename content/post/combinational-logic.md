@@ -10,7 +10,7 @@ prevp: "Trangister and Basic Logic Gate"
 
 Combinational Logic에서는 이전에 basic logic gate를 다루면서 만들었던 재료인 NOT, AND, OR, NAND, NOR을 가지고 요리를 해볼 것이다. 하지만 그 전에 Combinational Logic과 Sequential Logic의 차이 대해 먼저 알아보자.
 
-combinational logic이란 언제나 어디서나 눈이 오던 바람이 불던 남녀노소 같은 input을 넣으면 같은 output이 나오는 것을 뜻한다. 예를 들면 ADDER를 생각해보자. 내가 ADDER에 `2`와 `3`을 집어넣으면 오늘 넣든 내일 넣든 항상 `5`를 반환할 것이다.
+Combinational logic이란 언제나 어디서나 눈이 오던 바람이 불던 남녀노소 같은 input을 넣으면 같은 output이 나오는 것을 뜻한다. 예를 들면 ADDER를 생각해보자. 내가 ADDER에 `2`와 `3`을 집어넣으면 오늘 넣든 내일 넣든 항상 `5`를 반환할 것이다.
 
 이와 대비되는 sequential logic은 내가 같은 input을 넣어도 상황에 따라 output이 바뀔 수 있는 것을 뜻한다. 예를 들어 내가
 

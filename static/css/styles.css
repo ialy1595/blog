@@ -26,7 +26,7 @@ h1 {
 }
 
 h2 {
-  font-size: 27px;
+  font-size: 26px;
   font-weight: 600;
   margin-top: 50px;
   margin-bottom: 10px;
@@ -146,6 +146,22 @@ th {
   background-color: #EEEEEE
 }
 
+sm {
+  font: inherit;
+  font-size: 95%;
+  background: inherit;
+  border: inherit;
+  color: #000000;
+}
+
+rr {
+  color: #ff3333
+}
+
+bb {
+  color: #3333ff
+}
+
 .seperator {
   clear: left;
   color: #717171;
@@ -166,7 +182,7 @@ th {
 
 .navbar ul {
   list-style-type: none;
-  padding: 0px 12px; 0px; 12px;
+  padding: 0px 12px;
   margin: 0;
 }
 
@@ -198,7 +214,7 @@ th {
 
 .container {
   margin: auto;
-  max-width: 800px;
+  max-width: 890px;
   padding: 40px 30px 15px 30px;
   font-size: 18px;
   font-weight: 400;

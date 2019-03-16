@@ -4,7 +4,7 @@ date: 2019-02-03T19:53:09+09:00
 categories: ["code"]
 subcategories: ["system architecture"]
 tags: ["Sequential Logic", "Register", "Latch", "memory", "clock", "Flip-flop", "RAM"]
-nextp: ""
+nextp: "Datapath"
 prevp: "Combinational Logic"
 ---
 
