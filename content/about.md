@@ -48,7 +48,8 @@ Weather notification application which can run on background and automatically n
 
  - **C**
     - Linux kernel modification
-    - CMU Labs (Bomb, Shell, Memory, Disk, malloc)
+    - [CMU Labs](http://csapp.cs.cmu.edu/3e/labs.html)
+      - Bomb, Attack, Architecture, Cache, Shell, Malloc, Proxy
  - **C++**
    - Algorithm contest
  - **C#** with Unity
@@ -67,12 +68,12 @@ Weather notification application which can run on background and automatically n
  - **Creative Problem Solving Festival, Gold Prize** <sm>(Nov 2013)</sm>
  - **Nexon Dream Members Workshop, 2nd** <sm>(Feb 2016)</sm>
  - **Coder’s High, 13th** <sm>(Jul 2016)</sm>
- - **ACM International Collegiate Programming Contest (ICPC) Daejeon regional, 10th place** <sm>(Nov 2016)</sm>
+ - **ACM International Collegiate Programming Contest (ICPC) Korea regional, 10th place** <sm>(Nov 2016)</sm>
 
 ## Certificates
 
- - **Craftsman Bartender** (Dec 2015)
- - **Industrial Engineer Information Processing** (May 2017)
+ - **Craftsman Bartender** <sm>(Dec 2015)</sm>
+ - **Industrial Engineer Information Processing** <sm>(May 2017)</sm>
  
 
 # Related Course Took

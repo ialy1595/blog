@@ -1,5 +1,5 @@
 ---
-title: "한글에서의 incremental search UX - 한글은 어떻게 인코딩 되는가"
+title: "한글의 incremental search UX 와 인코딩"
 date: 2019-02-27T21:59:53+09:00
 categories: ["code"]
 subcategories: ["etc"]
