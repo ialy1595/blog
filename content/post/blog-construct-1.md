@@ -1,5 +1,5 @@
 ---
-title: "블로그 구축기 1 - Hugo + github.io"
+title: "블로그 구축기 1 (Hugo + github.io)"
 date: 2019-02-22T20:07:41+09:00
 categories: ["code"]
 subcategories: ["web"]
@@ -11,7 +11,7 @@ references: [
     "https://www.staticgen.com/",
     "https://gohugo.io/documentation/"
 ]
-nextp: "블로그 구축기 2 - Theme Custormizing"
+nextp: "블로그 구축기 2 (Hugo Theme Custormizing)"
 prevp: ""
 ---
 
