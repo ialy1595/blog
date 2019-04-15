@@ -133,14 +133,16 @@ img[src$='#center100'] {
 }
 
 table {
+  margin-right: auto;
+  margin-left: auto;
   border: 1px solid #C7C7C7;
   border-collapse: collapse;
 }
 
 th, td {
   border: 1px solid #C7C7C7;
-  padding-right: 5px;
-  padding-left: 5px;
+  padding-right: 12px;
+  padding-left: 12px;
 }
 
 th {
@@ -457,7 +459,7 @@ bb {
 */
 .categories {
   padding: 0px 10px 0px 10px;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
 }
 
 .categories ul {
@@ -466,13 +468,13 @@ bb {
 }
 
 .categories li {
-  padding: 14px;
+  padding: 8px;
 }
 
 .categories li:hover {
   background-color: #e3e3e3;
   border-left: 4px solid #6666FF;
-  padding-left: 10px;
+  padding-left: 4px;
 }
 
 .categories .icon {
@@ -489,7 +491,7 @@ bb {
 .subcategories {
   padding: 0px 10px 0px 10px;
   margin-bottom: 15px;
-  font-size: 1.0rem;
+  font-size: 1.2rem;
 }
 
 .subcategories ul {
@@ -498,13 +500,13 @@ bb {
 }
 
 .subcategories li {
-  padding: 14px;
+  padding: 8px;
 }
 
 .subcategories li:hover {
   background-color: #e3e3e3;
   border-left: 4px solid #6666FF;
-  padding-left: 10px;
+  padding-left: 4px;
 }
 
 .subcategories .icon {
