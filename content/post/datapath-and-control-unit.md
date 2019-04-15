@@ -11,7 +11,7 @@ prevp: "Sequential Logic"
 
 # Datapath
 
-Datapath는 CPU에서 직접적으로 연산이 이루어지는 부분이다. 따라서 연산을 하거나 연산된 결과를 저장할 register file와 연산이 실행되는 ALU로 이루어져 있다. 그리고 memory와도 데이터를 주고받아야 하기 때문에 memory와도 연결되었다. 그리고 이 데이터들은 버스에 담겨서 각각 부분으로 들어간다.
+Datapath는 CPU에서 직접적으로 연산이 이루어지는 부분이다. 따라서 연산을 하거나 연산된 결과를 저장할 register file과 연산이 실행되는 ALU로 이루어져 있다. 그리고 memory와 데이터를 주고받아야 하기 때문에 memory와도 연결되었다. 그리고 이 데이터들은 버스에 담겨서 각각 부분으로 들어간다.
 
 ![](/images/datapath_control_unit/cpu0.png#center75)
 
@@ -56,12 +56,12 @@ FS<sub>4</sub> | FS<sub>3</sub> | FS<sub>2</sub> | FS<sub>1</sub> | FS<sub>0</su
 
 ## Register Operation
 
-레지스터에 할 수 있는 연산은 아래 두 종류가 있다.
+Register에 할 수 있는 연산은 아래 두 종류가 있다.
 
- - A 레지스터의 값을 B 레지스터에 대입
- - 레지스터에 상수값을 대입
+ - A register의 값을 B register에 대입
+ - register에 상수값을 대입
 
- 먼저 A 레지스터의 값을 B 레지스터에 대입하는 과정을 보자. 예를 들어 `R2 <- R5`인 연산을 보자. 이는 다음과 같은 과정으로 이루어진다.
+ 먼저 A register의 값을 B register에 대입하는 과정을 보자. 예를 들어 `R2 <- R5`인 연산을 보자. 이는 다음과 같은 과정으로 이루어진다.
 
   1. Register file에서 R5를 A<sub>data</sub>로 출력한다.
   2. ALU에서 F = A 연산으로 R2값을 그대로 뽑아낸다.
@@ -87,7 +87,7 @@ FS<sub>4</sub> | FS<sub>3</sub> | FS<sub>2</sub> | FS<sub>1</sub> | FS<sub>0</su
 
 ![](/images/datapath_control_unit/dpregister0.png#center75)
 
-Control word가 어떻게 될지는 나와있는 정답을 보는 것 보다 자신이 직접 각 상황에서 주소나 select를 어떻게 해야할지 생각해 보는 것이 도움이 많이 된다. 이번에는 레지스터에 상수값을 대입하는 과정을 살펴보자. 레지스터에 대입할 상수값은 Constant<sub>in</sub>에 들어있다. 예를 들어 `R3 <- 7`을 한다고 하자. 위에서처럼 각 control bit마다 어떻게 생각해보고, 이렇게 만든 control word가 아래와 같은지 확인해보자.
+Control word가 어떻게 될지는 나와있는 결과를 보는 것 보다 자신이 직접 각 상황에서 주소나 select를 어떻게 해야할지 생각해 보는 것이 도움이 많이 된다. 이번에는 register에 상수값을 대입하는 과정을 살펴보자. register에 대입할 상수값은 Constant<sub>in</sub>에 들어있다. 예를 들어 `R3 <- 7`을 한다고 하자. 위에서처럼 각 control bit가 어떻게 되야할지 생각해보고, 이렇게 만든 control word가 아래와 같은지 확인해보자.
 
 ![](/images/datapath_control_unit/cwregister1.png#center100)
 
@@ -109,7 +109,7 @@ Control word가 어떻게 될지는 나와있는 정답을 보는 것 보다 자
 
 ![](/images/datapath_control_unit/cwalu2.png#center100)
 
-xor 연산은 같은 수에 대해서 항상 0이다. 따라서 자기 자신을 xor하면 항상 0이 나온다. 이를 이용하면 어떤 레지스터 값을 0으로 초기화 하는 작업을 0이라는 상수값을 사용하지 않아도 수행할 수 있다. 예를 들어 아래 control word는 `R1 <- 0 = R0 ^ R0`를 수행한다.
+xor 연산은 같은 수에 대해서 항상 0이다. 따라서 자기 자신을 xor하면 항상 0이 나온다. 이를 이용하면 어떤 register 값을 0으로 초기화 하는 작업을 0이라는 상수값을 사용하지 않아도 수행할 수 있다. 예를 들어 아래 control word는 `R1 <- 0 = R0 ^ R0`를 수행한다.
 
 ![](/images/datapath_control_unit/cwalu3.png#center100)
 
@@ -165,9 +165,9 @@ CPU가 instruction을 수행하는 과정을 살펴보자.
 
 우선 control unit까지 적용한 CPU의 회로도에서 instruction이 fetch되는 과정을 보면 다음과 같다.
 
-![]()
+![](/images/datapath_control_unit/fetch0.png#center50)
 
-PC가 datapath의 Address<sub>in</sub>을 타고 memory로 들어가서 instruction을 빼온다. 이 instruction은 Bus D에 담겨서 control unit로 들어간다. control unit는 이 instruction과 NZCV flag를 통해 control word, Address<sub>in</sub>, Constant<sub>in</sub>을 만들어낸다.
+PC가 datapath의 Address<sub>in</sub>을 타고 memory로 들어가서 instruction을 불러온다. 이 instruction은 Bus D에 담겨서 control unit으로 들어간다. control unit는 이 instruction과 NZCV flag를 통해 control word, Address<sub>in</sub>, Constant<sub>in</sub>을 만들어낸다.
 
 ## Decode
 
@@ -181,11 +181,11 @@ Instruction의 종류는 수십에서 수백개로 많지만 하는 역할은 �
 
 ### Arithmetic & Logic Operation
 
-여기에 속하는 instruction은 말 그대로 논리나 산술 연산을 한다. 따라서 연산을 할 피연산자와 연산의 결과가 저장될 곳이 필요하다. 예를 들어 2개의 레지스터(R<sub>n</sub>, R<sub>m</sub>)를 계산해서 레지스터(R<sub>d</sub>)에 저장하는 연산의 instruction은 아래와 같다.
+여기에 속하는 instruction은 말 그대로 논리나 산술 연산을 한다. 따라서 연산을 할 피연산자와 연산의 결과가 저장될 곳이 필요하다. 예를 들어 2개의 register(R<sub>n</sub>, R<sub>m</sub>)를 계산해서 register(R<sub>d</sub>)에 저장하는 연산의 instruction은 아래와 같다.
 
 ![](/images/datapath_control_unit/cu0.png#center100)
 
-이제 decode 과정에서 opcode를 통해 이 instruction이 두 레지스터를 더해서 그 결과를 레지스터에 저장하고자 함을 알아낸다. 그리고 다음과 같이 control word를 만들어낸다.
+이제 decode 과정에서 opcode를 통해 이 instruction이 두 register를 더해서 그 결과를 register에 저장하고자 함을 알아낸다. 그리고 다음과 같이 control word를 만들어낸다.
 
  - AA : 피연산자중 하나인 R<sub>n</sub>이다.
  - BA : 피연산자중 하나인 R<sub>m</sub>이다.
