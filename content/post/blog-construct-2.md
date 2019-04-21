@@ -1,9 +1,9 @@
 ---
-title: "블로그 구축기 2 - Theme Custormizing"
+title: "블로그 구축기 2 (Hugo Theme Custormizing)"
 date: 2019-03-01T12:37:41+09:00
 categories: ["code"]
 subcategories: ["web"]
-tags: ["hugo", "go templates", "theme", "custormizing"]
+tags: ["blog", "hugo", "go templates", "theme", "custormizing", "css"]
 references: [
   "https://github.com/lubang/hugo-hello-programmer-theme",
   "https://gohugo.io/documentation",
@@ -15,7 +15,7 @@ references: [
   "https://m.blog.naver.com/PostView.nhn?blogId=eggtory&logNo=220744380205&proxyReferer=https%3A%2F%2Fwww.google.com%2F"
 ]
 nextp: ""
-prevp: "블로그 구축기 1 - Hugo + github.io"
+prevp: "블로그 구축기 1 (Hugo + github.io)"
 ---
 
 이제 자신이 만든 블로그를 감상해보자. 마음에 드는가? 물론 마음에 쏙 들수도 있지만 아무래도 자기가 직접 만든 것이 아니라 남이 만든 테마를 가져다 쓰는 것이기 때문에 맘에 안드는 점이 있을 수도 있다. 따라서 테마를 우리 입맛대로 고치는 custormizing 과정이 필요하다.

@@ -14,14 +14,14 @@
   {{ end }}
 
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <title>{{ .Title }} {{ if ne .Title .Site.Title }} &middot; {{ .Site.Title }}{{ end }}</title>
+  <title>{{ .Title }} {{ if ne .Title .Site.Title }} | {{ .Site.Title }}{{ end }}</title>
   <link rel="icon" href="{{ "/favicon.ico" | relURL }}" type="image/x-icon">
   <link rel="canonical" href="{{ .Permalink }}">
   {{ if .RSSLink }}
   <link href="{{ .RSSLink }}" rel="alternate" type="application/rss+xml" title="{{ .Title }}" />
   {{ end }}
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/dracula.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/monokai-sublime.min.css">
   <link rel="stylesheet" href="{{ "/css/styles.css" | relURL }}">
   <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
