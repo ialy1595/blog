@@ -4,7 +4,7 @@ date: 2019-03-21T17:12:20+09:00
 categories: ["code"]
 subcategories: ["system architecture"]
 tags: ["datapath", "control unit", "control word", "instruction", "FDE cycle"]
-draft: true
+draft: false
 nextp: ""
 prevp: "Sequential Logic"
 ---
