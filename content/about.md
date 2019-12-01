@@ -53,12 +53,11 @@ Weather notification application which can run on background and automatically n
  - **C++**
    - Algorithm contest
  - **C#** with Unity
- - **Python**
-     - django, tensorflow
- - Processing
+ - Python
+ - Javascript
+ - Vue
  - Java
  - SQL
- - Ocaml
 
 # Awards & Certificates
 
@@ -102,8 +101,8 @@ Weather notification application which can run on background and automatically n
 # Scholarship
 
  - **SNU Merit Based Scholarship** <sm>(Aug 2015, Jan 2016, Feb 2016, Feb 2017, Aug 2017, Feb 2018)</sm>
- - **National Need-Based Scholarship (Type I)** <sm>(Aug 2016)</sm>
- - **National Need-Based Scholarship (Type II)** <sm>(Aug 2015, Aug 2016, Dec 2016)</sm>
+ - **National Scholarship (Type I)** <sm>(Aug 2016)</sm>
+ - **National Scholarship (Type II)** <sm>(Aug 2015, Aug 2016, Dec 2016)</sm>
  - **Yoon Song-Yee and Kim Tack-Jin Scholarship** <sm>(Oct 2016)</sm>
  - **SNU College of Engineering ERF Scholarship** <sm>(June 2017, Sept 2017)</sm>
 
