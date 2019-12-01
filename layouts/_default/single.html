@@ -13,18 +13,19 @@
   {{ if ne .Params.prevp "" }}
   {{ range where .Site.RegularPages "Title" "eq" (.Params.prevp | title) }}
   <a class="left" href="{{ .Permalink }}" rel="prev">
-    <i class="fa fa-caret-left" aria-hidden="true"></i> <span>{{ .Title }}</span>
+    <i class="fa fa-play fa-rotate-180" aria-hidden="true"></i> <span>{{ .Title }}</span>
   </a>
   {{ end }}
   {{ end }}
   {{ if ne .Params.nextp "" }}
   {{ range where .Site.RegularPages "Title" "eq" (.Params.nextp | title) }}
   <a class="right" href="{{ .Permalink }}" rel="next">
-    <span>{{ .Title }}</span> <i class="fa fa-caret-right" aria-hidden="true"></i>
+    <span>{{ .Title }}</span> <i class="fa fa-play" aria-hidden="true"></i>
   </a>
   {{ end }}
   {{ end }}
 </div>
+{{ partial "post-meta" . }}
 {{ end }}
 
 {{ partial "footer.html" . }}

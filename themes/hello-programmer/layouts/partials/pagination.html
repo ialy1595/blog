@@ -1,13 +1,13 @@
 <div class="paging">
   {{ if .Paginator.HasPrev }}
-  <a href="{{ .Paginator.Prev.URL }}" rel="prev">
-    <i class="fa fa-caret-left" aria-hidden="true"></i>
+  <a class="right-term" href="{{ .Paginator.Prev.URL }}" rel="prev">
+    <i class="fa fa-play fa-rotate-180" aria-hidden="true"></i> Prev 
   </a>
   {{ end }}
   PAGE {{ .Paginator.PageNumber }} / {{ .Paginator.TotalPages }}
   {{ if .Paginator.HasNext }}
-  <a href="{{ .Paginator.Next.URL }}" rel="next">
-    <i class="fa fa-caret-right" aria-hidden="true"></i>
+  <a class="left-term" href="{{ .Paginator.Next.URL }}" rel="next">
+     Next <i class="fa fa-play" aria-hidden="true"></i>
   </a>
   {{ end }}
 </div>
