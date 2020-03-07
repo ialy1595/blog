@@ -5,8 +5,8 @@ categories: ["code"]
 subcategories: ["algorithm"]
 tags: ["brute force"]
 draft: false
-nextp: ""
-prevp: ""
+nextp: "동적계획법 (Dynamic Programming, DP)"
+prevp: "시간복잡도 (Time Complexity)"
 ---
 
 한국말로 전수탐색이라고 부르기도 한다. 하지만 단순히 모든 경우의 수를 탐색해 본다라는 전수탐색의 의미보단 일단 무식하게 부딪혀본다라는 의미를 담은 brute force 표현이 더 좋다. 사실 brute force는 알고리즘이라 불릴 수 있을지 미지수일 정도로 매우 단순무식한 방법이다. 시간이나 공간을 얼마나 쓸지 걱정하지 않고 일단 어떻게든 답이 나오도록 하는 것을 brute force라고 한다. 모든 가능성을 다 탐색해보는 전수탐색도, 얼마나 많은 경우의 수가 있을지 모르니 시간과 공간을 엄청나게 쓰겠지만 결국 그 모든 가능성을 다 확인해보면 답을 찾을수 있으니 brute force에 속하는 것이다. 이렇게 비효율적인 알고리즘이지만 그만큼 강력한 점도 있기 때문에 brute force라는 용어가 생긴 것이다. 바로 시간과 공간만 충분하다면 무조건 정확한 답을 찾아낼 수 있다는 것이다.

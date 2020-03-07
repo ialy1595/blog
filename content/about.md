@@ -17,7 +17,7 @@ date: 2019-02-04T10:25:27+09:00
  - **Problem Solving**
     - Algorithm, Data structure
  -  **Human Computer Interaction**
-     - Gamification, Crowdsourcing, Human Computing, Social Computing
+     - UI/UX, Gamification, Crowdsourcing, Human Computing
  - **Game design**
 
 # Projects
@@ -38,26 +38,17 @@ Game management tycoon game. Users can control the game’s popularity by summon
         - Round/ Stage structure
         - Risk factor
 
-## Take Your Umbrella
-
-Weather notification application which can run on background and automatically notify if it rains.
-
- - Adobe Flash, AS3, Android
-
 # Technical Skills
 
+ - **C++**
+   - Algorithm contest
+ - **Javascript**
+   - Vue, Node, React-native
  - **C**
     - Linux kernel modification
     - [CMU Labs](http://csapp.cs.cmu.edu/3e/labs.html)
       - Bomb, Attack, Architecture, Cache, Shell, Malloc, Proxy
- - **C++**
-   - Algorithm contest
  - **C#** with Unity
- - Python
- - Javascript
- - Vue
- - Java
- - SQL
 
 # Awards & Certificates
 

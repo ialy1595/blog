@@ -6,7 +6,7 @@ subcategories: ["algorithm"]
 tags: ["time complexity", "Big-O natation"]
 references : ["https://en.wikipedia.org/wiki/Big_O_notation"]
 draft: false
-nextp: ""
+nextp: "Brute Force"
 prevp: ""
 ---
 

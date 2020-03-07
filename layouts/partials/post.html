@@ -1,12 +1,15 @@
 {{ partial "posthead" . }}
 
-<div class="post-toc">
-  <span class="title">
-    Table of contents
-  </span>
-  {{ .TableOfContents }}
-</div>
-
 <section class="post-content">
+  <div class="post-toc-container1">
+    <div class="post-toc-container2">
+      <div class="post-toc">
+        <span class="title">
+          Table of contents
+        </span>
+        {{ .TableOfContents }}
+      </div>
+    </div>
+  </div>
   {{ .Content }}
 </section>
