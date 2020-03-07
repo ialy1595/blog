@@ -11,7 +11,7 @@ prevp: "Sequential Logic"
 
 # Datapath
 
-Datapath는 CPU에서 직접적으로 연산이 이루어지는 부분이다. 따라서 연산을 하거나 연산된 결과를 저장할 register file과 연산이 실행되는 ALU로 이루어져 있다. 그리고 memory와 데이터를 주고받아야 하기 때문에 memory와도 연결되었다. 그리고 이 데이터들은 버스에 담겨서 각각 부분으로 들어간다.
+Datapath는 CPU에서 직접적으로 연산이 이루어지는 부분이다. 따라서 연산을 하거나 연산된 결과를 저장할 register file과 연산이 실행되는 ALU로 이루어져 있다. 그리고 memory와 데이터를 주고받아야하기 때문에 memory와도 연결되었다. 그리고 이 데이터들은 버스에 담겨서 각각 부분으로 들어간다.
 
 ![](/images/datapath_control_unit/cpu0.png#center75)
 
@@ -59,7 +59,7 @@ FS<sub>4</sub> | FS<sub>3</sub> | FS<sub>2</sub> | FS<sub>1</sub> | FS<sub>0</su
 Register에 할 수 있는 연산은 아래 두 종류가 있다.
 
  - A register의 값을 B register에 대입
- - register에 상수값을 대입
+ - register에 상수 값을 대입
 
  먼저 A register의 값을 B register에 대입하는 과정을 보자. 예를 들어 `R2 <- R5`인 연산을 보자. 이는 다음과 같은 과정으로 이루어진다.
 
@@ -70,10 +70,10 @@ Register에 할 수 있는 연산은 아래 두 종류가 있다.
 이제 이 동작을 수행되도록 각 control bit를 조정해보자.
 
  - AA : R5를 A<sub>data</sub>로 출력해야 한다. 따라서 R5의 주소인 `101`이어야 한다.
- - BA : B<sub>data</sub>는 사용되지 않는다. 따라서 아무 값이나 되어도 상관 없다.
+ - BA : B<sub>data</sub>는 사용되지 않는다. 따라서 아무 값이나 되어도 상관없다.
  - DA : D<sub>data</sub>를 R2에 대입해야 한다. 따라서 R2의 주소인 `010`이어야 한다.
  - AS : Address<sub>in</sub>과 A<sub>data</sub>중 A<sub>data</sub>를 선택해야 한다. 따라서 `1`이어야 한다.
- - BS : Bus B의 값은 사용되지 않는다. 따라서 아무 값이나 되어도 상관 없다.
+ - BS : Bus B의 값은 사용되지 않는다. 따라서 아무 값이나 되어도 상관없다.
  - FS : F = A 연산을 해야 한다. 따라서 `00000`이어야 한다.
  - DS : ALU에서 나온 F값을 선택해야 한다. 따라서 `0`이어야 한다.
  - RW : Register file에서 R2에 값을 쓰는 작업을 해야 한다. 따라서 `1`이어야 한다.
@@ -87,7 +87,7 @@ Register에 할 수 있는 연산은 아래 두 종류가 있다.
 
 ![](/images/datapath_control_unit/dpregister0.png#center75)
 
-Control word가 어떻게 될지는 나와있는 결과를 보는 것 보다 자신이 직접 각 상황에서 주소나 select를 어떻게 해야할지 생각해 보는 것이 도움이 많이 된다. 이번에는 register에 상수값을 대입하는 과정을 살펴보자. register에 대입할 상수값은 Constant<sub>in</sub>에 들어있다. 예를 들어 `R3 <- 7`을 한다고 하자. 위에서처럼 각 control bit가 어떻게 되야할지 생각해보고, 이렇게 만든 control word가 아래와 같은지 확인해보자.
+Control word가 어떻게 될지는 나와 있는 결과를 보는 것 보다 자신이 직접 각 상황에서 주소나 select를 어떻게 해야 할지 생각해 보는 것이 도움이 많이 된다. 이번에는 register에 상수 값을 대입하는 과정을 살펴보자. register에 대입할 상수값은 Constant<sub>in</sub>에 들어있다. 예를 들어 `R3 <- 7`을 한다고 하자. 위에서처럼 각 control bit가 어떻게 되야할지 생각해보고, 이렇게 만든 control word가 아래와 같은지 확인해보자.
 
 ![](/images/datapath_control_unit/cwregister1.png#center100)
 
@@ -97,19 +97,19 @@ Control word가 어떻게 될지는 나와있는 결과를 보는 것 보다 자
 
 ## Arithmetic & Logic Operation
 
-위에서 ALU는 단순히 A나 B값을 그대로 출력했다. 이번에는 ALU가 실제 연산을 하는 경우를 살펴보자. ALU에서 연산을 하기 위해서는 Bus A와 Bus B에 피연산자를 담은 다음 FS값으로 어떤 연산을 할지 정하면 된다. 예를 들어 `R1 <- R3 + R4`인 경우 이를 수행하는 control word는 다음과 같다.
+위에서 ALU는 단순히 A나 B값을 그대로 출력했다. 이번에는 ALU가 실제 연산을 하는 경우를 살펴보자. ALU에서 연산하기 위해서는 Bus A와 Bus B에 피연산자를 담은 다음 FS값으로 어떤 연산을 할지 정하면 된다. 예를 들어 `R1 <- R3 + R4`인 경우 이를 수행하는 control word는 다음과 같다.
 
 ![](/images/datapath_control_unit/cwalu0.png#center100)
 
-피연산자중 하나를 상수값으로 하는 것도 가능하다. 이때 상수값은 Constant<sub>in</sub>에 들어있다.예를 들어 아래 control word는 `R2 <- R7 & 1`을 수행한다.
+피연산자중 하나를 상수 값으로 하는 것도 가능하다. 이때 상수 값은 Constant<sub>in</sub>에 들어있다. 예를 들어 아래 control word는 `R2 <- R7 & 1`을 수행한다.
 
 ![](/images/datapath_control_unit/cwalu1.png#center100)
 
-만약에 1을 더하거나 빼는 경우 이 연산이 이미 ALU에 들어있다. 따라서 이 경우에는 상수값을 사용하지 않아도 수행할 수 있다. 예를 들어 아래 control word는 `R6 <- R0 + 1`을 수행한다.
+만약에 1을 더하거나 빼는 경우 이 연산이 이미 ALU에 들어있다. 따라서 이 경우에는 상수 값을 사용하지 않아도 수행할 수 있다. 예를 들어 아래 control word는 `R6 <- R0 + 1`을 수행한다.
 
 ![](/images/datapath_control_unit/cwalu2.png#center100)
 
-xor 연산은 같은 수에 대해서 항상 0이다. 따라서 자기 자신을 xor하면 항상 0이 나온다. 이를 이용하면 어떤 register 값을 0으로 초기화 하는 작업을 0이라는 상수값을 사용하지 않아도 수행할 수 있다. 예를 들어 아래 control word는 `R1 <- 0 = R0 ^ R0`를 수행한다.
+xor 연산은 같은 수에 대해서 항상 0이다. 따라서 자기 자신을 xor하면 항상 0이 나온다. 이를 이용하면 어떤 register 값을 0으로 초기화 하는 작업을 0이라는 상수 값을 사용하지 않아도 수행할 수 있다. 예를 들어 아래 control word는 `R1 <- 0 = R0 ^ R0`를 수행한다.
 
 ![](/images/datapath_control_unit/cwalu3.png#center100)
 
@@ -129,7 +129,7 @@ xor 연산은 같은 수에 대해서 항상 0이다. 따라서 자기 자신을
 
 ![](/images/datapath_control_unit/cwmemory2.png#center100)
 
-여기서 Memory에 쓸 값을 특정 상수값으로 할 수 있다. 이 때 데이터는 Constant<sub>in</sub>에 들어있다. 예를 들어 아래 control word는 `M[3] <- 24`를 수행한다.
+여기서 Memory에 쓸 값을 특정 상수 값으로 할 수 있다. 이 때 데이터는 Constant<sub>in</sub>에 들어있다. 예를 들어 아래 control word는 `M[3] <- 24`를 수행한다.
 
 ![](/images/datapath_control_unit/cwmemory3.png#center100)
 
@@ -137,7 +137,7 @@ xor 연산은 같은 수에 대해서 항상 0이다. 따라서 자기 자신을
 
 # Control Unit
 
-처음에 얘기했던 것 처럼 우리가 코드를 작성하면 이는 컴파일러를 통해 기계어인 instruction으로 변하고, 이 instruction을 분석해서 control word를 생성한다.
+처음에 얘기했던 것처럼 우리가 코드를 작성하면 이는 컴파일러를 통해 기계어인 instruction으로 변하고, 이 instruction을 분석해서 control word를 생성한다.
 
 ![](/images/datapath_control_unit/flow0.png#center30)
 
@@ -171,7 +171,7 @@ PC가 datapath의 Address<sub>in</sub>을 타고 memory로 들어가서 instruct
 
 ## Decode
 
-Instruction의 종류는 수십에서 수백개로 많지만 하는 역할은 다음과 같이 크게 3개로 분류할 수 있다.
+Instruction의 종류는 수십에서 수백 개로 많지만 하는 역할은 다음과 같이 크게 3개로 분류할 수 있다.
 
  - Arithmetic & Logic Operation
  - Data transfer
@@ -213,11 +213,11 @@ Data transfer란 register에 저장된 값을 memory에 저장(store)하거나 m
 
  - AA : memory에 저장할 주소가 저장된 R<sub>n</sub>이다.
  - BA : memory에 저장할 데이터가 저장된 R<sub>d</sub>이다.
- - DA : register에 저장하지 않으므로 어떤 값이든 상관 없다.
+ - DA : register에 저장하지 않으므로 어떤 값이든 상관없다.
  - AS : A<sub>data</sub>를 memory에 Address로 넘겨야 하므로 `1`이다.
  - BS : B<sub>data</sub>를 memory에 Data<sub>in</sub>으로 넘겨야 하므로 `0`이다.
- - FS : ALU 연산을 하지 않으므로 어떤 값이든 상관 없다.
- - DS : Bus D를 사용하지 않으므로 어떤 값이든 상관 없다.
+ - FS : ALU 연산을 하지 않으므로 어떤 값이든 상관없다.
+ - DS : Bus D를 사용하지 않으므로 어떤 값이든 상관없다.
  - RW : register에 저장하지 않으므로 `0`이다.
  - MW : Memory에 저장하므로 `1`이다.
 
@@ -232,7 +232,7 @@ Data transfer란 register에 저장된 값을 memory에 저장(store)하거나 m
 
 ### Control flow
 
-Control flow는 위에서 datapath를 할 때 다루지 않았던 부분이다. 위에서 설명했듯이 instruction은 PC가 1씩 증가하면서 저장된 순서대로 실행된다. 그러나 조건문에 의해서 다음에 실행해야 할 instruction이 바뀌거나 반복문에 의해 특정 instruction이 반복되는 것 처럼, 저장된 순서대로 바로 다음 instruction이 아니라 다른 곳에 저장된 instruction을 실행해야할 경우가 생긴다. 이러한 경우 PC가 해당 instruction을 가리키도록 바꾸는 작업을 하고, 이러한 작업을 control flow라고 한다. Control flow의 instruction은 다음과 같다.
+Control flow는 위에서 datapath를 할 때 다루지 않았던 부분이다. 위에서 설명했듯이 instruction은 PC가 1씩 증가하면서 저장된 순서대로 실행된다. 그러나 조건문에 의해서 다음에 실행해야 할 instruction이 바뀌거나 반복문에 의해 특정 instruction이 반복되는 것처럼, 저장된 순서대로 바로 다음 instruction이 아니라 다른 곳에 저장된 instruction을 실행해야할 경우가 생긴다. 이러한 경우 PC가 해당 instruction을 가리키도록 바꾸는 작업을 하고, 이러한 작업을 control flow라고 한다. Control flow의 instruction은 다음과 같다.
 
 ![](/images/datapath_control_unit/cu3.png#center100)
 
@@ -240,12 +240,12 @@ Control flow는 위에서 datapath를 할 때 다루지 않았던 부분이다. 
 
 이를 통해 PC가 바뀌어야한다고 정해지면 `PC <- PC + offset`을 한다. 이를 수행하는 control word는 다음과 같이 생성된다.
 
- - AA : A<sub>data</sub>를 사용하지 않으므로 어떤 값이든 상관 없다.
- - BA : B<sub>data</sub>를 사용하지 않으므로 어떤 값이든 상관 없다.
- - DA : register에 저장하지 않으므로 어떤 값이든 상관 없다.
+ - AA : A<sub>data</sub>를 사용하지 않으므로 어떤 값이든 상관없다.
+ - BA : B<sub>data</sub>를 사용하지 않으므로 어떤 값이든 상관없다.
+ - DA : register에 저장하지 않으므로 어떤 값이든 상관없다.
  - AS : PC값인 Address<sub>in</sub>을 사용해야 하므로 `0`이다.
  - BS : Constant<sub>in</sub>을 사용해야 하므로 `1`이다.
- - FS : 더하는 연산을 해야하므로 `00010`이다.
+ - FS : 더하는 연산을 해야 하므로 `00010`이다.
  - DS : ALU에서 나온 F값이어야 하므로 `0`이다.
  - RW : register에 저장하지 않으므로 `0`이다.
  - MW : Memory에 저장하지 않으므로 `0`이다.
