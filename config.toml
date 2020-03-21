@@ -2,11 +2,12 @@ baseurl = "https://ialy1595.github.io/"
 title = "ialy's blog"
 languageCode = "ko-KR"
 
+disqusShortname = "ialy1595"
+
 theme = "hello-programmer"
 
 paginate = 4
 
-disqusShortname = "XXXX"
 googleAnalytics = "UA-134848712-1"
 
 summaryLength = 30

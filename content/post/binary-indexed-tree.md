@@ -6,6 +6,10 @@ subcategories: ["algorithm"]
 tags: ["tree", "indexed tree"]
 nextp: ""
 prevp: "동적계획법 (Dynamic Programming, DP)"
+references: [
+    "https://codeforces.com/",
+    "https://www.geeksforgeeks.org/z-algorithm-linear-time-pattern-searching-algorithm/"
+]
 ---
 
 # 개요
