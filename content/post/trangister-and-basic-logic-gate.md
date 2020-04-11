@@ -8,7 +8,7 @@ nextp: "Combinational Logic"
 prevp: ""
 ---
 
-컴퓨터공학부에 입학하고 처음으로 들은 전공 관련 수업이 컴퓨터 개론 및 실습(컴개실)이었는데, 코딩을 배울 것이라고 생각했던 것과 달리 갑자기 반도체와 트랜지스터가 나와서 멘붕했던 내용이다. 그 당시에는 전기과도 아닌데 이런 것을 왜하나 생각을 했지만 배우고 나서 뒤의 흐름을 익히니 기초부터 하나씩 쌓아올려 나가려는 큰 그림이었음을 깨달았다.
+컴퓨터공학부에 입학하고 처음으로 들은 전공 관련 수업이 컴퓨터 개론 및 실습이었는데, 코딩을 배울 것이라고 생각했던 것과 달리 갑자기 반도체와 트랜지스터가 나와서 멘붕했던 내용이다. 그 당시에는 전기과도 아닌데 이런 것을 왜하나 생각을 했지만 배우고 나서 뒤의 흐름을 익히니 기초부터 하나씩 쌓아올려 나가려는 큰 그림이었음을 깨달았다.
 
 # Transister
 
@@ -136,25 +136,25 @@ X | Y | Z | OUT
 
 예를 들어 위와 같은 함수가 있다고 하자(별 생각 안하고 이 글을 쓰면서 방금 막 만들었다.)
 
-우리가 주목할 부분은 결과가 1이 되는 부분이다. 우선 XYZ가 001일 때 OUT이 1이 된다. 이 때 0인 X와 Y에만 NOT을 붙인 후 다 AND를 한 `((NOT X) AND (NOT Y) AND (Z))` 라는 식을 생각해보자. 이 식은 XYZ가 001일 때만 1이고, 다른 경우에는 모두 0이다.
+우리가 주목할 부분은 결과가 1이 되는 부분이다. 우선 `$ X,Y,Z $`가 `$ 0,0,1 $`일 때 OUT이 1이 된다. 이 때 0인 `$ X $`와 `$ Y $`에만 NOT을 붙인 후 다 AND를 한 `$(not ~ X) ~ and ~ (not ~ Y) ~ and ~ Z$` 라는 식을 생각해보자. 편의상 `$ not ~ X $`을 `$ X' $`, `$ and $`는 `$\cdot$`, `$ or $`는 `$ + $`로 표현하면 `$X' \cdot Y' \cdot Z$`이다. 이 식은 `$ X, Y, Z $`가 `$ 0,0,1 $`일 때만 1이고, 다른 경우에는 모두 0이다.
 
 그렇다면 모든 1의 결과에 대해 이처럼 같은 식을 만들 수 있다.
 
-001 &rarr; `((NOT X) AND (NOT Y) AND (Z))`
+`$ 0,0,1 \rightarrow X' \cdot Y' \cdot Z $`
 
-010 &rarr; `((NOT X) AND (Y) AND (NOT Z))`
+`$ 0,1,0 \rightarrow X' \cdot Y \cdot Z' $`
 
-110 &rarr; `((X) AND (Y) AND (NOT Z))`
+`$ 1,1,0 \rightarrow X \cdot Y \cdot Z'$`
 
-이후 이 식을 모드 OR하면 각 식은 자신을 만들어낸 XYZ값에 대해서만 1이므로 진리표와 같은 역할을 하게 된다. 즉, 아래 식은 위의 진리표와 동치이다.
+이후 이 식을 모드 OR하면 각 식은 자신을 만들어낸 `$ X,Y,Z $`값에 대해서만 1이므로 진리표와 같은 역할을 하게 된다. 즉, 아래 식은 위의 진리표와 동치이다.
 
-`((NOT X) AND (NOT Y) AND (Z)) OR ((NOT X) AND (Y) AND (NOT Z)) OR ((X) AND (Y) AND (NOT Z))`
+`$$ X' \cdot Y' \cdot Z + X' \cdot Y \cdot Z' + X \cdot Y \cdot Z' $$`
 
 이처럼 우리는 AND, OR, NOT만 있으면 모든 논리함수를 구현할 수 있다. 근데 NAND, NOR얘기하다가 갑자기 이 얘기는 왜하느냐? 그 이유는 NAND나 NOR은 자기 자신 하나로만으로도 함수적 완결성을 가지기 때문이다! 즉, 우리는 NAND 하나만 가지고도 모든 함수를 구현할 수 있다.
 
 이는 NAND로 NOT, AND, OR을 구현함으로써 증명할 수 있다. 만약에 NAND로 NOT, AND, OR을 만들 수 있다면 {AND, OR, NOT}은 함수적 완결성을 가지므로 NAND도 함수적 완결성을 가지기 때문이다.
 
-우선 NAND로 NOT을 만드는 건 쉽다. X AND X 는 X 이고, NAND는 NOT AND이므로 X NAND X 는 NOT X이다. [게이트 기호](https://ko.wikipedia.org/wiki/%EB%85%BC%EB%A6%AC_%ED%9A%8C%EB%A1%9C)를 이용해서 그리면 아래와 같다.
+우선 NAND로 NOT을 만드는 건 쉽다. `$ X \cdot X $` 는 `$ X $` 이고, NAND는 NOT AND이므로 `$ X ~ nand ~ X $` 는 NOT X이다. [게이트 기호](https://ko.wikipedia.org/wiki/%EB%85%BC%EB%A6%AC_%ED%9A%8C%EB%A1%9C)를 이용해서 그리면 아래와 같다.
 
 ![](/images/trangister_and_basic_logic_gate/nand2not0.png#center30)
 
@@ -162,15 +162,11 @@ NOT을 구현하는데 성공했으면 AND는 매우 쉽다. NAND에 NOT을 하�
 
 ![](/images/trangister_and_basic_logic_gate/nand2and0.png#center30)
 
-OR은 구현하려면 머리를 좀 써야한다. 여기서 [드 모르간의 법칙](https://ko.wikipedia.org/wiki/%EB%93%9C_%EB%AA%A8%EB%A5%B4%EA%B0%84%EC%9D%98_%EB%B2%95%EC%B9%99)이 사용된다. 드 모르간의 법칙에 따르면 `NOT(X AND Y)` 와 `(NOT X) OR (NOT Y)`는 동치이다. 여기서 X와 Y를 NOT X와 NOT Y로 바꾸면 다음과 같이 정리된다.
+OR은 구현하려면 머리를 좀 써야한다. 여기서 [드 모르간의 법칙](https://ko.wikipedia.org/wiki/%EB%93%9C_%EB%AA%A8%EB%A5%B4%EA%B0%84%EC%9D%98_%EB%B2%95%EC%B9%99)이 사용된다. 드 모르간의 법칙에 따르면 `$ (X \cdot Y)' $` 와 `$ X' + Y' $`는 동치이다. 여기서 `$ X $`와 `$ Y $`를 `$ X' $`와 `$ Y' $`로 바꾸면 다음과 같이 정리된다.
 
-`NOT((NOT X) AND (NOT Y))`
+`$$ (X' \cdot Y')' = (X')' + (Y')' = X + Y $$`
 
-&rarr; `(NOT (NOT X)) OR (NOT (NOT Y))`
-
-&rarr; `X OR Y`
-
-그리고 우리는 NOT과 NAND를 구현할 수 있으니 `NOT((NOT X) AND (NOT Y))`을 구현할 수 있다. 이를 구현하면 아래와 같다.
+그리고 우리는 NOT과 NAND를 구현할 수 있으니 `$ X' ~ nand ~ Y' = (X' \cdot Y')' $`을 구현할 수 있다. 이를 구현하면 아래와 같다.
 
 ![](/images/trangister_and_basic_logic_gate/nand2or0.png#center30)
 

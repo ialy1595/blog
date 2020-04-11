@@ -10,15 +10,15 @@ prevp: "Trangister and Basic Logic Gate"
 
 Combinational Logic에서는 이전에 basic logic gate를 다루면서 만들었던 재료인 NOT, AND, OR, NAND, NOR을 가지고 요리를 해볼 것이다. 하지만 그 전에 Combinational Logic과 Sequential Logic의 차이 대해 먼저 알아보자.
 
-Combinational logic이란 언제나 어디서나 눈이 오던 바람이 불던 남녀노소 같은 input을 넣으면 같은 output이 나오는 것을 뜻한다. 예를 들면 ADDER를 생각해보자. 내가 ADDER에 `2`와 `3`을 집어넣으면 오늘 넣든 내일 넣든 항상 `5`를 반환할 것이다.
+Combinational logic이란 언제나 어디서나 눈이 오던 바람이 불던 남녀노소 같은 input을 넣으면 같은 output이 나오는 것을 뜻한다. 예를 들면 ADDER를 생각해보자. 내가 ADDER에 2와 3을 집어넣으면 오늘 넣든 내일 넣든 항상 5를 반환할 것이다.
 
 이와 대비되는 sequential logic은 내가 같은 input을 넣어도 상황에 따라 output이 바뀔 수 있는 것을 뜻한다. 예를 들어 내가
 
 > 너의 책장의 왼쪽에서 세 번째 책이 뭐야?
 
-라고 물어본다고 해보자. 나는 분명 `너의 책장`과 `왼쪽에서 세 번째` 라는 같은 input을 주지만, 오늘 물어본 결과와 내년에 물어본 결과가 다를 수 있다. 이처럼 logic의 내부 state나 memory에 의해 같은 input이어도 output이 다를 수 있는 경우를 sequential logic이라고 한다.
+라고 물어본다고 해보자. 나는 분명 "너의 책장"과 "왼쪽에서 세 번째"이라는 같은 input을 주지만, 오늘 물어본 결과와 내년에 물어본 결과가 다를 수 있다. 이처럼 logic의 내부 state나 memory에 의해 같은 input이어도 output이 다를 수 있는 경우를 sequential logic이라고 한다.
 
-둘 중에 딱 봐도 combinational logic이 더 쉬워 보인다. 그러니 combinational logic부터 알아보자.
+딱 봐도 combinational logic이 더 쉬워 보인다. 그러니 combinational logic부터 알아보자.
 
 # Boolean Expression
 
@@ -26,34 +26,34 @@ Combinational logic이란 언제나 어디서나 눈이 오던 바람이 불던 
 
 ## Algebraic Structure
 
-우리가 Boolean function을 표현할 때 `(A AND B) OR C` 이런 식으로 표현하는데, 이를 잘 보면 문자, 기호(AND, OR, ...), 괄호로 이루어져 있다. 그렇다면 우리가 수학에서 식을 쓰듯이 이것도 식처럼 쓸 수 있지 않을까? 해서 나온 것이 boolean algebra이다. boolean algebra는 다음과 같은 규칙을 가진다.
+우리가 Boolean function을 표현할 때 `$ (A ~ and ~ B) ~ or ~ C $` 이런 식으로 표현하는데, 이를 잘 보면 문자, 기호(AND, OR, ...), 괄호로 이루어져 있다. 그렇다면 우리가 수학에서 식을 쓰듯이 이것도 식처럼 쓸 수 있지 않을까? 해서 나온 것이 boolean algebra이다. boolean algebra는 다음과 같은 규칙을 가진다.
 
-1. 모든 변수의 값은 `1` 또는 `0`이다. 이때 `1`은 V+, `0`은 접지상태처럼 생각하면 된다.
-2. `+`는 OR, `*`는 AND이다. 이 때 AND는 곱하기를 생략하는 것처럼 알파벳을 붙여 쓰는 것으로 생략할 수 있다.
-3. `'`(unary operation, 뒤에 붙임)은 NOT이다.
+1. 모든 변수의 값은 1 또는 0이다. 이때 1은 V+, 0은 접지상태처럼 생각하면 된다.
+2. `$ + $`는 OR, `$ \cdot $`는 AND이다. 이 때 AND는 곱하기를 생략하는 것처럼 알파벳을 붙여 쓰는 것으로 생략할 수 있다.
+3. `$ ' $`(unary operation, 뒤에 붙임)은 NOT이다.
 
-예를 들어 `(A OR (NOT B)) AND C` 같은 식은 `(A + B')C`로 간단하게 표현할 수 있다.
+예를 들어 `$ (A ~ or ~ (not ~ B)) ~ and ~ C $` 같은 식은 `$ (A + B')C $`로 간단하게 표현할 수 있다.
 
 또한 이러한 표현도 algebra에 속하기 때문에 수학에서 하는 것처럼 공리와 성질을 가진다.
 
-1. Identity: `X + 0 = X`, `X * 1 = X`
-1. Null: `X + 1 = 1`, `X * 0 = 0`
-1. Idempotency: `X + X = X`, `X * X = X`
-1. Involution: `(X')' = X`
-1. Complementarity: `X + X' = 1`, `X * X' = 0`
-1. Commutativity: `X + Y = Y + X`, `X * Y = Y * X`
-1. Associativity: `(X + Y) + Z = X + (Y + Z)`, `(X * Y) * Z = X * (Y * Z)`
-1. Distributivity: `X * (Y + Z) = (X * Y) + (X * Z)`, `X + (Y * Z) = (X + Y) * (Y * Z)`
-1. Uniting: `X * Y + X * Y' = X`, `(X + Y) * (X + Y') = X`
-1. Absorption: `X + X * Y = X`, `X * (X + Y) = X`, `(X + Y') * Y = X * Y`, `X * Y' + Y = X + Y`
-1. Factoring: `(X + Y) * (X' + Z) = X * Z + X' + Y`, `X * Y + X' * Z = (X + Z) * (X' + Y)`
-1. Concensus: `X * Y + Y * Z + X' * Z = X * Y + X' * Z`, `(X + Y) * (Y + Z) * (X' + Z) = (X + Y) * (X' + Z)`
+1. Identity: `$ X + 0 = X $`, `$ X \cdot 1 = X $`
+1. Null: `$ X + 1 = 1 $`, `$ X \cdot 0 = 0 $`
+1. Idempotency: `$ X + X = X $`, `$ X \cdot X = X $`
+1. Involution: `$ (X')' = X $`
+1. Complementarity: `$ X + X' = 1 $`, `$ X \cdot X' = 0 $`
+1. Commutativity: `$ X + Y = Y + X $`, `$ X \cdot Y = Y \cdot X $`
+1. Associativity: `$ (X + Y) + Z = X + (Y + Z) $`, `$ (X \cdot Y) \cdot Z = X \cdot (Y \cdot Z) $`
+1. Distributivity: `$ X \cdot (Y + Z) = (X \cdot Y) + (X \cdot Z) $`, `$ X + (Y \cdot Z) = (X + Y) \cdot (X + Z) $`
+1. Uniting: `$ X \cdot Y + X \cdot Y' = X $`, `$ (X + Y) \cdot (X + Y') = X $`
+1. Absorption: `$ X + X \cdot Y = X $`, `$ X \cdot (X + Y) = X $`, `$ (X + Y') \cdot Y = X \cdot Y $`, `$ X \cdot Y' + Y = X + Y $`
+1. Factoring: `$ (X + Y) \cdot (X' + Z) = X \cdot Z + X' + Y $`, `$ X \cdot Y + X' \cdot Z = (X + Z) \cdot (X' + Y) $`
+1. Concensus: `$ X \cdot Y + Y \cdot Z + X' \cdot Z = X \cdot Y + X' \cdot Z $`, `$ (X + Y) \cdot (Y + Z) \cdot (X' + Z) = (X + Y) \cdot (X' + Z) $`
 
 이를 잘 이용하면 나중에 긴 boolean expression을 짧게 줄일 수 있다. 굳이 막 외울 필요까진 없다.
 
 ## Canonical Forms
 
-이제 이를 이용하여 truth table로 표현된 boolean function을 boolean expression으로 바꿔보자.
+이를 이용하여 truth table로 표현된 boolean function을 boolean expression으로 바꿔보자.
 
 A | B | C | OUT
 :-:|:-:|:-:|:-:
@@ -72,20 +72,20 @@ A | B | C | OUT
 
 SoP는 말 그대로 곱들의 합으로 표현하는 것이다. 여기서 우리는 저 truth table의 1에 주목한다.
 
-첫 번째 1은 A가 0, B가 0, C가 1일 때 결과가 1이 나온다. 이 경우에만 1이 나오고 그 외에는 모두 0이 나오는 product 형태는 `A'B'C`이다. 같은 방법으로 두 번째 1의 product 꼴은 `A'BC'`이고, 세 번째는 `ABC'`이다. 이 세 product 꼴이 SoP에서 굉장히 중요한 역할을 한다. 결과가 1이어야 하는 A, B, C값이라면 이 세 식 중 적어도 하나는 1이 나온다. 또한 저 세 경우가 아니라면 이 세 식은 모두 0이 된다. 따라서 이 세 식을 모두 OR을 하게 되면 truth table과 같은 결과가 나오게 된다. 즉, `A'B'C + A'BC' + ABC'`이 저 truth table과 같은 결과를 주는 boolean expression이 된다. 이처럼 1이 되는 결과를 product 형태로 나타낸 후 이를 모두 sum하기 때문에 Sop Canonical Form이라고 부른다. 이를 더 쉽게 표현하기 위해 다음과 같은 기호와 식을 사용한다.
+첫 번째 1은 A가 0, B가 0, C가 1일 때 결과가 1이 나온다. 이 경우에만 1이 나오고 그 외에는 모두 0이 나오는 product 형태는 `$ A'B'C $`이다. 같은 방법으로 두 번째 1의 product 꼴은 `$ A'BC' $`이고, 세 번째는 `$ ABC' $`이다. 이 세 product 꼴이 SoP에서 굉장히 중요한 역할을 한다. 결과가 1이어야 하는 A, B, C값이라면 이 세 식 중 적어도 하나는 1이 나온다. 또한 저 세 경우가 아니라면 이 세 식은 모두 0이 된다. 따라서 이 세 식을 모두 OR을 하게 되면 truth table과 같은 결과가 나오게 된다. 즉, `$ A'B'C + A'BC' + ABC' $`이 저 truth table과 같은 결과를 주는 boolean expression이 된다. 이처럼 1이 되는 결과를 product 형태로 나타낸 후 이를 모두 sum하기 때문에 Sop Canonical Form이라고 부른다. 이를 더 쉽게 표현하기 위해 다음과 같은 기호와 식을 사용한다.
 
 A | B | C | expression | minterms
 :-:|:-:|:-:|:-:|:-:
-0 | 0 | 0 | A'B'C' | m<sub>0</sub>
-0 | 0 | 1 | A'B'C | m<sub>1</sub>
-0 | 1 | 0 | A'BC' | m<sub>2</sub>
-0 | 1 | 1 | A'BC | m<sub>3</sub>
-1 | 0 | 0 | AB'C' | m<sub>4</sub>
-1 | 0 | 1 | AB'C | m<sub>5</sub>
-1 | 1 | 0 | ABC' | m<sub>6</sub>
-1 | 1 | 1 | ABC | m<sub>7</sub>
+0 | 0 | 0 | `$ A'B'C' $` | `$ m_0 $`
+0 | 0 | 1 | `$ A'B'C $` | `$ m_1 $`
+0 | 1 | 0 | `$ A'BC' $` | `$ m_2 $`
+0 | 1 | 1 | `$ A'BC $` | `$ m_3 $`
+1 | 0 | 0 | `$ AB'C' $` | `$ m_4 $`
+1 | 0 | 1 | `$ AB'C $` | `$ m_5 $`
+1 | 1 | 0 | `$ ABC' $` | `$ m_6 $`
+1 | 1 | 1 | `$ ABC $` | `$ m_7 $`
 
-이 표현식을 사용하면 위 함수는 m<sub>1</sub>, m<sub>2</sub>, m<sub>6</sub>이 1이다. 따라서 다음과 같이 표현할 수 있다.
+이 표현식을 사용하면 위 함수는 `$ m_1 , m_2 , m_6 $`이 1이다. 따라서 다음과 같이 표현할 수 있다.
 
 `$\begin{eqnarray} 
 F(A,B,C) &=& \sum m(1,2,6)   \\
@@ -97,20 +97,20 @@ F(A,B,C) &=& \sum m(1,2,6)   \\
 
 Pos는 Sop와 반대로 합들의 곱으로 나타내는 것이다. SoP의 경우 결과 중 1에 주목했던 것처럼, SoP의 경우 0에 집중한다.
 
-맨 처음 0의 경우 A, B, C 값이 모두 0일 경우 0이다. 이 경우에만 0이 나오고 그 외에는 모두 1이 나오는 sum 형태는 `A + B + C`이다. 위에서 했던 것처럼 이런 방식으로 다른 0들도 sum 꼴로 나타낸다. 이후 이 항을 다 product 하면 SoP 형이 완성된다. 즉, 위의 truth table과 동치인 SoP는 `(A + B + C)(A + B' + C')(A' + B + C)(A' + B + C')(A' + B' + C')`이다.
+맨 처음 0의 경우 A, B, C 값이 모두 0일 경우 0이다. 이 경우에만 0이 나오고 그 외에는 모두 1이 나오는 sum 형태는 `$ A + B + C $`이다. 위에서 했던 것처럼 이런 방식으로 다른 0들도 sum 꼴로 나타낸다. 이후 이 항을 다 product 하면 SoP 형이 완성된다. 즉, 위의 truth table과 동치인 SoP는 `$ (A + B + C)(A + B' + C')(A' + B + C)(A' + B + C')(A' + B' + C') $`이다.
 
 이 또한 기호와 식을 사용하면 다음과 같이 더욱 간단하게 나타낼 수 있다.
 
 A | B | C | expression | minterms
 :-:|:-:|:-:|:-:|:-:
-0 | 0 | 0 | A + B + C | M<sub>0</sub>
-0 | 0 | 1 | A + B + C' | M<sub>1</sub>
-0 | 1 | 0 | A + B' + C | M<sub>2</sub>
-0 | 1 | 1 | A + B' + C' | M<sub>3</sub>
-1 | 0 | 0 | A' + B + C | M<sub>4</sub>
-1 | 0 | 1 | A' + B + C' | M<sub>5</sub>
-1 | 1 | 0 | A' + B' + C | M<sub>6</sub>
-1 | 1 | 1 | A' + B' + C' | M<sub>7</sub>
+0 | 0 | 0 | `$ A + B + C $` | `$ M_0 $`
+0 | 0 | 1 | `$ A + B + C' $` | `$ M_1 $`
+0 | 1 | 0 | `$ A + B' + C $` | `$ M_2 $`
+0 | 1 | 1 | `$ A + B' + C' $` | `$ M_3 $`
+1 | 0 | 0 | `$ A' + B + C $` | `$ M_4 $`
+1 | 0 | 1 | `$ A' + B + C' $` | `$ M_5 $`
+1 | 1 | 0 | `$ A' + B' + C $` | `$ M_6 $`
+1 | 1 | 1 | `$ A' + B' + C' $` | `$ M_7 $`
 
 `$\begin{eqnarray} 
 F(A,B,C) &=& \prod M(0,3,4,5,7)   \\
@@ -127,7 +127,7 @@ F(A,B,C) &=& \prod M(0,3,4,5,7)   \\
  * `$ (A_1 + A_2 + \ldots + A_n)' = A_1 ' \cdot A_2 ' \cdot \ldots \cdot A_n ' $`
  * `$ (A_1 \cdot A_2 \cdot \ldots \cdot A_n)' = A_1 ' + A_2 ' + \ldots + A_n ' $`
 
- 즉, 전체에 NOT을 한 것은 각각에 NOT을 한 다음 `*`은 `+`로, `+`는 `*`로 바꾼 것과 결과가 같다는 것이 드 모르간의 법칙이다. 이를 이용하면 canonical form을 효과적으로 구현할 수 있다. 예시로 SoP 형태로 만든 것을 구현해보자.
+ 즉, 전체에 NOT을 한 것은 각각에 NOT을 한 다음 `$ \cdot $`은 `$ + $`로, `$ + $`는 `$ \cdot $`로 바꾼 것과 결과가 같다는 것이 드 모르간의 법칙이다. 이를 이용하면 canonical form을 효과적으로 구현할 수 있다. 예시로 SoP 형태로 만든 것을 구현해보자.
 
  우선 위 함수의 SoP 형태를 실제 회로로 다음과 같이 구현할 수 있다.
 
@@ -137,7 +137,7 @@ F(A,B,C) &=& \prod M(0,3,4,5,7)   \\
 
 ![](/images/combinational_logic/sop1.png#center50)
 
- 이제 드 모르간의 법칙을 사용해보자. 드 모르간의 법칙에 따르면 `D' + E' + F' = (DEF)'` 이므로 다음과 같이 나타낼 수 있다.
+ 이제 드 모르간의 법칙을 사용해보자. 드 모르간의 법칙에 따르면 `$ D' + E' + F' = (DEF)' $` 이므로 다음과 같이 나타낼 수 있다.
 
 ![](/images/combinational_logic/sop2.png#center50)
 
@@ -164,15 +164,15 @@ F(A,B,C) &=& \prod M(0,3,4,5,7)   \\
  1 | 1 | 1 | 0 | 1
  1 | 1 | 1 | 1 | 1
 
-이 함수는 `ABC + D` 라는 함수로, 회로 구현에도 AND와 OR 하나씩만 있으면 된다. 그러나 이 함수를 canonical form으로 표현하면
+이 함수는 `$ ABC + D $` 라는 함수로, 회로 구현에도 AND와 OR 하나씩만 있으면 된다. 그러나 이 함수를 canonical form으로 표현하면
 
-`A'B'C'D + A'B'CD + A'BC'D + A'BCD' + AB'C'D + AB'CD + ABC'D + ABCD' + ABCD`
+`$ A'B'C'D + A'B'CD + A'BC'D + A'BCD' + AB'C'D + AB'CD + ABC'D + ABCD' + ABCD $`
 
 라는 굉장히 긴 식이 되고, 이를 구현하려면 10개의 NAND 게이트가 필요하다. 따라서 우리는 식을 효과적으로 간소화할 수 있는 새로운 방법을 찾을 필요가 있다.
 
 ## Karnaugh map
 
-카르노맵의 기본 기념은 위의 공리 중 Uniting 중 `X * Y + X * Y' = X` 에서 시작되었다. 우선 카르노맵을 그리는 방법을 먼저 배워보자.
+카르노맵의 기본 기념은 위의 공리 중 Uniting 중 `$ X \cdot Y + X \cdot Y' = X $` 에서 시작되었다. 우선 카르노맵을 그리는 방법을 먼저 배워보자.
 
 ![](/images/combinational_logic/karnaugh0.png#center50)
 
@@ -223,21 +223,21 @@ A | B | C | D | OUT
 
 이제 각 직사각형에 해당하는 식을 찾으면 된다.
 
- * 초록색 직사각형의 경우 A의 값은 섞여있지만, B, C, D는 항상 0이다. 따라서 이 직사각형에 해당하는 식은 `B'C'D'`이다.
- * 파란색 직사각형의 경우 C의 값은 섞여있지만, A의 값은 항상 0이고 B, D의 값은 항상 1이다. 따라서 이에 해당하는 식은 `A'BD`이다.
- * 노란색 직사각형의 경우 A, B의 값은 섞여있지만 C, D의 값은 항상 1이다. 따라서 이에 해당하는 식은 `CD`이다.
- * 보라색 직사각형의 경우 B, D의 값은 섞여있지만 A값은 항상 0이고 C의 값은 항상 1이다. 따라서 이에 해당하는 식은 `A'C` 이다.
+ * 초록색 직사각형의 경우 A의 값은 섞여있지만, B, C, D는 항상 0이다. 따라서 이 직사각형에 해당하는 식은 `$ B'C'D' $`이다.
+ * 파란색 직사각형의 경우 C의 값은 섞여있지만, A의 값은 항상 0이고 B, D의 값은 항상 1이다. 따라서 이에 해당하는 식은 `$ A'BD $`이다.
+ * 노란색 직사각형의 경우 A, B의 값은 섞여있지만 C, D의 값은 항상 1이다. 따라서 이에 해당하는 식은 `$ CD $`이다.
+ * 보라색 직사각형의 경우 B, D의 값은 섞여있지만 A값은 항상 0이고 C의 값은 항상 1이다. 따라서 이에 해당하는 식은 `$ A'C $` 이다.
 
-따라서 이를 총 정리하면 `B'C'D' + A'BD + CD + A'C`가 된다.
+따라서 이를 총 정리하면 `$ B'C'D' + A'BD + CD + A'C $`가 된다.
 
 이게 성립하는 이유는 처음에 말했듯이 Uniting 공리로 설명할 수 있다. 예를 들어 보라색 사각형을 보자. 보라색 사각형의 1들을 SoP로 나타내면
 
-`A'B'CD + A'BCD + A'B'CD' + A'BCD'`
+`$ A'B'CD + A'BCD + A'B'CD' + A'BCD' $`
 
 이다. 이를 정리하면
 
-`A'B'CD + A'BCD + A'B'CD' + A'BCD' = A'CD(B' + B) + A'CD'(B' + B) 
-= A'CD + A'CD' = A'C(D + D') = A'C`
+`$ A'B'CD + A'BCD + A'B'CD' + A'BCD' = A'CD(B' + B) + A'CD'(B' + B) \\ 
+= A'CD + A'CD' = A'C(D + D') = A'C $`
 
 가 된다. 이처럼 직사각형의 가로와 세로가 2<sup>n</sup> 꼴이라면 SoP 꼴을 Uniting 공리를 사용하여 짧게 줄일 수 있다.
 
@@ -373,18 +373,18 @@ unsigned는 0001은 1이고 1101은 13인 것처럼 우리가 아는 이진수 �
 
 일반적으로 우리가 쓰는 아라비아 숫자의 경우 앞에 -라는 unary operation을 사용하여 음수 여부를 나타낸다. 그러나 이진수 체계에서는 0과 1만을 사용하여 음수와 양수를 모두 표현해야 한다. 이를 효과적으로 처리하기 위해 나온 개념이 2's complement, 한글로 하면 2의 보수이다.
 
-보수란 말 그대로 보충을 해주는 수이다. 즉, 2의 보수란 n-bit 체계에서 보충을 해서 2^n이 되어 overflow 되는 bit를 제외하면 0이 되도록 해주는 수이다. 4-bit로 예를 들면, 0010의 경우 1110이 보수가 된다. 물론 1110 의 보수는 0010이 된다. 이 때 맨 앞의 bit가 0인 부분이 양수가 되고, 1인 부분을 그 양수의 음수표현으로 사용한다. 즉, 0010은 2이므로 1110은 -2가 된다. 이를 정리하면 아래와 같다.
+보수란 말 그대로 보충을 해주는 수이다. 즉, 2의 보수란 n-bit 체계에서 보충을 해서 2<sup>n</sup>이 되어 overflow 되는 bit를 제외하면 0이 되도록 해주는 수이다. 3-bit로 예를 들면, 010의 경우 110이 보수가 된다. 물론 110 의 보수는 010이 된다. 이 때 맨 앞의 bit가 0인 부분이 양수가 되고, 1인 부분을 그 양수의 음수표현으로 사용한다. 즉, 010은 2이므로 110은 -2가 된다. 이를 정리하면 아래와 같다.
 
-binary | 0000 | 0001 | 0010 | 0011 | 0100 | 0101 | 0110 | 0111 | 1000 | 1001 | 1010 | 1011 | 1100 | 1101 | 1110 | 1111
-:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:
-unsigned | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15
-2's complement | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | -8 | -7 | -6 | -5 | -4 | -3 | -2 | -1
+binary | 000 | 001 | 010 | 011 | 100 | 101 | 110 | 111 |
+:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+unsigned | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7|
+2's complement | 0 | 1 | 2 | 3 | -4 | -3 | -2 | -1
 
-이처럼 2의 보수를 사용하면 n-bit일 경우 -2<sup>n-1</sup> 부터 2<sup>n-1</sup> - 1 까지 나타낼 수 있다. 여기서 우리가 덧셈이나 뺄셈을 하다 보면 저 범위를 넘어갈 경우가 있고, 그럴 경우 우리가 의도한 수가 안 나올 수도 있다. 예를 들어 `5 + 6`을 하려고 할 경우 `0101 + 0110 = 1011 = -5`로 의도하지 않은 수가 나오게 된다. 이러한 경우를 overflow라고 하고, 이러한 상황이 나오지 않도록 주의해야한다.
+이처럼 2의 보수를 사용하면 n-bit일 경우 -2<sup>n-1</sup> 부터 2<sup>n-1</sup> - 1 까지 나타낼 수 있다. 여기서 우리가 덧셈이나 뺄셈을 하다 보면 저 범위를 넘어갈 경우가 있고, 그럴 경우 우리가 의도한 수가 안 나올 수도 있다. 예를 들어 `$ 2 + 3 $`을 하려고 할 경우 `$ 010 + 011 = 101 = -3 $`로 의도하지 않은 수가 나오게 된다. 이러한 경우를 overflow라고 하고, 이러한 상황이 나오지 않도록 주의해야한다.
 
-2의 보수를 사용하는 이유는 덧셈을 평소 더하듯이 자연스럽게 더해도 되기 때문이다. 보수인 수끼리 서로 더할 경우 overflow 되는 bit를 제외하면 0000으로 0이 된다. 또한 -2 + 5의 경우 -2 + 5 = -2 + (2 + 3) = (-2 + 2) + 3으로 쪼개어보면 역시 자연스럽게 계산됨을 알 수 있다. 이처럼 우리가 원래 알던 방식대로 더해도 자연스럽게 성립이 되는 2의 보수라는 방식을 통해 음수를 표현한다.
+2의 보수를 사용하는 이유는 덧셈을 평소 더하듯이 자연스럽게 더해도 되기 때문이다. 보수인 수끼리 서로 더할 경우 overflow 되는 bit를 제외하면 000으로 0이 된다. 또한 `$ -1 + 2 $`의 경우 `$ -1 + 2 = -1 + (1 + 1) = (-1 + 1) + 1 $`으로 쪼개어보면 역시 자연스럽게 계산됨을 알 수 있다. 이처럼 우리가 원래 알던 방식대로 더해도 자연스럽게 성립이 되는 2의 보수라는 방식을 통해 음수를 표현한다.
 
-2의 보수를 구하는 방법은 간단하다. 10000을 9999 + 1로 나타낼 수 있듯이 2<sup>n</sup>을 만들려면 11...11를 만드는 수에서 1을 더하면 된다. 또한 11...11을 만들려면 원래 수에서 1인 부분은 0으로, 0인 부분은 1로 바꾼 수를 더하면 되고, NOT 연산이 이와 같은 역할을 한다. 따라서 `A`의 보수는 MOT을 한 다음 1을 더하면 되므로 `A' + 1`이 된다.
+2의 보수를 구하는 방법은 간단하다. 1000을 999 + 1로 나타낼 수 있듯이 2<sup>n</sup>을 만들려면 11...11를 만드는 수에서 1을 더하면 된다. 또한 11...11을 만들려면 원래 수에서 1인 부분은 0으로, 0인 부분은 1로 바꾼 수를 더하면 되고, NOT 연산이 이와 같은 역할을 한다. 따라서 `$ A $`의 보수는 MOT을 한 다음 1을 더하면 되므로 `$ A' + 1 $`이 된다.
 
 ### Half Adder & Full Adder
 
@@ -399,11 +399,11 @@ x | y || sum | carry
 
 여기서 carry는 받아 올림으로 생각하면 된다. 각 output을 식으로 나타내면
 
-`sum = x ^ y`
+`$ sum = x \oplus y $`
 
-`carry = x * y`
+`$ carry = x \cdot y $`
 
-여기서 `^`는 XOR을 나타내는 기호이다. 따라서 이를 로직 회로로 구현하면 다음과 같다.
+여기서 `$ \oplus $`는 XOR을 나타내는 기호이다. 따라서 이를 로직 회로로 구현하면 다음과 같다.
 
 ![](/images/combinational_logic/halfadder0.png#center50)
 
@@ -422,11 +422,11 @@ Cin | x | y || sum | Cout
 
 또한 이를 식으로 나타내면 다음과 같다.
 
-`sum = x ^ y ^ Cin`
+`$ sum = x \oplus y \oplus Cin $`
 
-`Cout = x * y + Cin * (x ^ y)`
+`$ Cout = x \cdot y + Cin \cdot (x \oplus y) $`
 
-사실 잘 생각하면 결국 결과는 `x + y + Cin`이고,  `x + y + Cin = (x + y) + Cin`이므로 전가산기는 반가산기 두개로 구현할 수 있다.
+사실 잘 생각하면 결국 결과는 `$ x + y + Cin $`이고,  `$ x + y + Cin = (x + y) + Cin $`이므로 전가산기는 반가산기 두개로 구현할 수 있다.
 
 ![](/images/combinational_logic/fulladder0.png#center75)
 
@@ -438,7 +438,7 @@ Cin | x | y || sum | Cout
 
 ## ALU (Arithmetic Logic Unit)
 
-헷갈림을 방지하기 위해 여기서의 `+`는 logical AND가 아니라 arithmetic ADD를 뜻한다.
+헷갈림을 방지하기 위해 여기서의 `$ + $`는 logical AND가 아니라 arithmetic ADD를 뜻한다.
 
 ### Arithmetic Unit
 
@@ -534,10 +534,10 @@ NOT 게이트의 딜레이 때문에 A가 1이 되자마자 D가 바로 0이 되
 이름에서 유추해볼 수 있듯이 우리는 carry부분에 주목한다. 계산시간을 줄이기 위해서는 몇 번째 bit냐에 상관없이 상수시간 안에 carry in을 구해야 한다. 이러한 작업을 하기 위해 우리는 몇 가지 변수를 정의한다.
 
  * C<sub>i</sub>는 i번째 bit가 받는 carry in을 뜻한다.
- * G<sub>i</sub>는 i번째 비트의 `x * y` 이다.
- * P<sub>i</sub>는 i번째 비트의 `x ^ y` 이다.
+ * G<sub>i</sub>는 i번째 비트의 `$ x \cdot y $` 이다.
+ * P<sub>i</sub>는 i번째 비트의 `$ x \oplus y $` 이다.
 
- 우리는 위에서 했듯이 `Cout = x * y + Cin * (x ^ y)`임을 이미 알고 있다. 따라서 다음과 같이 적을 수 있다.
+ 우리는 위에서 했듯이 `$ Cout = x \cdot y + Cin \cdot (x \oplus y) $`임을 이미 알고 있다. 따라서 다음과 같이 적을 수 있다.
 
 `$ C_{i+1} = G_{i} + P_{i} \cdot C_{i} $`
 
