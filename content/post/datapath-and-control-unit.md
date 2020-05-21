@@ -133,7 +133,7 @@ xor 연산은 같은 수에 대해서 항상 0이다. 따라서 자기 자신을
 
 ![](/images/datapath_control_unit/cwmemory3.png#center100)
 
-지금까지 여러 명령어들을 수행할 수 있는 control word들을 살펴봤다. 이제 이 control word를 만다는 control unit 부분을 살펴보자.
+지금까지 여러 명령어들을 수행할 수 있는 control word들을 살펴봤다. 이제 이 control word를 만드는 control unit 부분을 살펴보자.
 
 # Control Unit
 
@@ -205,7 +205,7 @@ Instruction의 종류는 수십에서 수백 개로 많지만 하는 역할은 �
 
 ### Data transfer
 
-Data transfer란 register에 저장된 값을 memory에 저장(store)하거나 memort에 저장된 값을 register에 불러오는(load) 작업을 의미한다. 이 작업을 하는 instruction은 다음과 같다.
+Data transfer란 register에 저장된 값을 memory에 저장(store)하거나 memory에 저장된 값을 register에 불러오는(load) 작업을 의미한다. 이 작업을 하는 instruction은 다음과 같다.
 
 ![](/images/datapath_control_unit/cu2.png#center100)
 

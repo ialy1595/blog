@@ -46,7 +46,7 @@ Combinational logic이란 언제나 어디서나 눈이 오던 바람이 불던 
 1. Distributivity: `$ X \cdot (Y + Z) = (X \cdot Y) + (X \cdot Z) $`, `$ X + (Y \cdot Z) = (X + Y) \cdot (X + Z) $`
 1. Uniting: `$ X \cdot Y + X \cdot Y' = X $`, `$ (X + Y) \cdot (X + Y') = X $`
 1. Absorption: `$ X + X \cdot Y = X $`, `$ X \cdot (X + Y) = X $`, `$ (X + Y') \cdot Y = X \cdot Y $`, `$ X \cdot Y' + Y = X + Y $`
-1. Factoring: `$ (X + Y) \cdot (X' + Z) = X \cdot Z + X' + Y $`, `$ X \cdot Y + X' \cdot Z = (X + Z) \cdot (X' + Y) $`
+1. Factoring: `$ (X + Y) \cdot (X' + Z) = X \cdot Z + X' \cdot Y $`, `$ X \cdot Y + X' \cdot Z = (X + Z) \cdot (X' + Y) $`
 1. Concensus: `$ X \cdot Y + Y \cdot Z + X' \cdot Z = X \cdot Y + X' \cdot Z $`, `$ (X + Y) \cdot (Y + Z) \cdot (X' + Z) = (X + Y) \cdot (X' + Z) $`
 
 이를 잘 이용하면 나중에 긴 boolean expression을 짧게 줄일 수 있다. 굳이 막 외울 필요까진 없다.
