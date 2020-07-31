@@ -4,7 +4,7 @@ date: 2020-07-24T17:53:52+09:00
 categories: ["code"]
 subcategories: ["algorithm"]
 tags: ["parametric search", "binary search"]
-nextp: ""
+nextp: "문자열 매칭 알고리즘 (KMP, Z-Array)"
 prevp: "인덱스 트리 (Indexed Tree)"
 ---
 
