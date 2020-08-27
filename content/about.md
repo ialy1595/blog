@@ -23,12 +23,50 @@ date: 2019-02-04T10:25:27+09:00
 
 # Projects
 
+## eng2music
+
+When you learn English words or phrases, you may want to know how they are pronounced. eng2music can be helpful in this case. Searching for an English word or phrase shows the phrase that contains the word in the music. Click the YouTube button to repeat the phrase on YouTube.
+
+ - [Link](http://64.137.186.47:3010/)
+ - [Repository](https://github.com/ialy1595/eng2music)
+ - React with React Hook
+ - Dataset from [DALI](https://github.com/gabolsgabs/DALI)
+    - Crawling with selenium to check an invalid YouTube link.
+    - 1071 songs with 33916 phrases are used
+ - Incremental search system
+   - Use previous results to reduce search time
+ - Responsive design using css
+
+Search | Play YouTube
+:-:|:-:
+![](/images/about_me/e2m0.png) | ![](/images/about_me/e2m1.png)
+
+## Water Half Torpedo Half
+
+You must avoid approaching torpedoes. There are many games of this genre. However, there is a distinction only in this game: The enemy's information is given **discontinuously**. You can only verify the position of the torpedo when the radar is passing by. It will allows you to experience that what is natural is not natural.
+
+ - [Repository](https://github.com/ialy1595/Water-Half-Torpedo-Half)
+ - Unity with C#
+ - Android build
+ - Use CCW algorithm for ladar collision check
+ - Validated stage clearable
+    - Torpedo generated randomly
+    - Checked to see if there was a clear path
+    - Use flood-fill algorithm
+ - Torpedo generated more frequently near submarines.
+    - With probability density function
+    - Prevent long waiting in only one place a.k.a 존버
+
+Main | Playing
+:-:|:-:
+ ![](/images/about_me/torpedo0.jpg) | ![](/images/about_me/torpedo1.jpg)
+
 ## NDB
 
 Game management tycoon game. Users can control the game’s popularity by summoning appropriate number of monsters. It has contents like summoning monsters, increasing server, employing bug GMs who handles bug users, buying and using items, regular and emergency inspections. It received 3 votes in Nexon Dream Members workshop.
 
  - [Repository](https://github.com/ialy1595/NDB.git)
- - Unity, C#, PC
+ - Unity, C#
  - Team project (6 members)
  - Undertaken roles
     - Implementation
@@ -39,29 +77,22 @@ Game management tycoon game. Users can control the game’s popularity by summon
         - Round/ Stage structure
         - Risk factor
 
-## eng2music
-
-When you learn English words or phrases, you may want to know how they are pronounced. eng2music can be helpful in this case. Searching for an English word or phrase shows the phrase that contains the word in the music. Click the YouTube button to repeat the phrase on YouTube.
-
- - [Link](http://64.137.186.47:3010/)
- - [Repository](https://github.com/ialy1595/eng2music)
- - React with React Hook
- - Dataset from [DALI](https://github.com/gabolsgabs/DALI)
- - Incremental search system
-   - Use previous results to reduce search time
- - Responsive design
-
 # Technical Skills
 
  - **C++**
    - Algorithm contest
  - **Javascript**
-   - Vue, Node, React-native
+   - React, Vue, Node, React-native
  - **C**
     - Linux kernel modification
     - [CMU Labs](http://csapp.cs.cmu.edu/3e/labs.html)
       - Bomb, Attack, Architecture, Cache, Shell, Malloc, Proxy
  - **C#** with Unity
+ - **Python**
+    - Web crawling
+    - Data processing
+ - **Processing3**
+    - For prototyping
 
 # Awards & Certificates
 
