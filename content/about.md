@@ -7,9 +7,9 @@ date: 2019-02-04T10:25:27+09:00
 
 # Education
 
- - [**Gyeonggi Science High School (GSHS)**](https://www.gs.hs.kr/), Suwon, Gyeonggi, South Korea <sm>(Mar 2012 - Feb 2015)</sm>
+ - [**Gyeonggi Science High School (GSHS)**](https://www.gs.hs.kr/) <sm>(Mar 2012 - Feb 2015)</sm>
 
- - [**Seoul National University (SNU)**](http://www.snu.ac.kr), Seoul, South Korea <sm>(Mar 2015 – Present)</sm>
+ - [**Seoul National University (SNU)**](http://www.snu.ac.kr) <sm>(Mar 2015 – Present)</sm>
     - B.S. in Computer Science and Engineering
 
 # Interest Fields
