@@ -17,8 +17,9 @@ date: 2019-02-04T10:25:27+09:00
  - **Problem Solving**
     - Algorithm, Data structure
  -  **Human Computer Interaction**
-     - UI/UX, Gamification, Crowdsourcing, Human Computing
- - **Game design**
+     - UI/UX, Gamification, Human Computing
+ - **Design**
+    - Game design, project managing
 
 # Projects
 
@@ -31,12 +32,24 @@ Game management tycoon game. Users can control the game’s popularity by summon
  - Team project (6 members)
  - Undertaken roles
     - Implementation
-        - Animation
+        - Animation logic
         - Image Design
         - Bug User/ Bug GM system
     - Game design
         - Round/ Stage structure
         - Risk factor
+
+## eng2music
+
+When you learn English words or phrases, you may want to know how they are pronounced. eng2music can be helpful in this case. Searching for an English word or phrase shows the phrase that contains the word in the music. Click the YouTube button to repeat the phrase on YouTube.
+
+ - [Link](http://64.137.186.47:3010/)
+ - [Repository](https://github.com/ialy1595/eng2music)
+ - React with React Hook
+ - Dataset from [DALI](https://github.com/gabolsgabs/DALI)
+ - Incremental search system
+   - Use previous results to reduce search time
+ - Responsive design
 
 # Technical Skills
 
@@ -65,30 +78,6 @@ Game management tycoon game. Users can control the game’s popularity by summon
  - **Craftsman Bartender** <sm>(Dec 2015)</sm>
  - **Industrial Engineer Information Processing** <sm>(May 2017)</sm>
  
-
-# Related Course Took
-
-## Computer Science and Engineering
-
- - **System Architecture**
-    - Digital Computer Concept and Practice, Logic Design, Hardware System Design, Computer Architecture, System Programming, Operating Systems
- - **High level design**
-    - Informatics Project, Information Fusion Design, Objected-Oriented Programming, Software Engineering, Creative Integrated Design, Human-Computer Interaction, Principles and Practices of Software Development
- - **Data Process**
-    - Data Structures, Database, Introduction to Data Mining
- - **Coding and Algorithm**
-    - Algorithm, Informatics Seminar, Computer Programming
- - **Others**
-    - Automata Theory, Electrical and Electronic Circuits, Programming Language
-
-## Math
-
- - Number Theory, Calculus, Statistics, Engineering Mathematics, Discrete Mathematics, Linear Algebra, Game Theory and Its Application
-
-## Design
-
- - Media Design Programming, Code Image Expression
-
 # Scholarship
 
  - **SNU Merit Based Scholarship** <sm>(Aug 2015, Jan 2016, Feb 2016, Feb 2017, Aug 2017, Feb 2018)</sm>
