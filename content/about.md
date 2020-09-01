@@ -49,6 +49,10 @@ When you type "코드", the process is "ㅋ", "코", "콛", and "코드", only "
 
  - npm package ([link](https://www.npmjs.com/package/korean-index-of))
  - [Repository](https://github.com/ialy1595/korean-index-of)
+ - You can get all match results in an array at once
+ - You can get a range of matching
+   - It tells you whether the last letter is onset(초성) or coda(종성)
+ - Supply onset search(초성 검색)
  - All functions in this package take a linear time
    - Use Z algorithm
 
