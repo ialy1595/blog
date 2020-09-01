@@ -2,7 +2,7 @@
 title: "한글의 incremental search UX 와 인코딩"
 date: 2019-03-03T17:23:53+09:00
 categories: ["code"]
-subcategories: ["user-experience"]
+subcategories: ["user experience"]
 tags: ["hangeul", "korean", "UX", "search", "incremental search", "encoding", "unicode", "UTF-8", "python"]
 references: [
     "https://en.wikipedia.org/wiki/UTF-8"

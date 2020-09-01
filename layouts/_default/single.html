@@ -11,14 +11,14 @@
 {{ if ne .Title "About Me" }}
 <div class="paging post-paging">
   {{ if ne .Params.prevp "" }}
-  {{ range where .Site.RegularPages "Title" "eq" (.Params.prevp | title) }}
+  {{ range where .Site.RegularPages "Title" "eq" .Params.prevp }}
   <a class="left" href="{{ .Permalink }}" rel="prev">
     <i class="fa fa-play fa-rotate-180" aria-hidden="true"></i> <span>{{ .Title }}</span>
   </a>
   {{ end }}
   {{ end }}
   {{ if ne .Params.nextp "" }}
-  {{ range where .Site.RegularPages "Title" "eq" (.Params.nextp | title) }}
+  {{ range where .Site.RegularPages "Title" "eq" .Params.nextp }}
   <a class="right" href="{{ .Permalink }}" rel="next">
     <span>{{ .Title }}</span> <i class="fa fa-play" aria-hidden="true"></i>
   </a>

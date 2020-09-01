@@ -2,7 +2,7 @@
 title: "npm 패키지 korea-index-of 개발기"
 date: 2020-09-01T15:39:16+09:00
 categories: ["code"]
-subcategories: ["user-experience"]
+subcategories: ["user experience"]
 tags: ["hangeul", "korean", "UX", "search", "incremental search", "npm", "normalize"]
 references: [
     "https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String/normalize"
