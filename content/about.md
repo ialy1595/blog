@@ -27,19 +27,30 @@ date: 2019-02-04T10:25:27+09:00
 
 When you learn English words or phrases, you may want to know how they are pronounced. eng2music can be helpful in this case. Searching for an English word or phrase shows the phrase that contains the word in the music. Click the YouTube button to repeat the phrase on YouTube.
 
- - [Link](http://64.137.186.47:3010/)
+ - [Web link](http://ialy1595.me/eng2music/)
  - [Repository](https://github.com/ialy1595/eng2music)
- - React with React Hook
+ - React & React Hook
  - Dataset from [DALI](https://github.com/gabolsgabs/DALI)
-    - Crawling with selenium to check an invalid YouTube link.
+    - Crawling with selenium to check invalid YouTube link.
     - 1071 songs with 33916 phrases are used
  - Incremental search system
    - Use previous results to reduce search time
- - Responsive design using css
+ - Responsive design
+ - Lazy loading for large data
 
 Search | Play YouTube
 :-:|:-:
 ![](/images/about_me/e2m0.png) | ![](/images/about_me/e2m1.png)
+
+
+# korean-index-of
+
+When you type "코드", the process is "ㅋ", "코", "콛", and "코드", only "코" and "코드" is substring of "코드". For this reason, incremental search with normal string match function provides a poor UX because it repeats whether the results are included or not. The improved `indexOf` function, `koreanIndexOf` in this package can solve this problem because they can determine that "ㅋ", "코", "콛", and "코드" is substring of "코드".
+
+ - npm package ([link](https://www.npmjs.com/package/korean-index-of))
+ - [Repository](https://github.com/ialy1595/korean-index-of)
+ - All functions in this package take a linear time
+   - Use Z algorithm
 
 ## Water Half Torpedo Half
 
@@ -54,8 +65,8 @@ You must avoid approaching torpedoes. There are many games of this genre. Howeve
     - Checked to see if there was a clear path
     - Use flood-fill algorithm
  - Torpedo generated more frequently near submarines.
-    - With probability density function
-    - Prevent long waiting in only one place a.k.a 존버
+    - For prevent long waiting in only one place a.k.a 존버
+    - Use probability density function
 
 Main | Playing
 :-:|:-:
