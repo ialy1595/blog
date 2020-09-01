@@ -7,7 +7,7 @@ tags: ["hangeul", "korean", "UX", "search", "incremental search", "encoding", "u
 references: [
     "https://en.wikipedia.org/wiki/UTF-8"
 ]
-nextp: ""
+nextp: "npm 패키지 korea-index-of 개발기"
 prevp: ""
 ---
 
