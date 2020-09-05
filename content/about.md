@@ -56,6 +56,8 @@ When you type "코드", the process is "ㅋ", "코", "콛", and "코드", only "
  - All functions in this package take a linear time
    - Use Z algorithm
 
+![](/images/about_me/kor_demo0.gif)
+
 ## Water Half Torpedo Half
 
 You must avoid approaching torpedoes. There are many games of this genre. However, there is a distinction only in this game: The enemy's information is given **discontinuously**. You can only verify the position of the torpedo when the radar is passing by. You should anticipate and avoid the trajectory of a torpedo through color indicators that tell you the speed. It will allows you to experience that what is natural is not natural.
