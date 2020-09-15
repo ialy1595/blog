@@ -3,7 +3,7 @@ title: "About Me"
 date: 2019-02-04T10:25:27+09:00
 ---
 
-![](/images/my.jpg#center30)
+![](/images/about_me/my.jpg#center50)
 
 # Education
 
@@ -23,12 +23,10 @@ date: 2019-02-04T10:25:27+09:00
 
 # Projects
 
-## eng2music
+## eng2music [(web)](http://ialy1595.me/eng2music/) [(repository)](https://github.com/ialy1595/eng2music)
 
 When you learn English words or phrases, you may want to know how they are pronounced. eng2music can be helpful in this case. Searching for an English word or phrase shows the phrase that contains the word in the music. Click the YouTube button to repeat the phrase on YouTube.
 
- - [Web link](http://ialy1595.me/eng2music/)
- - [Repository](https://github.com/ialy1595/eng2music)
  - React & React Hook
  - Dataset from [DALI](https://github.com/gabolsgabs/DALI)
     - Crawling with selenium to check invalid YouTube link.
@@ -43,12 +41,10 @@ Search | Play YouTube
 ![](/images/about_me/e2m0.png) | ![](/images/about_me/e2m1.png)
 
 
-# korean-index-of
+# korean-index-of [(npm)](https://www.npmjs.com/package/korean-index-of) [(repository)](https://github.com/ialy1595/korean-index-of)
 
 When you type "코드", the process is "ㅋ", "코", "콛", and "코드", only "코" and "코드" is substring of "코드". For this reason, incremental search with normal string match function provides a poor UX because it repeats whether the results are included or not. The improved `indexOf` function, `koreanIndexOf` in this package can solve this problem because they can determine that "ㅋ", "코", "콛", and "코드" is substring of "코드".
 
- - npm package ([link](https://www.npmjs.com/package/korean-index-of))
- - [Repository](https://github.com/ialy1595/korean-index-of)
  - You can get all match results in an array at once
  - You can get a range of matching
    - It tells you whether the last letter is onset(초성) or coda(종성)
@@ -56,13 +52,12 @@ When you type "코드", the process is "ㅋ", "코", "콛", and "코드", only "
  - All functions in this package take a linear time
    - Use Z algorithm
 
-![](/images/about_me/kor_demo0.gif)
+![](/images/about_me/kor_demo1.gif#center100)
 
-## Water Half Torpedo Half
+## Water Half Torpedo Half [(repository)](https://github.com/ialy1595/Water-Half-Torpedo-Half)
 
 You must avoid approaching torpedoes. There are many games of this genre. However, there is a distinction only in this game: The enemy's information is given **discontinuously**. You can only verify the position of the torpedo when the radar is passing by. You should anticipate and avoid the trajectory of a torpedo through color indicators that tell you the speed. It will allows you to experience that what is natural is not natural.
 
- - [Repository](https://github.com/ialy1595/Water-Half-Torpedo-Half)
  - Unity with C#
  - Android build
  - Use CCW algorithm for ladar collision check
@@ -74,15 +69,12 @@ You must avoid approaching torpedoes. There are many games of this genre. Howeve
     - For prevent long waiting in only one place a.k.a 존버
     - Use probability density function
 
-Main | Playing
-:-:|:-:
- ![](/images/about_me/torpedo0.jpg) | ![](/images/about_me/torpedo1.jpg)
+![](/images/about_me/torpedo_demo1.gif#center30)
 
-## NDB
+## NDB [(repository)](https://github.com/ialy1595/NDB.git)
 
 Game management tycoon game. Users can control the game’s popularity by summoning appropriate number of monsters. It has contents like summoning monsters, increasing server, employing bug GMs who handles bug users, buying and using items, regular and emergency inspections. It received 3 votes in Nexon Dream Members workshop.
 
- - [Repository](https://github.com/ialy1595/NDB.git)
  - Unity, C#
  - Team project (6 members)
  - Undertaken roles
@@ -100,14 +92,16 @@ Game management tycoon game. Users can control the game’s popularity by summon
    - Algorithm contest
  - **Javascript**
    - React, Vue, Node, React-native
+ - **Python**
+    - Web crawling
+    - Data processing
+ - **Java**
+    - Spring
  - **C**
     - Linux kernel modification
     - [CMU Labs](http://csapp.cs.cmu.edu/3e/labs.html)
       - Bomb, Attack, Architecture, Cache, Shell, Malloc, Proxy
  - **C#** with Unity
- - **Python**
-    - Web crawling
-    - Data processing
  - **Processing3**
     - For prototyping
 
