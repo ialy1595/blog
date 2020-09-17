@@ -41,7 +41,7 @@ Search | Play YouTube
 ![](/images/about_me/e2m0.png) | ![](/images/about_me/e2m1.png)
 
 
-# korean-index-of [(npm)](https://www.npmjs.com/package/korean-index-of) [(repository)](https://github.com/ialy1595/korean-index-of)
+## korean-index-of [(npm)](https://www.npmjs.com/package/korean-index-of) [(repository)](https://github.com/ialy1595/korean-index-of)
 
 When you type "코드", the process is "ㅋ", "코", "콛", and "코드", only "코" and "코드" is substring of "코드". For this reason, incremental search with normal string match function provides a poor UX because it repeats whether the results are included or not. The improved `indexOf` function, `koreanIndexOf` in this package can solve this problem because they can determine that "ㅋ", "코", "콛", and "코드" is substring of "코드".
 

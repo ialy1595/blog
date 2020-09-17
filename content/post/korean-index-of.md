@@ -91,6 +91,10 @@ return Z.slice(query.length).reduce((a, x, i) => {
 
 # 구현된 기능들
 
+## Demo
+
+![](/images/about_me/kor_demo1.gif#center100)
+
 ## `koreanIndexOf`, `koreanAllIndexOf`
 
 위에서 만든 분해 함수로 문자열의 각 문자들을 분해한 후 이어붙인 다음 여기에 위에서 구현한 Z algorithm을 적용시키면 모든 매칭 결과를 선형시간 안에 얻는 `koreanAllIndexOf`를 구현할 수 있다. 그리고 이 결과에서 첫 번째 값, 혹은 배열이 비어있을 경우 `-1`을 반환하도록 하면 `koreanIndexOf`를 구현할 수 있다.
