@@ -1,3 +1,3 @@
-code = ["system-architecture", "web", "user-experience", "algorithm"]
+code = ["system-architecture", "web", "user-experience", "algorithm", "etc"]
 think = ["book-review", "column"]
 drink = ["signature", "gin"]

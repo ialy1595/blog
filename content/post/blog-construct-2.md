@@ -197,7 +197,7 @@ Go templates에서 `|`을 쓰면 `|`의 앞에 있는 변수를 `|`뒤에 있는
 `title`은 말 그대로 제목에서 쓰기 좋게 각 단어의 첫 글자만 대문자로, 나머지는 소문자로 바꿔준다.
 
 ```
-{{ "This is title" | urlize }} => "This Is Title"
+{{ "This is title" | title }} => "This Is Title"
 ```
 
 # Partial
