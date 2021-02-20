@@ -4,7 +4,7 @@ date: 2020-07-29T18:52:50+09:00
 categories: ["code"]
 subcategories: ["algorithm"]
 tags: ["string match", "string search", "KMP", "Z-Array", "suffix", "prefix"]
-nextp: ""
+nextp: "Manacher 알고리즘"
 prevp: "파라매트릭 서치 (Parametric Search)"
 ---
 

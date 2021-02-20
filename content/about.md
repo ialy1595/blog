@@ -23,6 +23,19 @@ date: 2019-02-04T10:25:27+09:00
 
 # Projects
 
+## korean-index-of [(npm)](https://www.npmjs.com/package/korean-index-of) [(repository)](https://github.com/ialy1595/korean-index-of)
+
+When you type "코드", the process is "ㅋ", "코", "콛", and "코드", only "코" and "코드" is substring of "코드". For this reason, incremental search with normal string match function provides a poor UX because it repeats whether the results are included or not. The improved `indexOf` function, `koreanIndexOf` in this package can solve this problem because they can determine that "ㅋ", "코", "콛", and "코드" is substring of "코드".
+
+ - You can get all match results in an array at once
+ - You can get a range of matching
+   - It tells you whether the last letter is onset(초성) or coda(종성)
+ - Supply onset search(초성 검색)
+ - All functions in this package take a linear time
+   - Use Z algorithm
+
+![](/images/about_me/kor_demo1.gif#center100)
+
 ## eng2music [(web)](http://ialy1595.me/eng2music/) [(repository)](https://github.com/ialy1595/eng2music)
 
 When you learn English words or phrases, you may want to know how they are pronounced. eng2music can be helpful in this case. Searching for an English word or phrase shows the phrase that contains the word in the music. Click the YouTube button to repeat the phrase on YouTube.
@@ -40,23 +53,9 @@ Search | Play YouTube
 :-:|:-:
 ![](/images/about_me/e2m0.png) | ![](/images/about_me/e2m1.png)
 
-
-## korean-index-of [(npm)](https://www.npmjs.com/package/korean-index-of) [(repository)](https://github.com/ialy1595/korean-index-of)
-
-When you type "코드", the process is "ㅋ", "코", "콛", and "코드", only "코" and "코드" is substring of "코드". For this reason, incremental search with normal string match function provides a poor UX because it repeats whether the results are included or not. The improved `indexOf` function, `koreanIndexOf` in this package can solve this problem because they can determine that "ㅋ", "코", "콛", and "코드" is substring of "코드".
-
- - You can get all match results in an array at once
- - You can get a range of matching
-   - It tells you whether the last letter is onset(초성) or coda(종성)
- - Supply onset search(초성 검색)
- - All functions in this package take a linear time
-   - Use Z algorithm
-
-![](/images/about_me/kor_demo1.gif#center100)
-
 ## Water Half Torpedo Half [(repository)](https://github.com/ialy1595/Water-Half-Torpedo-Half)
 
-You must avoid approaching torpedoes. There are many games of this genre. However, there is a distinction only in this game: The enemy's information is given **discontinuously**. You can only verify the position of the torpedo when the radar is passing by. You should anticipate and avoid the trajectory of a torpedo through color indicators that tell you the speed. It will allows you to experience that what is natural is not natural.
+You must avoid approaching torpedoes. There are many games of this genre. However, there is a **distinction only in this game: The enemy's information is given discontinuously**. You can only verify the position of the torpedo when the radar is passing by. You should anticipate and avoid the trajectory of a torpedo through color indicators that tell you the speed. It will allows you to experience that what is natural is not natural.
 
  - Unity with C#
  - Android build
@@ -105,33 +104,36 @@ Game management tycoon game. Users can control the game’s popularity by summon
  - **Processing3**
     - For prototyping
 
-# Awards & Certificates
+# Experiences
 
-## Awards
+ - **Intern, Human-Computer Interaction Lab, SNU** <sm>(Oct 2017 - Jun 2018)</sm>
+    - Design empty space of mobile interface
+ - **Intern, Samsung Electronics** <sm>(Jan 2021 - Feb 2021)</sm>
+    - Develop Bearer Packet Trace Debugging Tool
+    - Design flexible self wealth accumulation application
 
- - **Korea Olympiad in Informatics, Silver Prize** <sm>(Sept 2013)</sm>
+# Awards
+
+ - **Korea Olympiad in Informatics, Silver Prize** <sm>(Sep 2013)</sm>
  - **Creative Problem Solving Festival, Gold Prize** <sm>(Nov 2013)</sm>
  - **Nexon Dream Members Workshop, 2nd** <sm>(Feb 2016)</sm>
  - **Coder’s High, 13th** <sm>(Jul 2016)</sm>
- - **ACM International Collegiate Programming Contest (ICPC) Korea regional, 10th place** <sm>(Nov 2016)</sm>
+ - **ACM ICPC, Korea regional, 11th place** <sm>(Nov 2016)</sm>
+ - **SCPC, Onsite Final** <sm>(Jul 2019)</sm>
+ - **Google Code Jam, Round 2** <sm>(May 2020)</sm>
 
-## Certificates
+
+# Certificates
 
  - **Craftsman Bartender** <sm>(Dec 2015)</sm>
  - **Industrial Engineer Information Processing** <sm>(May 2017)</sm>
  
-# Scholarship
-
- - **SNU Merit Based Scholarship** <sm>(Aug 2015, Jan 2016, Feb 2016, Feb 2017, Aug 2017, Feb 2018)</sm>
- - **National Scholarship (Type I)** <sm>(Aug 2016)</sm>
- - **National Scholarship (Type II)** <sm>(Aug 2015, Aug 2016, Dec 2016)</sm>
- - **Yoon Song-Yee and Kim Tack-Jin Scholarship** <sm>(Oct 2016)</sm>
- - **SNU College of Engineering ERF Scholarship** <sm>(June 2017, Sept 2017)</sm>
-
 # Other Activities
 
  - **Michigan Technological University Youth Program** <sm>(16th July 2012 – 27th July 2012)</sm>
- - **Game designer of reality puzzle game club of GSHS, \<the Genius in GSHS\>** <sm>(Mar 2014 – Feb 2015)</sm>
+ - **Game designer of reality puzzle club, \<the Genius in GSHS\>** <sm>(Mar 2014 – Feb 2015)</sm>
  - **Staff member of student council of GSHS** <sm>(Mar 2014 – Feb 2015)</sm>
  - **Seminar member of cocktail club of SNU, \<Hurim\>** <sm>(Mar 2016 – present)</sm>
  - **Regular member of server management club of SNU, \<Bacchus\>** <sm>(Aug 2016 – July 2018)</sm>
+ - **Speaker of IT Conference in ROKAF, [\<계룡 전산 한마당\>](http://www.sportsseoul.com/news/read/777410)** <sm>(Aug 2016 – July 2018)</sm>
+ - **Minor contribution on [Mobx](https://mobx.js.org/README.html) [#2684](https://github.com/mobxjs/mobx/commit/5e2e7e7e8e02538fca8f83670a01d6c0a73f1f53)**
