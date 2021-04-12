@@ -16,16 +16,16 @@ date: 2019-02-04T10:25:27+09:00
 
  - **Problem Solving**
     - Algorithm, Data structure
- -  **Human Computer Interaction**
-     - UI/UX, Gamification, Human Computing
+ -  **Human-Computer Interaction**
+     - UI/UX, Gamification, Human computing
  - **Design**
-    - Game design, project managing
+    - Game design, Project managing
 
 # Projects
 
 ## korean-index-of [(npm)](https://www.npmjs.com/package/korean-index-of) [(repository)](https://github.com/ialy1595/korean-index-of)
 
-When you type "코드", the process is "ㅋ", "코", "콛", and "코드", only "코" and "코드" is substring of "코드". For this reason, incremental search with normal string match function provides a poor UX because it repeats whether the results are included or not. The improved `indexOf` function, `koreanIndexOf` in this package can solve this problem because they can determine that "ㅋ", "코", "콛", and "코드" is substring of "코드".
+When you type "코드", the process is "ㅋ", "코", "콛", and "코드", but only "코" and "코드" is a substring of "코드". For this reason, incremental search with a normal string match function provides a poor UX in Korean because it repeats whether the results are included or not. The improved `indexOf` function, `koreanIndexOf` in this package can solve this problem because they can determine that "ㅋ", "코", "콛", and "코드" is a substring of "코드".
 
  - You can get all match results in an array at once
  - You can get a range of matching
@@ -42,7 +42,7 @@ When you learn English words or phrases, you may want to know how they are prono
 
  - React & React Hook
  - Dataset from [DALI](https://github.com/gabolsgabs/DALI)
-    - Crawling with selenium to check invalid YouTube link.
+    - Crawling with selenium to check invalid YouTube links.
     - 1071 songs with 33916 phrases are used
  - Incremental search system
    - Use previous results to reduce search time
@@ -55,24 +55,24 @@ Search | Play YouTube
 
 ## Water Half Torpedo Half [(repository)](https://github.com/ialy1595/Water-Half-Torpedo-Half)
 
-You must avoid approaching torpedoes. There are many games of this genre. However, there is a **distinction only in this game: The enemy's information is given discontinuously**. You can only verify the position of the torpedo when the radar is passing by. You should anticipate and avoid the trajectory of a torpedo through color indicators that tell you the speed. It will allows you to experience that what is natural is not natural.
+You must avoid approaching torpedoes. There are many games of this genre. However, there is a **distinction only in this game: The enemy's information is given discontinuously**. You can only verify the position of the torpedo when the radar is passing by. You should anticipate and avoid the trajectory of a torpedo through color indicators that tell you the speed. It will allow you to experience that what is natural is not natural.
 
  - Unity with C#
  - Android build
- - Use CCW algorithm for ladar collision check
+ - Use CCW algorithm for radar collision check
  - Validated stage clearable
     - Torpedo generated randomly
     - Checked to see if there was a clear path
     - Use flood-fill algorithm
- - Torpedo generated more frequently near submarines.
-    - For prevent long waiting in only one place a.k.a 존버
+ - Torpedo is generated more frequently near submarines.
+    - For preventing long waiting in only one place a.k.a 존버
     - Use probability density function
 
 ![](/images/about_me/torpedo_demo1.gif#center30)
 
 ## NDB [(repository)](https://github.com/ialy1595/NDB.git)
 
-Game management tycoon game. Users can control the game’s popularity by summoning appropriate number of monsters. It has contents like summoning monsters, increasing server, employing bug GMs who handles bug users, buying and using items, regular and emergency inspections. It received 3 votes in Nexon Dream Members workshop.
+Game management tycoon game. Users can control the game’s popularity by summoning an appropriate number of monsters. It has contents like summoning monsters, increasing server, employing bug GMs who handle bug users, buying and using items, regular and emergency inspections. It received 3 votes in the Nexon Dream Members workshop.
 
  - Unity, C#
  - Team project (6 members)
@@ -94,12 +94,12 @@ Game management tycoon game. Users can control the game’s popularity by summon
  - **Python**
     - Web crawling
     - Data processing
- - **Java**
-    - Spring
  - **C**
     - Linux kernel modification
     - [CMU Labs](http://csapp.cs.cmu.edu/3e/labs.html)
       - Bomb, Attack, Architecture, Cache, Shell, Malloc, Proxy
+ - **Java**
+    - Spring
  - **C#** with Unity
  - **Processing3**
     - For prototyping
@@ -109,7 +109,7 @@ Game management tycoon game. Users can control the game’s popularity by summon
  - **Intern, Human-Computer Interaction Lab, SNU** <sm>(Oct 2017 - Jun 2018)</sm>
     - Design empty space of mobile interface
  - **Intern, Samsung Electronics** <sm>(Jan 2021 - Feb 2021)</sm>
-    - Develop Bearer Packet Trace Debugging Tool
+    - Develop bearer packet trace debugging tool
     - Design flexible self wealth accumulation application
 
 # Awards
@@ -130,10 +130,7 @@ Game management tycoon game. Users can control the game’s popularity by summon
  
 # Other Activities
 
- - **Michigan Technological University Youth Program** <sm>(16th July 2012 – 27th July 2012)</sm>
- - **Game designer of reality puzzle club, \<the Genius in GSHS\>** <sm>(Mar 2014 – Feb 2015)</sm>
- - **Staff member of student council of GSHS** <sm>(Mar 2014 – Feb 2015)</sm>
- - **Seminar member of cocktail club of SNU, \<Hurim\>** <sm>(Mar 2016 – present)</sm>
- - **Regular member of server management club of SNU, \<Bacchus\>** <sm>(Aug 2016 – July 2018)</sm>
+ - **Seminar member of cocktail club of SNU, [\<Hurim\>](https://www.facebook.com/snuHURIM/)** <sm>(Mar 2016 – present)</sm>
+ - **Regular member of server management club of SNU, [\<Bacchus\>](https://bacchus.snucse.org/)** <sm>(Aug 2016 – July 2018)</sm>
  - **Speaker of IT Conference in ROKAF, [\<계룡 전산 한마당\>](http://www.sportsseoul.com/news/read/777410)** <sm>(Aug 2016 – July 2018)</sm>
- - **Minor contribution on [Mobx](https://mobx.js.org/README.html) [#2684](https://github.com/mobxjs/mobx/commit/5e2e7e7e8e02538fca8f83670a01d6c0a73f1f53)**
+ - **Minor contribution on [Mobx](https://mobx.js.org/README.html) ([#2684](https://github.com/mobxjs/mobx/commit/5e2e7e7e8e02538fca8f83670a01d6c0a73f1f53))**

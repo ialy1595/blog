@@ -35,7 +35,7 @@ prevp: "인덱스 트리 (Indexed Tree)"
 ```
 m = (l + h + 1) / 2;
 
-if( condotion(m) ) {
+if( condition(m) ) {
     ...
 } else {
     ...
@@ -49,7 +49,7 @@ if( condotion(m) ) {
 ```
 m = (l + h + 1) / 2;
 
-if( condotion(m) ) {
+if( condition(m) ) {
     l = m;
 } else {
     h = m - 1;
@@ -64,7 +64,7 @@ if( condotion(m) ) {
 while(l < h) {
     m = (l + h + 1) / 2;
 
-    if( condotion(m) ) {
+    if( condition(m) ) {
         l = m;
     } else {
         h = m - 1;
